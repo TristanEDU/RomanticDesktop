@@ -133,8 +133,26 @@ try {
 
 # Copy sound file if exists
 if ($hasSound) {
-    Copy-Item "$packageDir\romantic.wav" -Destination "$soundsPath\romantic.wav" -Force
-    Write-Host "      ✓ Sound file installed" -ForegroundColor Green
+    try {
+        # Validate WAV format (check for RIFF header)
+        $wavPath = "$packageDir\romantic.wav"
+        $bytes = [System.IO.File]::ReadAllBytes($wavPath)
+        
+        $isValidWav = $bytes.Length -ge 12 -and 
+                      $bytes[0] -eq 0x52 -and $bytes[1] -eq 0x49 -and  # 'R' 'I'
+                      $bytes[2] -eq 0x46 -and $bytes[3] -eq 0x46 -and  # 'F' 'F'
+                      $bytes[8] -eq 0x57 -and $bytes[9] -eq 0x41 -and  # 'W' 'A'
+                      $bytes[10] -eq 0x56 -and $bytes[11] -eq 0x45     # 'V' 'E'
+        
+        if ($isValidWav) {
+            Copy-Item "$packageDir\romantic.wav" -Destination "$soundsPath\romantic.wav" -Force
+            Write-Host "      ✓ Sound file installed (WAV format verified)" -ForegroundColor Green
+        } else {
+            Write-Host "      ⚠ Sound file does not appear to be valid WAV (skipping)" -ForegroundColor Yellow
+        }
+    } catch {
+        Write-Host "      ⚠ Could not validate sound file: $_" -ForegroundColor Yellow
+    }
 }
 
 # Copy cursor files if exist
@@ -279,9 +297,16 @@ try {
     $themesPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
     Set-ItemProperty -Path $themesPath -Name "ColorPrevalence" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue
     
-    Write-Host "      ✓ Romantic theme colors applied" -ForegroundColor Green
+    # Verify settings were applied
+    $verifyAccent = Get-ItemProperty -Path $accentPath -Name "AccentColorMenu" -ErrorAction SilentlyContinue
+    if ($verifyAccent -and $verifyAccent.AccentColorMenu -eq $colorValue) {
+        Write-Host "      ✓ Romantic theme colors applied (accent color verified)" -ForegroundColor Green
+        Write-Host "      ℹ Theme includes: rose gold accent color on taskbar and Start menu" -ForegroundColor Gray
+    } else {
+        Write-Host "      ⚠ Colors applied but verification failed (may still be applied)" -ForegroundColor Yellow
+    }
 } catch {
-    Write-Host "      ⚠ Warning: Could not apply all theme settings" -ForegroundColor Yellow
+    Write-Host "      ⚠ Warning: Could not apply all theme settings: $_" -ForegroundColor Yellow
 }
 
 if ($hasCursors) {

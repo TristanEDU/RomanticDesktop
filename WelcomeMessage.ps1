@@ -98,13 +98,13 @@ if (Test-Path $configFile) {
 # Replace placeholder in messages
 $messages = $messages | ForEach-Object { $_ -replace '\{NAME\}', $herName }
 
-# Play romantic sound
+# Play romantic sound asynchronously (doesn't block UI)
 $soundPath = "$scriptDir\Sounds\romantic.wav"
 if (Test-Path $soundPath) {
     try {
         $player = New-Object System.Media.SoundPlayer
         $player.SoundLocation = $soundPath
-        $player.Play()
+        $player.PlayAsync()  # Async to prevent UI blocking
     } catch {
         # Silently continue if sound fails
     }
@@ -185,9 +185,14 @@ $timer = New-Object System.Windows.Forms.Timer
 $timer.Interval = $welcomeTimeout * 1000
 $timer.Add_Tick({ 
     $form.Close()
+})
+
+# Properly dispose timer when form closes
+$form.Add_FormClosing({
     $timer.Stop()
     $timer.Dispose()
 })
+
 $timer.Start()
 
 # Show the form
