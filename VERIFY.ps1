@@ -61,13 +61,24 @@ Write-Host "
 [3/6] Validating config.txt..." -ForegroundColor Cyan
 $configPath = "C:\RomanticCustomization\config.txt"
 if (Test-Path $configPath) {
+    # Check UTF-8 BOM encoding
+    $bytes = [System.IO.File]::ReadAllBytes($configPath)
+    $hasUtf8Bom = $bytes.Length -ge 3 -and $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF
+    
+    if ($hasUtf8Bom) {
+        Write-Host "   UTF-8 BOM encoding: OK" -ForegroundColor Green
+    } else {
+        Write-Host "   UTF-8 BOM encoding: MISSING (may cause emoji issues)" -ForegroundColor Yellow
+        $warnings++
+    }
+    
     $config = Get-Content $configPath -Raw
-    if ($config -match "HER_NAME=" -and $config -match "ANNIVERSARY_DATE=") {
-        Write-Host "   Config is valid" -ForegroundColor Green
+    if ($config -match "HER_NAME=" -and $config -match "ANNIVERSARY_DATE=" -and $config -match "\[MESSAGES\]") {
+        Write-Host "   Config structure: OK" -ForegroundColor Green
         $passed++
     }
     else {
-        Write-Host "   Config is incomplete" -ForegroundColor Red
+        Write-Host "   Config is incomplete or malformed" -ForegroundColor Red
         $failed++
     }
 }
@@ -82,6 +93,24 @@ Write-Host "
 $regPath = "HKCU:\Software\RomanticCustomization"
 if (Test-Path $regPath) {
     Write-Host "   Registry key exists" -ForegroundColor Green
+    
+    # Check for InstallPath
+    $installPath = Get-ItemProperty -Path $regPath -Name "InstallPath" -ErrorAction SilentlyContinue
+    if ($installPath -and $installPath.InstallPath) {
+        Write-Host "     InstallPath: $($installPath.InstallPath)" -ForegroundColor Green
+    } else {
+        Write-Host "     InstallPath value missing" -ForegroundColor Yellow
+        $warnings++
+    }
+    
+    # Check for installation timestamp
+    $timestamp = Get-ItemProperty -Path $regPath -Name "InstallDate" -ErrorAction SilentlyContinue
+    if ($timestamp -and $timestamp.InstallDate) {
+        Write-Host "     InstallDate: $($timestamp.InstallDate)" -ForegroundColor Green
+    } else {
+        Write-Host "     InstallDate: not recorded" -ForegroundColor Yellow
+    }
+    
     $passed++
 }
 else {

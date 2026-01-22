@@ -25,14 +25,14 @@ ANNIVERSARY_DATE=2024-01-06
 # The system randomly selects one message each time she logs in
 # Validation: each message max 200 characters, no empty lines
 [MESSAGES]
-MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are 
-MESSAGE=Welcome back! You make every day brighter 
-MESSAGE=Hey gorgeous! Ready to conquer the day together? 
-MESSAGE=Missing you already! Have a wonderful day 
-MESSAGE=You're logged in to the best computer... but I'm logged in to the best heart 
-MESSAGE=Remember: you're incredible! 
-MESSAGE=Another day, another chance to be amazing! 
-MESSAGE=The world is lucky to have you in it today! 
+MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ❤️
+MESSAGE=Welcome back! You make every day brighter ✨
+MESSAGE=Hey gorgeous! Ready to conquer the day together? 💕
+MESSAGE=Missing you already! Have a wonderful day 🌹
+MESSAGE=You're logged in to the best computer... but I'm logged in to the best heart 💖
+MESSAGE=Remember: you're incredible! ❤️
+MESSAGE=Another day, another chance to be amazing! ✨
+MESSAGE=The world is lucky to have you in it today! 💝
 
 # SECTION 4: FUTURE FEATURES (Reserved for v2.0+)
 # 

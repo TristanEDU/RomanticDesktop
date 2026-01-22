@@ -38,12 +38,26 @@ $messages = @(
 
 # Read config file if it exists (v1.1 format with sections)
 if (Test-Path $configFile) {
-    $configContent = Get-Content $configFile
+    $configContent = Get-Content $configFile -Raw
+    $lines = $configContent -split '[\r\n]+'
     $customMessages = @()
+    $inMessagesSection = $false
     
-    foreach ($line in $configContent) {
+    foreach ($line in $lines) {
+        $line = $line.Trim()
+        
+        # Track which section we're in
+        if ($line -match '^\[MESSAGES\]') {
+            $inMessagesSection = $true
+            continue
+        }
+        if ($line -match '^\[' -and $line -ne '[MESSAGES]') {
+            $inMessagesSection = $false
+            continue
+        }
+        
         # Skip comments and empty lines
-        if ($line -match '^\s*#' -or $line -match '^\s*$' -or $line -match '^\[') {
+        if ($line -match '^\s*#' -or $line -match '^\s*$') {
             continue
         }
         
@@ -69,8 +83,8 @@ if (Test-Path $configFile) {
             }
         }
         
-        # Parse MESSAGE lines
-        if ($line -match '^MESSAGE=(.+)$') {
+        # Parse MESSAGE lines (only when in [MESSAGES] section)
+        if ($inMessagesSection -and $line -match '^MESSAGE=(.+)$') {
             $customMessages += $matches[1].Trim()
         }
     }

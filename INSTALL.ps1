@@ -81,7 +81,7 @@ Write-Host "Press any key to begin installation..." -ForegroundColor Yellow
 pause
 
 Write-Host ""
-Write-Host "[1/7] Setting up directories..." -ForegroundColor Cyan
+Write-Host "[1/8] Setting up directories..." -ForegroundColor Cyan
 
 # Create installation directory
 $installPath = "C:\RomanticCustomization"
@@ -102,7 +102,7 @@ if (-not (Test-Path $cursorsPath)) {
 Write-Host "      ✓ Directories created" -ForegroundColor Green
 
 # Copy files
-Write-Host "[2/7] Installing files..." -ForegroundColor Cyan
+Write-Host "[2/8] Installing files..." -ForegroundColor Cyan
 
 # Copy welcome script
 Copy-Item "$packageDir\WelcomeMessage.ps1" -Destination "$installPath\WelcomeMessage.ps1" -Force
@@ -112,16 +112,17 @@ Write-Host "      ✓ Welcome script installed" -ForegroundColor Green
 Copy-Item "$packageDir\config.txt" -Destination "$installPath\config.txt" -Force
 Write-Host "      ✓ Configuration file installed" -ForegroundColor Green
 
-# Validate configuration file (optional but recommended)
-Write-Host "[2.5/7] Validating configuration..." -ForegroundColor Cyan
+# Validate configuration file
+Write-Host "[3/8] Validating configuration..." -ForegroundColor Cyan
 try {
     $configValidator = "$packageDir\CONFIG_VALIDATOR.ps1"
     if (Test-Path $configValidator) {
-        & $configValidator "$installPath\config.txt" | Out-Null
+        $validationOutput = & $configValidator "$installPath\config.txt" 2>&1
         if ($LASTEXITCODE -eq 0) {
             Write-Host "      ✓ Configuration is valid" -ForegroundColor Green
         } else {
-            Write-Host "      ⚠ Configuration validation warnings (continuing)" -ForegroundColor Yellow
+            Write-Host "      ⚠ Configuration validation warnings:" -ForegroundColor Yellow
+            $validationOutput | ForEach-Object { Write-Host "        $_" -ForegroundColor Yellow }
         }
     } else {
         Write-Host "      ℹ Validator not found (skipping validation)" -ForegroundColor Gray
@@ -144,7 +145,7 @@ if ($hasCursors) {
 }
 
 # Set execution policy for current user
-Write-Host "[3/7] Configuring PowerShell..." -ForegroundColor Cyan
+Write-Host "[4/8] Configuring PowerShell..." -ForegroundColor Cyan
 try {
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force -ErrorAction Stop
     Write-Host "      ✓ PowerShell configured" -ForegroundColor Green
@@ -154,21 +155,29 @@ try {
 }
 
 # Store installation path in registry (v1.1 - for portability)
-Write-Host ""
-Write-Host "[3.5/7] Storing installation path in registry..." -ForegroundColor Cyan
+Write-Host "[5/8] Storing installation path in registry..." -ForegroundColor Cyan
 try {
     $regPath = "HKCU:\Software\RomanticCustomization"
     if (-not (Test-Path $regPath)) {
         New-Item -Path $regPath -Force | Out-Null
     }
     Set-ItemProperty -Path $regPath -Name "InstallPath" -Value $installPath -Type String -Force
-    Write-Host "      ✓ Registry path stored for portability" -ForegroundColor Green
+    Set-ItemProperty -Path $regPath -Name "InstallDate" -Value (Get-Date -Format "yyyy-MM-dd HH:mm:ss") -Type String -Force
+    
+    # Verify registry was actually written
+    $verifyPath = Get-ItemProperty -Path $regPath -Name "InstallPath" -ErrorAction SilentlyContinue
+    if ($verifyPath -and $verifyPath.InstallPath -eq $installPath) {
+        Write-Host "      ✓ Registry path stored for portability (verified)" -ForegroundColor Green
+    } else {
+        Write-Host "      ⚠ Registry stored but verification failed (may still work)" -ForegroundColor Yellow
+    }
 } catch {
-    Write-Host "      ⚠ Warning: Could not store registry path: $_" -ForegroundColor Yellow
+    Write-Host "      ✗ Error: Could not store registry path: $_" -ForegroundColor Red
+    Write-Host "      ℹ WelcomeMessage will default to C:\RomanticCustomization" -ForegroundColor Gray
 }
 
 # Enable startup sound
-Write-Host "[4/7] Enabling startup sound..." -ForegroundColor Cyan
+Write-Host "[6/8] Enabling startup sound..." -ForegroundColor Cyan
 try {
     # Different registry paths for different Windows versions
     $regPath = "HKCU:\AppEvents\Schemes"
@@ -185,7 +194,7 @@ try {
 }
 
 # Create scheduled task for welcome message
-Write-Host "[5/7] Setting up welcome message..." -ForegroundColor Cyan
+Write-Host "[7/8] Setting up welcome message..." -ForegroundColor Cyan
 
 $taskName = "RomanticWelcome"
 
@@ -222,12 +231,24 @@ try {
         -Description "Displays romantic welcome message at login" `
         -Force | Out-Null
     
-    # Verify task was created successfully
+    # Verify task was created successfully with detailed checks
     Start-Sleep -Milliseconds 500
     $verifyTask = Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
     
     if ($verifyTask) {
-        Write-Host "      ✓ Welcome message task created and verified" -ForegroundColor Green
+        # Check task state and properties
+        $isEnabled = $verifyTask.State -eq 'Ready'
+        $hasTrigger = $verifyTask.Triggers -ne $null -and @($verifyTask.Triggers | Where-Object { $_.CimClass.CimClassName -like '*LogOnTrigger*' }).Count -gt 0
+        $hasAction = $verifyTask.Actions -ne $null -and $verifyTask.Actions.Count -gt 0
+        
+        if ($isEnabled -and $hasTrigger -and $hasAction) {
+            Write-Host "      ✓ Welcome message task created, verified, and ready" -ForegroundColor Green
+        } else {
+            Write-Host "      ⚠ Task created but has issues:" -ForegroundColor Yellow
+            if (-not $isEnabled) { Write-Host "        - Task is not enabled (State: $($verifyTask.State))" -ForegroundColor Yellow }
+            if (-not $hasTrigger) { Write-Host "        - LogOn trigger not found" -ForegroundColor Yellow }
+            if (-not $hasAction) { Write-Host "        - No action configured" -ForegroundColor Yellow }
+        }
     } else {
         Write-Host "      ⚠ Task created but verification failed (may work on next login)" -ForegroundColor Yellow
     }
@@ -236,7 +257,7 @@ try {
 }
 
 # Apply romantic theme colors
-Write-Host "[6/7] Applying romantic theme..." -ForegroundColor Cyan
+Write-Host "[8/8] Applying romantic theme..." -ForegroundColor Cyan
 
 try {
     # Set accent color (works on both Win10 and Win11)
@@ -262,9 +283,6 @@ try {
 } catch {
     Write-Host "      ⚠ Warning: Could not apply all theme settings" -ForegroundColor Yellow
 }
-
-# Auto-install cursors if available
-Write-Host "[7/7] Configuring cursors..." -ForegroundColor Cyan
 
 if ($hasCursors) {
     # Get list of cursor files
