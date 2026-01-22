@@ -42,11 +42,13 @@ Complete architectural overview of how Romantic Windows Customization works.
 ### 1. Installation Layer
 
 **Components:**
+
 - INSTALL.bat (batch entry point)
 - INSTALL.ps1 (main installation script)
 - CONFIG_VALIDATOR.ps1 (pre-install validation)
 
 **Responsibilities:**
+
 - ✅ Check admin privileges
 - ✅ Validate configuration file
 - ✅ Create installation directories
@@ -57,6 +59,7 @@ Complete architectural overview of how Romantic Windows Customization works.
 - ✅ Apply theme colors
 
 **Data Flow:**
+
 ```
 User runs INSTALL.bat
     ↓
@@ -78,12 +81,14 @@ Installation complete
 ### 2. Runtime Layer
 
 **Components:**
+
 - Windows Task Scheduler (orchestration)
 - WelcomeMessage.ps1 (primary application)
 - System.Windows.Forms (UI framework)
 - System.Media.SoundPlayer (audio)
 
 **Responsibilities:**
+
 - ✅ Trigger at user logon
 - ✅ Load configuration from registry/file
 - ✅ Parse config.txt using section-aware logic
@@ -93,6 +98,7 @@ Installation complete
 - ✅ Cleanup resources
 
 **Execution Context:**
+
 - Runs as: Current user (non-elevated)
 - Trigger: User logon event
 - Frequency: Once per logon
@@ -101,6 +107,7 @@ Installation complete
 ### 3. Storage Layer
 
 **Registry Storage:**
+
 ```
 HKCU:\Software\RomanticCustomization\
 ├─ InstallPath (string) → C:\RomanticCustomization
@@ -108,6 +115,7 @@ HKCU:\Software\RomanticCustomization\
 ```
 
 **File Storage:**
+
 ```
 C:\RomanticCustomization\
 ├─ WelcomeMessage.ps1 (executable)
@@ -119,6 +127,7 @@ C:\RomanticCustomization\
 ```
 
 **Config File Format:**
+
 ```
 [USER]
 HER_NAME=string
@@ -139,10 +148,12 @@ MESSAGE=string
 ### 4. Verification Layer
 
 **Components:**
+
 - VERIFY.ps1 (post-install diagnostics)
 - CONFIG_VALIDATOR.ps1 (config validation)
 
 **Responsibilities:**
+
 - ✅ Check installation folder
 - ✅ Verify scheduled task exists
 - ✅ Validate config file
@@ -155,9 +166,11 @@ MESSAGE=string
 ### 5. Cleanup Layer
 
 **Components:**
+
 - UNINSTALL.ps1 (removal script)
 
 **Responsibilities:**
+
 - ✅ Stop scheduled task
 - ✅ Delete installation folder
 - ✅ Remove registry keys
@@ -184,7 +197,7 @@ foreach ($line in $lines) {
         $inMessagesSection = ($currentSection -eq 'MESSAGES')
         continue
     }
-    
+
     # ACTION: Only parse MESSAGE= when in [MESSAGES] state
     if ($inMessagesSection -and $line -match '^MESSAGE=(.+)$') {
         $customMessages += $matches[1].Trim()
@@ -193,6 +206,7 @@ foreach ($line in $lines) {
 ```
 
 **State Diagram:**
+
 ```
 ┌─────────────────────────────────┐
 │  Start: inMessagesSection=false │
@@ -215,6 +229,7 @@ Transition back if section changes
 ```
 
 **Benefits:**
+
 - ✅ Prevents parsing wrong sections
 - ✅ Handles any section order
 - ✅ Scalable for future sections
@@ -280,6 +295,7 @@ Transition back if section changes
 ### Welcome Message Form
 
 **Window Properties:**
+
 - Title: "Welcome Home! 💝"
 - Size: 520×320 pixels
 - Position: Centered screen
@@ -288,6 +304,7 @@ Transition back if section changes
 - BackColor: Soft pink (#FFF0F5)
 
 **Form Composition:**
+
 ```
 ┌─────────────────────────────────────────────┐
 │  💕 Welcome, [NAME]! 💕                    │ ← Title Label
@@ -303,6 +320,7 @@ Transition back if section changes
 ```
 
 **Colors:**
+
 - Background: RGB(255, 240, 245) - Soft pink
 - Title text: RGB(139, 69, 84) - Rose red
 - Message text: RGB(60, 60, 60) - Dark gray
@@ -310,6 +328,7 @@ Transition back if section changes
 - Button hover: RGB(255, 105, 180) - Hot pink
 
 **Font:**
+
 - Title: Segoe UI, 16pt, Bold
 - Message: Segoe UI, 11pt, Regular
 - Button: Segoe UI, 10pt, Bold
@@ -319,26 +338,26 @@ Transition back if section changes
 ```
 1. CREATE FORM
    ↓ New-Object System.Windows.Forms.Form
-   
+
 2. CREATE CONTROLS
    ↓ Add labels and button
-   
+
 3. LOAD MESSAGE
    ↓ Select random from 8+ messages
    ↓ Replace {NAME} token
-   
+
 4. DISPLAY FORM
    ↓ $form.ShowDialog()
-   
+
 5. PLAY SOUND (ASYNC)
    ↓ $player.PlayAsync() - non-blocking
-   
+
 6. START TIMER
    ↓ Timer fires after WELCOME_TIMEOUT seconds
-   
+
 7. CLOSE FORM
    ↓ On timeout or user click
-   
+
 8. CLEANUP
    ↓ Timer.Stop()
    ↓ Timer.Dispose()
@@ -366,6 +385,7 @@ $player.PlayAsync()  # Returns immediately, sound plays in background
 ```
 
 **Flow:**
+
 ```
 WelcomeMessage.ps1 starts
     ↓
@@ -383,6 +403,7 @@ WelcomeMessage.ps1 starts
 ```
 
 **Comparison:**
+
 - ❌ `Play()` - Blocks UI until sound finishes
 - ✅ `PlayAsync()` - Returns immediately, sound in background
 
@@ -430,6 +451,7 @@ $configFile = "$scriptDir\config.txt"
 ```
 
 **Advantages:**
+
 - ✅ Portable (works from any drive)
 - ✅ Multi-user support (each user has own HKCU key)
 - ✅ No hardcoded paths
@@ -448,7 +470,7 @@ try {
 } catch {
     # Log error
     Write-Host "Operation failed: $_" -ForegroundColor Red
-    
+
     # Either retry, fallback, or exit
     if ($canRetry) {
         # Retry logic
@@ -464,6 +486,7 @@ try {
 ### Graceful Degradation
 
 **Example: Optional sound file**
+
 ```powershell
 $soundPath = "$scriptDir\Sounds\romantic.wav"
 
@@ -540,21 +563,24 @@ $form.Dispose()
 **BOM (Byte Order Mark):** `EF BB BF` (hex)
 
 **Detection:**
+
 ```powershell
 $bytes = [System.IO.File]::ReadAllBytes($path)
-$hasUTF8BOM = ($bytes.Length -ge 3 -and 
-               $bytes[0] -eq 0xEF -and 
-               $bytes[1] -eq 0xBB -and 
+$hasUTF8BOM = ($bytes.Length -ge 3 -and
+               $bytes[0] -eq 0xEF -and
+               $bytes[1] -eq 0xBB -and
                $bytes[2] -eq 0xBF)
 ```
 
 **Writing:**
+
 ```powershell
 $content = "Your content here"
 [System.IO.File]::WriteAllText($path, $content, [System.Text.Encoding]::UTF8)
 ```
 
 **Why UTF-8 with BOM:**
+
 - ✅ Windows Notepad auto-detects BOM
 - ✅ PowerShell preserves BOM on read
 - ✅ Supports full Unicode range
@@ -602,21 +628,21 @@ No internet, no external calls, no privilege escalation
 
 ### Configuration Size
 
-| Metric | Current | Limit | Headroom |
-|--------|---------|-------|----------|
-| Messages | 8 | ~50 | 6.25x |
-| Message length | 200 chars | 200 chars | At limit |
-| HER_NAME length | 100 chars | 100 chars | At limit |
-| Config file size | ~2KB | ~100KB | 50x |
-| Welcome popup | 20s timeout | 300s max | 15x |
+| Metric           | Current     | Limit     | Headroom |
+| ---------------- | ----------- | --------- | -------- |
+| Messages         | 8           | ~50       | 6.25x    |
+| Message length   | 200 chars   | 200 chars | At limit |
+| HER_NAME length  | 100 chars   | 100 chars | At limit |
+| Config file size | ~2KB        | ~100KB    | 50x      |
+| Welcome popup    | 20s timeout | 300s max  | 15x      |
 
 ### Memory Usage
 
-| Component | Usage |
-|-----------|-------|
-| WelcomeMessage.ps1 | ~30MB |
-| Form + controls | ~5MB |
-| Sound playback | ~5MB |
+| Component            | Usage |
+| -------------------- | ----- |
+| WelcomeMessage.ps1   | ~30MB |
+| Form + controls      | ~5MB  |
+| Sound playback       | ~5MB  |
 | Total per invocation | ~40MB |
 
 **Note:** Memory freed after form closes (no memory leaks with proper timer cleanup)
@@ -630,6 +656,7 @@ No internet, no external calls, no privilege escalation
 **[FUTURE]** section reserved for v1.3+
 
 Potential additions:
+
 ```ini
 [VOICE]  # v2.0
 MESSAGE_VOICE=voice_file.wav

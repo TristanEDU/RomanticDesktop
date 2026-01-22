@@ -14,19 +14,19 @@ Comprehensive guide to how Romantic Windows Customization works on Windows 10 vs
 
 ## Feature Compatibility Matrix
 
-| Feature | Windows 10 | Windows 11 | Notes |
-|---------|-----------|-----------|-------|
-| Welcome message popup | ✅ Full support | ✅ Full support | Identical behavior |
-| Custom messages | ✅ Yes | ✅ Yes | All 8+ messages work |
-| Days together counter | ✅ Yes | ✅ Yes | Same calculation |
-| Sound playback | ✅ Yes | ✅ Yes | Same audio support |
-| Custom cursors | ✅ Yes | ✅ Yes | Full cursor theming |
-| Theme colors | ✅ Yes | ✅ Enhanced | Better color picker in Win11 |
-| Scheduled task | ✅ Works | ✅ Works | Identical task creation |
-| Registry storage | ✅ Yes | ✅ Yes | Same locations |
-| Installation | ✅ Smooth | ✅ Smooth | Auto-detects OS |
-| Uninstallation | ✅ Clean | ✅ Clean | Complete removal |
-| Verification tools | ✅ Full | ✅ Full | VERIFY.ps1 works on both |
+| Feature               | Windows 10      | Windows 11      | Notes                        |
+| --------------------- | --------------- | --------------- | ---------------------------- |
+| Welcome message popup | ✅ Full support | ✅ Full support | Identical behavior           |
+| Custom messages       | ✅ Yes          | ✅ Yes          | All 8+ messages work         |
+| Days together counter | ✅ Yes          | ✅ Yes          | Same calculation             |
+| Sound playback        | ✅ Yes          | ✅ Yes          | Same audio support           |
+| Custom cursors        | ✅ Yes          | ✅ Yes          | Full cursor theming          |
+| Theme colors          | ✅ Yes          | ✅ Enhanced     | Better color picker in Win11 |
+| Scheduled task        | ✅ Works        | ✅ Works        | Identical task creation      |
+| Registry storage      | ✅ Yes          | ✅ Yes          | Same locations               |
+| Installation          | ✅ Smooth       | ✅ Smooth       | Auto-detects OS              |
+| Uninstallation        | ✅ Clean        | ✅ Clean        | Complete removal             |
+| Verification tools    | ✅ Full         | ✅ Full         | VERIFY.ps1 works on both     |
 
 ---
 
@@ -34,36 +34,39 @@ Comprehensive guide to how Romantic Windows Customization works on Windows 10 vs
 
 ### Windows 10
 
-| Component | Requirement |
-|-----------|-------------|
-| **Version** | Build 1809 or later |
-| **Recommended Build** | 19045 (latest) |
-| **PowerShell** | 5.0+ (included by default) |
-| **Admin Required** | Yes (for installation) |
-| **Disk Space** | ~50MB |
-| **RAM** | 512MB minimum (1GB+ recommended) |
+| Component             | Requirement                      |
+| --------------------- | -------------------------------- |
+| **Version**           | Build 1809 or later              |
+| **Recommended Build** | 19045 (latest)                   |
+| **PowerShell**        | 5.0+ (included by default)       |
+| **Admin Required**    | Yes (for installation)           |
+| **Disk Space**        | ~50MB                            |
+| **RAM**               | 512MB minimum (1GB+ recommended) |
 
 **Tested Versions:**
+
 - Windows 10 21H2 (latest stable)
 - Windows 10 1909
 - Windows 10 2004
 
 **Not Supported:**
+
 - Windows 10 versions before build 1809 (deprecated)
 - Windows 10 S mode (requires powershell unlock)
 
 ### Windows 11
 
-| Component | Requirement |
-|-----------|-------------|
-| **Version** | All current builds |
-| **Recommended Build** | Latest (23H2) |
-| **PowerShell** | 5.0+ or PowerShell 7+ (included) |
-| **Admin Required** | Yes (for installation) |
-| **Disk Space** | ~50MB |
-| **RAM** | 1GB minimum recommended |
+| Component             | Requirement                      |
+| --------------------- | -------------------------------- |
+| **Version**           | All current builds               |
+| **Recommended Build** | Latest (23H2)                    |
+| **PowerShell**        | 5.0+ or PowerShell 7+ (included) |
+| **Admin Required**    | Yes (for installation)           |
+| **Disk Space**        | ~50MB                            |
+| **RAM**               | 1GB minimum recommended          |
 
 **Tested Versions:**
+
 - Windows 11 23H2 (latest)
 - Windows 11 22H2
 - Windows 11 21H2
@@ -77,12 +80,14 @@ Comprehensive guide to how Romantic Windows Customization works on Windows 10 vs
 ### Welcome Message Display
 
 **Windows 10:**
+
 - Classic popup window style
 - Standard fonts and colors
 - Traditional Win32 Forms appearance
 - Slight transparency support
 
 **Windows 11:**
+
 - Modern fluent design (if enabled)
 - Slightly updated font rendering
 - Better high-DPI support
@@ -95,6 +100,7 @@ Comprehensive guide to how Romantic Windows Customization works on Windows 10 vs
 ### Theme Colors
 
 **Windows 10:**
+
 - Accent colors applied to:
   - Taskbar
   - Title bars
@@ -102,6 +108,7 @@ Comprehensive guide to how Romantic Windows Customization works on Windows 10 vs
   - Notification area
 
 **Windows 11:**
+
 - Accent colors applied to:
   - Taskbar (bottom bar)
   - Title bars
@@ -116,11 +123,13 @@ Comprehensive guide to how Romantic Windows Customization works on Windows 10 vs
 ### Scheduled Task Behavior
 
 **Windows 10:**
+
 - Task created and runs at logon
 - Standard task scheduler interface
 - Reliable execution
 
 **Windows 11:**
+
 - Task created and runs at logon
 - Updated task scheduler UI
 - Enhanced security options (not required for this app)
@@ -133,11 +142,13 @@ Comprehensive guide to how Romantic Windows Customization works on Windows 10 vs
 ### Registry Locations
 
 **Both Windows 10 and 11 use:**
+
 ```
 HKCU:\Software\RomanticCustomization\
 ```
 
 **Stored values:**
+
 - `InstallPath` — Location of installation
 - `InstallDate` — When installed
 
@@ -148,11 +159,13 @@ HKCU:\Software\RomanticCustomization\
 ## PowerShell Differences
 
 ### Windows 10
+
 - **Included:** PowerShell 5.0 (Windows Management Framework)
 - **Location:** `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
 - **Compatibility:** Fully compatible with all scripts
 
 ### Windows 11
+
 - **Included:** PowerShell 5.1 (updated)
 - **Also Available:** PowerShell 7+ (cross-platform)
 - **Location:** Same as Windows 10
@@ -165,6 +178,7 @@ HKCU:\Software\RomanticCustomization\
 ## Installation Differences
 
 ### Windows 10 Installation
+
 1. Run INSTALL.bat
 2. Confirm admin privileges
 3. Follow [1/8] steps
@@ -172,6 +186,7 @@ HKCU:\Software\RomanticCustomization\
 5. Completes successfully
 
 ### Windows 11 Installation
+
 1. Run INSTALL.bat
 2. Windows security prompt (slightly different UI)
 3. Confirm admin privileges (updated dialog)
@@ -188,6 +203,7 @@ HKCU:\Software\RomanticCustomization\
 ### Windows 10 UAC
 
 When you run INSTALL.bat:
+
 - UAC prompt appears (looks like Windows 10 style)
 - Shows app name and security warning
 - Ask for "Yes" or "No"
@@ -195,6 +211,7 @@ When you run INSTALL.bat:
 ### Windows 11 UAC
 
 When you run INSTALL.bat:
+
 - UAC prompt appears (modern fluent design)
 - Shows app with updated security interface
 - Ask for "Yes" or "No"
@@ -206,12 +223,14 @@ When you run INSTALL.bat:
 ## Cursor Support
 
 ### Windows 10
+
 - Custom cursors work with `.cur` files
 - Animated cursors (`.ani`) supported
 - Applied via Mouse Settings
 - Full Unicode cursor support
 
 ### Windows 11
+
 - Custom cursors work with `.cur` files
 - Animated cursors (`.ani`) supported
 - Applied via Settings → Mouse
@@ -224,12 +243,14 @@ When you run INSTALL.bat:
 ## Sound Playback
 
 ### Windows 10
+
 - WAV files play via Windows Media Foundation
 - Volume respects system volume
 - Works with external speakers/headphones
 - No compatibility issues
 
 ### Windows 11
+
 - WAV files play via Windows Media Foundation (identical)
 - Volume respects system volume
 - Works with external speakers/headphones
@@ -244,10 +265,12 @@ When you run INSTALL.bat:
 ### Windows 10: Welcome Message Not Appearing
 
 **First check:**
+
 1. Make sure you logged out (not just locked)
 2. Run: `C:\RomanticCustomization\VERIFY.ps1`
 
 **Windows 10 specific:**
+
 - Check if Task Scheduler is running:
   ```powershell
   Get-Service Schedule | Select Status
@@ -261,10 +284,12 @@ When you run INSTALL.bat:
 ### Windows 11: Welcome Message Not Appearing
 
 **First check:**
+
 1. Make sure you logged out (not just locked)
 2. Run: `C:\RomanticCustomization\VERIFY.ps1`
 
 **Windows 11 specific:**
+
 - Windows 11 has updated logon sequence
 - Scheduled task should run but sometimes delayed
 - Solution: Wait 30 seconds after login, or:
@@ -275,12 +300,14 @@ When you run INSTALL.bat:
 ### Windows 10: Admin Privileges Issues
 
 If you get "Access Denied":
+
 1. Right-click INSTALL.bat → **Run as Administrator**
 2. Ensure your account has Admin rights
 
 ### Windows 11: Admin Privileges Issues
 
 If you get security prompts:
+
 1. New UAC dialogs in Windows 11 may show multiple prompts
 2. Click **Yes** to all
 3. Your account needs Admin rights
@@ -292,12 +319,14 @@ If you get security prompts:
 ### Welcome Message Popup
 
 **Windows 10:**
+
 - Launch time: ~500-800ms
 - Display: Stable
 - CPU usage: <5%
 - Memory: ~30MB
 
 **Windows 11:**
+
 - Launch time: ~400-600ms (slightly faster)
 - Display: Smooth
 - CPU usage: <5%
@@ -310,12 +339,14 @@ If you get security prompts:
 ## Antivirus Compatibility
 
 ### Windows 10
+
 - Windows Defender (included) - No issues
 - Third-party antivirus - May require whitelist
 - Common issue: Antivirus blocks PowerShell execution
 - Solution: Add `C:\RomanticCustomization\` to whitelist
 
 ### Windows 11
+
 - Windows Defender (improved) - No issues
 - Third-party antivirus - May require whitelist
 - Common issue: Enhanced security may be more cautious
@@ -326,12 +357,14 @@ If you get security prompts:
 ## Multi-User Systems
 
 ### Windows 10
+
 - Task runs for logged-in user only
 - Other users won't see welcome message
 - Each user needs separate installation
 - Recommendation: Have admin install for each user
 
 ### Windows 11
+
 - Task runs for logged-in user only
 - Other users won't see welcome message
 - Each user needs separate installation
@@ -344,10 +377,12 @@ If you get security prompts:
 ## Build-Specific Notes
 
 ### Windows 10 Versions to Avoid
+
 - ❌ Windows 10 1709 and earlier (unsupported)
 - ❌ Windows 10 S Mode (requires unlock)
 
 ### Windows 11 Versions
+
 - ✅ All current builds work
 - ✅ Latest 23H2 recommended
 - ✅ 22H2 also fully supported
@@ -360,18 +395,21 @@ If you get security prompts:
 ### Upgrading from Windows 10 to Windows 11
 
 **On existing installation:**
+
 - Installation will survive the upgrade
 - Scheduled task will continue working
 - Theme colors remain applied
 - Config file preserved
 
 **Recommendation:**
+
 - Run VERIFY.ps1 after upgrade to confirm everything works
 - If issues, re-run INSTALL.ps1 to re-register task
 
 ### Clean Install of Windows 11
 
 **If doing fresh Windows 11 install:**
+
 - You'll need to reinstall Romantic Customization
 - Copy the package folder again
 - Run INSTALL.ps1
@@ -382,31 +420,35 @@ If you get security prompts:
 ## Getting Help
 
 ### General Questions
+
 - [FAQ.md](../FAQ.md) - Common questions for both OS versions
 
 ### Installation on Windows 10
+
 - [INSTALLATION_GUIDE.md](../NON_TECHNICAL_GUIDES/INSTALLATION_GUIDE.md) - Same steps for both
 
 ### Installation on Windows 11
+
 - [INSTALLATION_GUIDE.md](../NON_TECHNICAL_GUIDES/INSTALLATION_GUIDE.md) - Same steps, just updated UI
 
 ### Troubleshooting
+
 - [TROUBLESHOOTING.md](../NON_TECHNICAL_GUIDES/TROUBLESHOOTING.md) - Works for both OS versions
 
 ---
 
 ## Summary
 
-| Aspect | Windows 10 | Windows 11 |
-|--------|-----------|-----------|
-| **Fully Supported** | ✅ Yes | ✅ Yes |
-| **Installation** | ✅ Simple | ✅ Simple |
-| **Functionality** | ✅ 100% | ✅ 100% |
-| **Theme colors** | ✅ Works | ✅ Enhanced |
-| **Scheduled task** | ✅ Reliable | ✅ Reliable |
-| **Compatibility** | ✅ Full | ✅ Full |
-| **Performance** | ✅ Good | ✅ Excellent |
-| **Recommended** | ✅ Yes | ✅ Yes |
+| Aspect              | Windows 10  | Windows 11   |
+| ------------------- | ----------- | ------------ |
+| **Fully Supported** | ✅ Yes      | ✅ Yes       |
+| **Installation**    | ✅ Simple   | ✅ Simple    |
+| **Functionality**   | ✅ 100%     | ✅ 100%      |
+| **Theme colors**    | ✅ Works    | ✅ Enhanced  |
+| **Scheduled task**  | ✅ Reliable | ✅ Reliable  |
+| **Compatibility**   | ✅ Full     | ✅ Full      |
+| **Performance**     | ✅ Good     | ✅ Excellent |
+| **Recommended**     | ✅ Yes      | ✅ Yes       |
 
 ---
 

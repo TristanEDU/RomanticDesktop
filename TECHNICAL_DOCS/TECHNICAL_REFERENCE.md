@@ -15,10 +15,10 @@ Complete technical specifications, registry keys, validation rules, and API refe
 
 **Values:**
 
-| Value | Type | Purpose | Example |
-|-------|------|---------|---------|
-| `InstallPath` | String (REG_SZ) | Installation directory path | `C:\RomanticCustomization` |
-| `InstallDate` | String (REG_SZ) | Installation timestamp (ISO 8601) | `2026-01-22T14:30:00` |
+| Value         | Type            | Purpose                           | Example                    |
+| ------------- | --------------- | --------------------------------- | -------------------------- |
+| `InstallPath` | String (REG_SZ) | Installation directory path       | `C:\RomanticCustomization` |
+| `InstallDate` | String (REG_SZ) | Installation timestamp (ISO 8601) | `2026-01-22T14:30:00`      |
 
 **Creation:** During INSTALL.ps1 execution (Step 5)  
 **Modification:** None (read-only after installation)  
@@ -27,6 +27,7 @@ Complete technical specifications, registry keys, validation rules, and API refe
 ### Related Registry Keys (Modified by Installation)
 
 **Theme Colors:** `HKCU:\Software\Microsoft\Windows\DWM\`
+
 - `AccentColor` (DWORD) — Applied during [8/8] step
 - Modified: Yes (by installer)
 - Reverted: By UNINSTALL.ps1
@@ -52,6 +53,7 @@ KEY=VALUE
 ### Sections
 
 #### [USER] - User Customization
+
 ```
 [USER]
 HER_NAME=string (1-100 chars)
@@ -59,6 +61,7 @@ WELCOME_TIMEOUT=integer (5-300)
 ```
 
 **HER_NAME**
+
 - Type: String (Unicode supported)
 - Min: 1 character
 - Max: 100 characters
@@ -66,6 +69,7 @@ WELCOME_TIMEOUT=integer (5-300)
 - Usage: Displayed in welcome message and "days together" label
 
 **WELCOME_TIMEOUT**
+
 - Type: Integer
 - Min: 5 seconds
 - Max: 300 seconds
@@ -74,12 +78,14 @@ WELCOME_TIMEOUT=integer (5-300)
 - Usage: Popup auto-closes after this time
 
 #### [DATES] - Important Dates
+
 ```
 [DATES]
 ANNIVERSARY_DATE=YYYY-MM-DD
 ```
 
 **ANNIVERSARY_DATE**
+
 - Format: ISO 8601 (YYYY-MM-DD)
 - Example: `2024-01-06`
 - Validation: Valid date, not in future
@@ -87,6 +93,7 @@ ANNIVERSARY_DATE=YYYY-MM-DD
 - Parsing: `[datetime]::ParseExact()` PowerShell method
 
 #### [MESSAGES] - Welcome Messages
+
 ```
 [MESSAGES]
 MESSAGE=string (max 200 chars)
@@ -95,6 +102,7 @@ MESSAGE=string (max 200 chars)
 ```
 
 **MESSAGE**
+
 - Type: String
 - Min: 1 per file (system needs at least one)
 - Max: Unlimited (practical limit ~50 for performance)
@@ -104,6 +112,7 @@ MESSAGE=string (max 200 chars)
 - Validation: At least 1 message exists, max 200 chars per message
 
 #### [FUTURE] - Reserved
+
 ```
 [FUTURE]
 # Reserved for v2.0+ features
@@ -120,19 +129,19 @@ Not parsed by v1.2.1 (reserved for future versions)
 
 **Function:** `Test-RomanticConfig` (CONFIG_VALIDATOR.ps1)
 
-| Rule # | Category | Check | Severity | Error Message |
-|--------|----------|-------|----------|---------------|
-| 1 | Structure | [USER] section exists | Error | "Missing [USER] section" |
-| 2 | Structure | [DATES] section exists | Error | "Missing [DATES] section" |
-| 3 | Structure | [MESSAGES] section exists | Error | "Missing [MESSAGES] section" |
-| 4 | User | HER_NAME not empty | Error | "HER_NAME is empty" |
-| 5 | User | HER_NAME ≤ 100 chars | Error | "HER_NAME exceeds 100 characters" |
-| 6 | User | WELCOME_TIMEOUT is numeric | Error | "WELCOME_TIMEOUT must be numeric" |
-| 7 | User | WELCOME_TIMEOUT 5-300 range | Error | "WELCOME_TIMEOUT must be 5-300 seconds" |
-| 8 | Dates | ANNIVERSARY_DATE valid format | Error | "ANNIVERSARY_DATE invalid format (need YYYY-MM-DD)" |
-| 9 | Dates | ANNIVERSARY_DATE not future | Error | "ANNIVERSARY_DATE cannot be in the future" |
-| 10 | Messages | At least 1 MESSAGE exists | Error | "No messages found in [MESSAGES] section" |
-| 11 | Messages | Each MESSAGE ≤ 200 chars | Warning | "Message #X exceeds 200 characters" |
+| Rule # | Category  | Check                         | Severity | Error Message                                       |
+| ------ | --------- | ----------------------------- | -------- | --------------------------------------------------- |
+| 1      | Structure | [USER] section exists         | Error    | "Missing [USER] section"                            |
+| 2      | Structure | [DATES] section exists        | Error    | "Missing [DATES] section"                           |
+| 3      | Structure | [MESSAGES] section exists     | Error    | "Missing [MESSAGES] section"                        |
+| 4      | User      | HER_NAME not empty            | Error    | "HER_NAME is empty"                                 |
+| 5      | User      | HER_NAME ≤ 100 chars          | Error    | "HER_NAME exceeds 100 characters"                   |
+| 6      | User      | WELCOME_TIMEOUT is numeric    | Error    | "WELCOME_TIMEOUT must be numeric"                   |
+| 7      | User      | WELCOME_TIMEOUT 5-300 range   | Error    | "WELCOME_TIMEOUT must be 5-300 seconds"             |
+| 8      | Dates     | ANNIVERSARY_DATE valid format | Error    | "ANNIVERSARY_DATE invalid format (need YYYY-MM-DD)" |
+| 9      | Dates     | ANNIVERSARY_DATE not future   | Error    | "ANNIVERSARY_DATE cannot be in the future"          |
+| 10     | Messages  | At least 1 MESSAGE exists     | Error    | "No messages found in [MESSAGES] section"           |
+| 11     | Messages  | Each MESSAGE ≤ 200 chars      | Warning  | "Message #X exceeds 200 characters"                 |
 
 ---
 
@@ -141,10 +150,11 @@ Not parsed by v1.2.1 (reserved for future versions)
 ### CONFIG_VALIDATOR.ps1
 
 #### Test-RomanticConfig
+
 ```powershell
 function Test-RomanticConfig {
     param([string]$ConfigPath)
-    
+
     # Returns PSCustomObject with:
     # - IsValid (boolean)
     # - Errors (array of strings)
@@ -160,16 +170,16 @@ function Test-RomanticConfig {
 
 #### Core Steps
 
-| Step | Function | Result |
-|------|----------|--------|
+| Step  | Function                   | Result                                            |
+| ----- | -------------------------- | ------------------------------------------------- |
 | [1/8] | `New-Item` for directories | Creates C:\RomanticCustomization, Sounds, Cursors |
-| [2/8] | `Copy-Item` for files | Copies scripts and config to install path |
-| [3/8] | `Test-RomanticConfig` | Validates config before proceeding |
-| [4/8] | `Set-ExecutionPolicy` | Sets RemoteSigned for user scope |
-| [5/8] | Registry path storage | Writes InstallPath and InstallDate to registry |
-| [6/8] | Audio system setup | Configures Windows audio startup |
-| [7/8] | Scheduled task creation | Creates "RomanticWelcome" task at logon |
-| [8/8] | Theme color application | Applies accent color to DWM registry |
+| [2/8] | `Copy-Item` for files      | Copies scripts and config to install path         |
+| [3/8] | `Test-RomanticConfig`      | Validates config before proceeding                |
+| [4/8] | `Set-ExecutionPolicy`      | Sets RemoteSigned for user scope                  |
+| [5/8] | Registry path storage      | Writes InstallPath and InstallDate to registry    |
+| [6/8] | Audio system setup         | Configures Windows audio startup                  |
+| [7/8] | Scheduled task creation    | Creates "RomanticWelcome" task at logon           |
+| [8/8] | Theme color application    | Applies accent color to DWM registry              |
 
 ### WelcomeMessage.ps1
 
@@ -198,6 +208,7 @@ $player.PlayAsync()  # Async sound (non-blocking)
 ### VERIFY.ps1
 
 **6-Point Health Check:**
+
 1. Installation folder & files exist
 2. Scheduled task exists and is ready
 3. Config file is valid and has UTF-8 BOM
@@ -208,6 +219,7 @@ $player.PlayAsync()  # Async sound (non-blocking)
 ### UNINSTALL.ps1
 
 **5-Step Removal:**
+
 1. Stop and delete scheduled task
 2. Delete C:\RomanticCustomization folder
 3. Delete registry key
@@ -223,17 +235,20 @@ $player.PlayAsync()  # Async sound (non-blocking)
 **Pattern:** `'[\r\n]+'`
 
 **Breakdown:**
+
 - `[...]` — Character class (matches any one character inside)
 - `\r` — Carriage return (Windows line ending)
 - `\n` — Line feed (Unix line ending)
 - `+` — One or more (handles multiple line breaks)
 
 **Usage:**
+
 ```powershell
 $lines = $content -split '[\r\n]+'
 ```
 
 **Why this pattern:**
+
 - ✅ Cross-platform compatible (Windows CRLF and Unix LF)
 - ✅ Handles multiple consecutive line breaks
 - ✅ Works in all PowerShell versions
@@ -256,7 +271,7 @@ foreach ($line in $lines) {
         $inMessagesSection = ($currentSection -eq 'MESSAGES')
         continue
     }
-    
+
     # Only parse MESSAGE= when in [MESSAGES]
     if ($inMessagesSection -and $line -match '^MESSAGE=(.+)$') {
         [array]$customMessages += $matches[1].Trim()
@@ -265,6 +280,7 @@ foreach ($line in $lines) {
 ```
 
 **Flow:**
+
 1. Track current section with `$inMessagesSection` boolean
 2. Update flag when section header found
 3. Only parse `MESSAGE=` lines when flag is true
@@ -279,20 +295,21 @@ foreach ($line in $lines) {
 
 ### Task Configuration
 
-| Property | Value |
-|----------|-------|
-| **Trigger** | At logon |
-| **Trigger Scope** | Current user |
-| **Action** | Execute PowerShell script |
-| **Script Path** | `C:\RomanticCustomization\WelcomeMessage.ps1` |
-| **Run As** | Current user (not admin) |
-| **Execution Policy** | Bypass (for task execution) |
-| **Hidden** | No (visible in Task Scheduler) |
-| **Repeat** | No (runs once per logon) |
+| Property             | Value                                         |
+| -------------------- | --------------------------------------------- |
+| **Trigger**          | At logon                                      |
+| **Trigger Scope**    | Current user                                  |
+| **Action**           | Execute PowerShell script                     |
+| **Script Path**      | `C:\RomanticCustomization\WelcomeMessage.ps1` |
+| **Run As**           | Current user (not admin)                      |
+| **Execution Policy** | Bypass (for task execution)                   |
+| **Hidden**           | No (visible in Task Scheduler)                |
+| **Repeat**           | No (runs once per logon)                      |
 
 ### Task Verification
 
 **Checks performed by VERIFY.ps1:**
+
 ```powershell
 $task = Get-ScheduledTask -TaskName RomanticWelcome
 $task.State -eq "Ready"  # Task is enabled
@@ -310,6 +327,7 @@ $task.Actions[0].Execute -like "*WelcomeMessage.ps1"  # Correct script
 **Format Check:** Validates RIFF/WAVE header bytes
 
 ### WAV Header Validation
+
 ```powershell
 # Bytes 0-3: "RIFF"
 # Bytes 8-11: "WAVE"
@@ -317,6 +335,7 @@ $task.Actions[0].Execute -like "*WelcomeMessage.ps1"  # Correct script
 ```
 
 **Playback Method:**
+
 ```powershell
 $player = New-Object System.Media.SoundPlayer
 $player.SoundLocation = $soundPath
@@ -331,12 +350,14 @@ $player.PlayAsync()  # Non-blocking async playback
 **BOM Bytes:** `EF BB BF` (hex)
 
 **Validation:**
+
 ```powershell
 $bytes = [System.IO.File]::ReadAllBytes($path)
 $hasBOM = ($bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF)
 ```
 
 **Why UTF-8 with BOM:**
+
 - ✅ Preserves emoji and international characters
 - ✅ Compatible with Windows Notepad
 - ✅ Supports Unicode names and messages
@@ -347,6 +368,7 @@ $hasBOM = ($bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF)
 ## Execution Policies
 
 **Set during installation:**
+
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
@@ -362,6 +384,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ### Try-Catch Blocks
 
 **Standard pattern:**
+
 ```powershell
 try {
     # Potentially failing operation
@@ -377,6 +400,7 @@ catch {
 ### Graceful Degradation
 
 **Example (sound file optional):**
+
 ```powershell
 if (Test-Path $soundPath) {
     $player.PlayAsync()
@@ -389,25 +413,27 @@ if (Test-Path $soundPath) {
 
 ## Performance Characteristics
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| Config parsing | <100ms | Even with 50+ messages |
-| Welcome popup display | 500-800ms | Includes UI rendering |
-| Sound playback | <50ms | Start (async) |
-| Task execution | ~1-2s | From logon trigger |
-| Registry operations | <50ms | Fast key access |
-| Installation | ~2 minutes | 8 steps including file copies |
+| Operation             | Time       | Notes                         |
+| --------------------- | ---------- | ----------------------------- |
+| Config parsing        | <100ms     | Even with 50+ messages        |
+| Welcome popup display | 500-800ms  | Includes UI rendering         |
+| Sound playback        | <50ms      | Start (async)                 |
+| Task execution        | ~1-2s      | From logon trigger            |
+| Registry operations   | <50ms      | Fast key access               |
+| Installation          | ~2 minutes | 8 steps including file copies |
 
 ---
 
 ## API & Extension Points
 
 ### Current (v1.2.1)
+
 - ❌ No official plugin API
 - ❌ No extension hooks
 - Config file is primary customization method
 
 ### Future (v1.3+)
+
 - 🔮 Potential event hooks
 - 🔮 Custom message plugins
 - 🔮 Configuration API
@@ -450,21 +476,25 @@ Get-ItemProperty "HKCU:\Software\Microsoft\Windows\DWM"
 ## Security Considerations
 
 ### Execution Policy
+
 - ✅ RemoteSigned limits to signed/local scripts
 - ✅ User-scope only (not system-wide)
 - ✅ Reverts on uninstall
 
 ### Registry Access
+
 - ✅ User hive only (HKCU, not HKLM)
 - ✅ No system-critical keys modified
 - ✅ All changes reversible
 
 ### File Permissions
+
 - ✅ C:\RomanticCustomization requires standard user access
 - ✅ No special administrator permissions after install
 - ✅ Scripts run as logged-in user (not elevated)
 
 ### Data Privacy
+
 - ✅ No internet connectivity
 - ✅ No external data collection
 - ✅ Config stored locally only
@@ -475,15 +505,18 @@ Get-ItemProperty "HKCU:\Software\Microsoft\Windows\DWM"
 ## System Requirements (Technical)
 
 ### PowerShell
+
 - **Minimum:** 5.0
 - **Current:** 5.1 (Windows 10/11)
 - **Recommended:** Latest available
 
 ### .NET Framework (Implicit)
+
 - Windows.Forms assembly (included)
 - System.Media namespace (included)
 
 ### Windows Features
+
 - Windows Subsystem (winsxs)
 - Registry service
 - Task Scheduler service
@@ -494,15 +527,18 @@ Get-ItemProperty "HKCU:\Software\Microsoft\Windows\DWM"
 ## Compatibility
 
 ### PowerShell Versions
+
 - ✅ 5.0
 - ✅ 5.1
 - ✅ 7.x (PowerShell Core)
 
 ### Windows Versions
+
 - ✅ Windows 10 (build 1809+)
 - ✅ Windows 11 (all builds)
 
 ### System Architectures
+
 - ✅ x64 (primary)
 - ✅ x86 (supported)
 - ❓ ARM (untested)
@@ -516,6 +552,7 @@ Get-ItemProperty "HKCU:\Software\Microsoft\Windows\DWM"
 **Symptom:** Messages with line breaks not parsed correctly
 
 **Check:**
+
 ```powershell
 $content = Get-Content $file -Raw
 $lines = $content -split '[\r\n]+'
@@ -527,6 +564,7 @@ $lines.Count  # Should be > 1
 ### Registry Key Not Created
 
 **Check:**
+
 ```powershell
 Test-Path "HKCU:\Software\RomanticCustomization"
 ```
