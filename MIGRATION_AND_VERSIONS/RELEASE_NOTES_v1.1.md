@@ -1,4 +1,4 @@
-# 💝 Romantic Windows Customization v1.1
+# ?? Romantic Windows Customization v1.1
 
 ## Reliability Foundation Edition
 
@@ -7,7 +7,7 @@
 
 ---
 
-## 🎯 Overview
+## ?? Overview
 
 v1.1 establishes a **reliability-focused foundation** for the Romantic Windows Customization package. All changes prioritize **robustness**, **portability**, and **maintainability** while maintaining backward compatibility with existing configurations.
 
@@ -15,7 +15,7 @@ This version lays groundwork for v2.0 features (voice messages, wallpaper rotati
 
 ---
 
-## ✨ New Features
+## ? New Features
 
 ### 1. **Registry-Based Installation Paths**
 
@@ -105,7 +105,7 @@ This version lays groundwork for v2.0 features (voice messages, wallpaper rotati
 
 ---
 
-## 🔧 Technical Improvements
+## ?? Technical Improvements
 
 ### Path Handling
 
@@ -139,8 +139,8 @@ WELCOME_TIMEOUT=20
 ANNIVERSARY_DATE=2024-01-06
 
 [MESSAGES]
-MESSAGE=Good morning, beautiful! ❤️
-MESSAGE=Welcome back! ☀️
+MESSAGE=Good morning, beautiful! ??
+MESSAGE=Welcome back! ??
 ```
 
 ### Error Handling
@@ -152,7 +152,7 @@ MESSAGE=Welcome back! ☀️
 
 ---
 
-## 📋 File Changes
+## ?? File Changes
 
 ### New Files Created
 
@@ -207,30 +207,30 @@ MESSAGE=Welcome back! ☀️
 
 ---
 
-## 🚀 Installation Flow (Updated)
+## ?? Installation Flow (Updated)
 
 ```
 INSTALL.bat
-    ↓
+    ?
 INSTALL.ps1 (Admin elevated)
-    ├─ [1/7] Setup directories
-    ├─ [2/7] Copy files
-    ├─ [2.5/7] Validate configuration ← NEW
-    ├─ [3/7] Configure PowerShell
-    ├─ [3.5/7] Store registry path ← NEW
-    ├─ [4/7] Enable startup sound
-    ├─ [5/7] Create scheduled task + verify ← UPDATED
-    ├─ [6/7] Apply theme colors
-    ├─ [7/7] Configure cursors
-    ├─ Test welcome message (optional)
-    └─ Complete
+    +- [1/7] Setup directories
+    +- [2/7] Copy files
+    +- [2.5/7] Validate configuration ? NEW
+    +- [3/7] Configure PowerShell
+    +- [3.5/7] Store registry path ? NEW
+    +- [4/7] Enable startup sound
+    +- [5/7] Create scheduled task + verify ? UPDATED
+    +- [6/7] Apply theme colors
+    +- [7/7] Configure cursors
+    +- Test welcome message (optional)
+    +- Complete
 ```
 
 ---
 
-## 🔄 Backward Compatibility
+## ?? Backward Compatibility
 
-✅ **Fully Compatible** with existing installations
+? **Fully Compatible** with existing installations
 
 - Old config.txt files still work
 - Existing PATH stored in registry on next install
@@ -241,7 +241,7 @@ INSTALL.ps1 (Admin elevated)
 
 ---
 
-## 🐛 Bugs Fixed
+## ?? Bugs Fixed
 
 ### Path Hardcoding Issue
 
@@ -260,7 +260,7 @@ INSTALL.ps1 (Admin elevated)
 
 ---
 
-## ⚠️ Known Limitations (By Design)
+## ?? Known Limitations (By Design)
 
 ### Multi-User Systems
 
@@ -282,30 +282,30 @@ INSTALL.ps1 (Admin elevated)
 
 ---
 
-## 🧪 Quality Assurance
+## ?? Quality Assurance
 
 ### Testing Completed
 
-- ✅ Config validation on valid/invalid configs
-- ✅ Registry path storage and retrieval
-- ✅ Installation on multiple Windows 10/11 builds
-- ✅ USB portability across different drive letters
-- ✅ Scheduled task creation verification
-- ✅ Theme color application and restoration
-- ✅ Uninstall script removes all traces
-- ✅ Verify tool accuracy on clean/partial installations
+- ? Config validation on valid/invalid configs
+- ? Registry path storage and retrieval
+- ? Installation on multiple Windows 10/11 builds
+- ? USB portability across different drive letters
+- ? Scheduled task creation verification
+- ? Theme color application and restoration
+- ? Uninstall script removes all traces
+- ? Verify tool accuracy on clean/partial installations
 
 ### Code Quality
 
-- ✅ Proper error handling with try-catch
-- ✅ UTF-8 BOM encoding for all files
-- ✅ Comprehensive comments for maintainability
-- ✅ Function-based design for v2.0 extensibility
-- ✅ No external dependencies (native PowerShell)
+- ? Proper error handling with try-catch
+- ? UTF-8 BOM encoding for all files
+- ? Comprehensive comments for maintainability
+- ? Function-based design for v2.0 extensibility
+- ? No external dependencies (native PowerShell)
 
 ---
 
-## 📈 Performance Impact
+## ?? Performance Impact
 
 - **Installation Time:** +10-15 seconds (validation + registry operations)
 - **Runtime:** No change (welcome message display same)
@@ -314,7 +314,7 @@ INSTALL.ps1 (Admin elevated)
 
 ---
 
-## 🎓 Developer Notes for v2.0
+## ?? Developer Notes for v2.0
 
 ### Extensibility Points
 
@@ -341,7 +341,7 @@ EVENING_MESSAGES=true
 
 ---
 
-## 📞 Support & Feedback
+## ?? Support & Feedback
 
 For issues or suggestions:
 
@@ -352,9 +352,9 @@ For issues or suggestions:
 
 ---
 
-## 📜 License & Credits
+## ?? License & Credits
 
-Built with ❤️ for Gillian
+Built with ?? for Gillian
 
 All code is custom-written PowerShell for Windows 10/11.  
 No external dependencies required.
@@ -365,3 +365,4 @@ No external dependencies required.
 **Release Date:** January 22, 2026  
 **Status:** Production Ready  
 **Next:** v2.0 (Voice Messages & Wallpaper Rotation)
+

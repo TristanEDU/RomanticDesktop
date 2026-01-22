@@ -9,9 +9,9 @@
 
 | Scenario                 | Steps                               | Time  | Data Loss           |
 | ------------------------ | ----------------------------------- | ----- | ------------------- |
-| **v1.0 → v1.2**          | Backup config, uninstall, install   | 5 min | None\*              |
-| **v1.1 → v1.2**          | Run INSTALL.ps1 (auto-upgrade)      | 2 min | None                |
-| **Rollback v1.2 → v1.1** | Restore from backup, uninstall v1.2 | 3 min | None (if backed up) |
+| **v1.0 ? v1.2**          | Backup config, uninstall, install   | 5 min | None\*              |
+| **v1.1 ? v1.2**          | Run INSTALL.ps1 (auto-upgrade)      | 2 min | None                |
+| **Rollback v1.2 ? v1.1** | Restore from backup, uninstall v1.2 | 3 min | None (if backed up) |
 
 \*With recommended backup process
 
@@ -19,7 +19,7 @@
 
 ## Scenario 1: Upgrading from v1.0 to v1.2
 
-### ✅ What You Should Know
+### ? What You Should Know
 
 - v1.1 and v1.2 introduced new features (registry-based paths)
 - Your current config.txt is compatible
@@ -76,13 +76,13 @@ C:\RomanticCustomization\VERIFY.ps1
 C:\RomanticCustomization\WelcomeMessage.ps1
 ```
 
-✅ **Upgrade complete!**
+? **Upgrade complete!**
 
 ---
 
 ## Scenario 2: Upgrading from v1.1 to v1.2
 
-### ✅ What You Should Know
+### ? What You Should Know
 
 - v1.2 is a minor update (bug fixes only, no breaking changes)
 - All v1.1 features preserved
@@ -115,22 +115,22 @@ C:\RomanticCustomization\VERIFY.ps1
 
 **What changes in v1.2:**
 
-- ✅ Bug fixes to emoji handling
-- ✅ Enhanced config validation
-- ✅ Better error messages
-- ✅ Improved reliability
-- ✅ No configuration changes needed
+- ? Bug fixes to emoji handling
+- ? Enhanced config validation
+- ? Better error messages
+- ? Improved reliability
+- ? No configuration changes needed
 
 **What stays the same:**
 
-- ✅ Your personalized messages
-- ✅ Anniversary date
-- ✅ Her name
-- ✅ Timeout settings
-- ✅ Installation location
-- ✅ Sound files (if custom)
+- ? Your personalized messages
+- ? Anniversary date
+- ? Her name
+- ? Timeout settings
+- ? Installation location
+- ? Sound files (if custom)
 
-✅ **Upgrade complete!**
+? **Upgrade complete!**
 
 ---
 
@@ -182,7 +182,7 @@ cd "C:\Setup\RomanticDesktop"
 C:\RomanticCustomization\VERIFY.ps1
 ```
 
-✅ **Migration complete!**
+? **Migration complete!**
 
 ---
 
@@ -233,7 +233,7 @@ Copy-Item "C:\Backups\romantic.wav" "C:\RomanticCustomization\Sounds\romantic.wa
 C:\RomanticCustomization\VERIFY.ps1
 ```
 
-⚠️ **Rollback complete - Note:** You're now back on v1.1
+?? **Rollback complete - Note:** You're now back on v1.1
 
 ---
 
@@ -281,7 +281,7 @@ E:\RomanticCustomization\WelcomeMessage.ps1
 # Should work without errors
 ```
 
-✅ **Location migration complete!**
+? **Location migration complete!**
 
 ---
 
@@ -310,8 +310,8 @@ WELCOME_TIMEOUT=25
 ANNIVERSARY_DATE=2024-06-15
 
 [MESSAGES]
-MESSAGE=Your new message with emoji ❤️
-MESSAGE=Another new message ✨
+MESSAGE=Your new message with emoji ??
+MESSAGE=Another new message ?
 ```
 
 **Step 3: Validate**
@@ -330,7 +330,7 @@ C:\RomanticCustomization\CONFIG_VALIDATOR.ps1
 C:\RomanticCustomization\WelcomeMessage.ps1
 ```
 
-✅ **Configuration update complete!**
+? **Configuration update complete!**
 
 ---
 
@@ -377,7 +377,7 @@ notepad "config.txt"
 C:\RomanticCustomization\VERIFY.ps1
 ```
 
-✅ **Fresh installation complete!**
+? **Fresh installation complete!**
 
 ---
 
@@ -453,13 +453,13 @@ $encoding = [System.Text.UTF8Encoding]::new($true)  # $true = with BOM
 
 ## Version Compatibility Matrix
 
-| From → To   | Supported   | Method                     | Difficulty |
+| From ? To   | Supported   | Method                     | Difficulty |
 | ----------- | ----------- | -------------------------- | ---------- |
-| v1.0 → v1.1 | ✅ Yes      | Uninstall + Install        | Easy       |
-| v1.0 → v1.2 | ✅ Yes      | Uninstall + Install        | Easy       |
-| v1.1 → v1.2 | ✅ Yes      | Run new INSTALL.ps1        | Very Easy  |
-| v1.2 → v1.1 | ⚠️ Possible | Restore backup + Uninstall | Medium     |
-| v1.2 → v1.0 | ⚠️ Possible | Restore backup + Uninstall | Medium     |
+| v1.0 ? v1.1 | ? Yes      | Uninstall + Install        | Easy       |
+| v1.0 ? v1.2 | ? Yes      | Uninstall + Install        | Easy       |
+| v1.1 ? v1.2 | ? Yes      | Run new INSTALL.ps1        | Very Easy  |
+| v1.2 ? v1.1 | ?? Possible | Restore backup + Uninstall | Medium     |
+| v1.2 ? v1.0 | ?? Possible | Restore backup + Uninstall | Medium     |
 
 ---
 
@@ -512,10 +512,11 @@ A: No - configuration is backward compatible. You can edit if you want.
 A: Rollback using your backup, or reinstall from scratch.
 
 **Q: How long does upgrade take?**  
-A: v1.1 → v1.2: ~2 minutes  
- v1.0 → v1.2: ~5 minutes (with backup/uninstall/install)
+A: v1.1 ? v1.2: ~2 minutes  
+ v1.0 ? v1.2: ~5 minutes (with backup/uninstall/install)
 
 ---
 
 **Last Updated:** January 22, 2026  
 **Version:** v1.2.0
+

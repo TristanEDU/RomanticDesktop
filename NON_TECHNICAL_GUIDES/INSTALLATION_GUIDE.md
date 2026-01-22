@@ -1,4 +1,4 @@
-# 💝 Installation Guide - Step-by-Step
+# ?? Installation Guide - Step-by-Step
 
 **Version:** v1.2.1 | **Time Required:** ~5 minutes | **Difficulty:** Easy
 
@@ -8,7 +8,7 @@ Follow this guide to install Romantic Windows Customization on her computer.
 
 ## Before You Start
 
-### ✅ What You Need
+### ? What You Need
 
 1. This entire "RomanticDesktop" folder (or a copy on USB)
 2. Her computer with Windows 10 or Windows 11
@@ -16,10 +16,10 @@ Follow this guide to install Romantic Windows Customization on her computer.
 4. About 5 minutes of time
 5. Her `config.txt` file customized (see [QUICK_START.md](QUICK_START.md) if not done)
 
-### ✅ Optional Files You Can Add
+### ? Optional Files You Can Add
 
-- `romantic.wav` — A romantic sound file (custom music or message)
-- `*.cur` or `*.ani` — Custom cursor files (for custom mouse cursor theme)
+- `romantic.wav` � A romantic sound file (custom music or message)
+- `*.cur` or `*.ani` � Custom cursor files (for custom mouse cursor theme)
 
 ---
 
@@ -31,7 +31,7 @@ Follow this guide to install Romantic Windows Customization on her computer.
 
 Open `config.txt` in Notepad:
 
-1. Right-click `config.txt` → **Open with** → **Notepad**
+1. Right-click `config.txt` ? **Open with** ? **Notepad**
 2. Change these three things:
 
 **A) Her Name** (Find `HER_NAME=Gillian`)
@@ -59,7 +59,7 @@ Keep the 8 default messages, or:
 
 3. **Save** (Ctrl+S)
 
-✅ Done with config!
+? Done with config!
 
 ---
 
@@ -68,7 +68,7 @@ Keep the 8 default messages, or:
 **On her computer:**
 
 1. **Copy this entire folder** to USB drive (or any location)
-   - Right-click the RomanticDesktop folder → Copy
+   - Right-click the RomanticDesktop folder ? Copy
    - Paste it on the USB drive
 
 2. **Plug USB into her computer** (if using USB)
@@ -77,10 +77,10 @@ Keep the 8 default messages, or:
 
 You should see these files:
 
-- ✅ INSTALL.bat
-- ✅ config.txt
-- ✅ WelcomeMessage.ps1
-- ✅ INSTALL.ps1
+- ? INSTALL.bat
+- ? config.txt
+- ? WelcomeMessage.ps1
+- ? INSTALL.ps1
 - And other files/folders
 
 ---
@@ -97,7 +97,7 @@ This is the easiest part!
 
 5. **Click "Yes"** when Windows asks for admin privileges (the "User Account Control" popup)
 
-✅ Installation will now begin automatically!
+? Installation will now begin automatically!
 
 ---
 
@@ -107,31 +107,31 @@ The installer runs 8 automated steps. You'll see:
 
 ```
 [1/8] Setting up directories...
-✓ Directories created
+? Directories created
 
 [2/8] Installing files...
-✓ Files installed
+? Files installed
 
 [3/8] Validating configuration...
-✓ Configuration valid
+? Configuration valid
 
 [4/8] Configuring PowerShell...
-✓ PowerShell configured
+? PowerShell configured
 
 [5/8] Storing installation path in registry...
-✓ Registry updated
+? Registry updated
 
 [6/8] Enabling startup sound...
-✓ Sound configured
+? Sound configured
 
 [7/8] Creating scheduled task...
-✓ Scheduled task created
+? Scheduled task created
 
 [8/8] Applying romantic theme...
-✓ Theme applied
+? Theme applied
 ```
 
-⏱️ **This takes about 2 minutes.** Just watch it complete!
+?? **This takes about 2 minutes.** Just watch it complete!
 
 ---
 
@@ -150,20 +150,20 @@ Open PowerShell (search "PowerShell" in Start menu) and run:
 C:\RomanticCustomization\VERIFY.ps1
 ```
 
-You should see a report with **GREEN checkmarks (✓)** for everything:
+You should see a report with **GREEN checkmarks (?)** for everything:
 
 ```
-✓ Installation folder exists
-✓ Scheduled task exists
-✓ Config file valid
-✓ Registry entries found
-✓ Theme colors applied
-✓ Script integrity verified
+? Installation folder exists
+? Scheduled task exists
+? Config file valid
+? Registry entries found
+? Theme colors applied
+? Script integrity verified
 ```
 
-✅ **If you see all green checkmarks, you're done!**
+? **If you see all green checkmarks, you're done!**
 
-❌ If you see any red X marks, see [Troubleshooting](TROUBLESHOOTING.md).
+? If you see any red X marks, see [Troubleshooting](TROUBLESHOOTING.md).
 
 ---
 
@@ -172,17 +172,17 @@ You should see a report with **GREEN checkmarks (✓)** for everything:
 Now let's test it!
 
 1. **Log her out:**
-   - Start menu → Sign out (or press Windows+L and select sign out)
+   - Start menu ? Sign out (or press Windows+L and select sign out)
 
 2. **Log back in** as her
 
-3. **You should see the romantic welcome popup!** 💕
+3. **You should see the romantic welcome popup!** ??
    - Shows personalized message
    - Shows "days together" counter
    - Disappears after 20 seconds
    - (Or click "Thanks, sweetheart!" button to close)
 
-✅ **If you see the welcome message, installation succeeded!**
+? **If you see the welcome message, installation succeeded!**
 
 ---
 
@@ -192,19 +192,19 @@ Now let's test it!
 
 **Files installed:**
 
-- `WelcomeMessage.ps1` — Welcome popup display script
-- `config.txt` — Your customization file
-- `Sounds/romantic.wav` — (if you provided it)
-- `Cursors/` — (any custom cursors you provided)
+- `WelcomeMessage.ps1` � Welcome popup display script
+- `config.txt` � Your customization file
+- `Sounds/romantic.wav` � (if you provided it)
+- `Cursors/` � (any custom cursors you provided)
 
 **System changes:**
 
-- ✅ Scheduled task created: "RomanticWelcome" (runs at login)
-- ✅ Registry key created: `HKCU:\Software\RomanticCustomization`
-- ✅ PowerShell execution policy set to RemoteSigned
-- ✅ Windows theme colors changed to rose gold/pink
+- ? Scheduled task created: "RomanticWelcome" (runs at login)
+- ? Registry key created: `HKCU:\Software\RomanticCustomization`
+- ? PowerShell execution policy set to RemoteSigned
+- ? Windows theme colors changed to rose gold/pink
 
-**Nothing system-critical changed** — All changes are user-specific and reversible.
+**Nothing system-critical changed** � All changes are user-specific and reversible.
 
 ---
 
@@ -214,11 +214,11 @@ Both work exactly the same! Minor differences:
 
 | Feature         | Windows 10 | Windows 11              |
 | --------------- | ---------- | ----------------------- |
-| Welcome message | ✅ Yes     | ✅ Yes                  |
-| Sound playback  | ✅ Yes     | ✅ Yes                  |
-| Scheduled task  | ✅ Yes     | ✅ Yes                  |
-| Theme colors    | ✅ Yes     | ✅ Yes (Updated design) |
-| Custom cursors  | ✅ Yes     | ✅ Yes                  |
+| Welcome message | ? Yes     | ? Yes                  |
+| Sound playback  | ? Yes     | ? Yes                  |
+| Scheduled task  | ? Yes     | ? Yes                  |
+| Theme colors    | ? Yes     | ? Yes (Updated design) |
+| Custom cursors  | ? Yes     | ? Yes                  |
 
 **No special steps needed for either version.**
 
@@ -233,7 +233,7 @@ Both work exactly the same! Minor differences:
 
 ### "Cannot be loaded because running scripts is disabled"
 
-- Right-click `INSTALL.bat` → **Properties**
+- Right-click `INSTALL.bat` ? **Properties**
 - Check **"Unblock"** at the bottom
 - Click **OK**
 - Try again
@@ -259,10 +259,10 @@ Both work exactly the same! Minor differences:
 
 ### Test Everything Works
 
-1. ✅ Run VERIFY.ps1 (see Step 5 above)
-2. ✅ Log out and back in to see welcome message
-3. ✅ Check that sound plays (if provided)
-4. ✅ Verify theme colors are applied (pink/rose gold)
+1. ? Run VERIFY.ps1 (see Step 5 above)
+2. ? Log out and back in to see welcome message
+3. ? Check that sound plays (if provided)
+4. ? Verify theme colors are applied (pink/rose gold)
 
 ### Customize Further
 
@@ -285,11 +285,12 @@ C:\RomanticCustomization\VERIFY.ps1
 
 ## Need Help?
 
-- **Welcome message not appearing?** → [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
-- **Questions about setup?** → [FAQ.md](../FAQ.md)
-- **Want to customize more?** → [CONFIGURATION_GUIDE.md](CONFIGURATION_GUIDE.md)
-- **Need to uninstall?** → [UNINSTALL_GUIDE.md](UNINSTALL_GUIDE.md)
+- **Welcome message not appearing?** ? [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+- **Questions about setup?** ? [FAQ.md](../FAQ.md)
+- **Want to customize more?** ? [CONFIGURATION_GUIDE.md](CONFIGURATION_GUIDE.md)
+- **Need to uninstall?** ? [UNINSTALL_GUIDE.md](UNINSTALL_GUIDE.md)
 
 ---
 
-**Installation complete! Enjoy! 💝✨**
+**Installation complete! Enjoy! ???**
+

@@ -1,4 +1,4 @@
-# 💝 Quick Start Guide - 5 Minutes to Romance
+# ?? Quick Start Guide - 5 Minutes to Romance
 
 **Version:** v1.2.1 | **Updated:** January 22, 2026
 
@@ -6,9 +6,9 @@ Fastest way to get up and running. Takes about 5 minutes.
 
 ---
 
-## Step 1: Customize Your Config (2 minutes) 📝
+## Step 1: Customize Your Config (2 minutes) ??
 
-Open the file `config.txt` in Notepad (right-click → Open with → Notepad).
+Open the file `config.txt` in Notepad (right-click ? Open with ? Notepad).
 
 ### Change These Three Things:
 
@@ -22,8 +22,8 @@ To her actual name:
 HER_NAME=Sarah
 ```
 
-✅ Keep it under 100 characters
-✅ Unicode works! 💕 (Japanese: 田中 さくら, Arabic: الاسم, etc.)
+? Keep it under 100 characters
+? Unicode works! ?? (Japanese: ?? ???, Arabic: ?????, etc.)
 
 **2. Your Anniversary Date** (Find line with `ANNIVERSARY_DATE=`)
 
@@ -35,16 +35,16 @@ To your special date:
 ANNIVERSARY_DATE=2023-06-15
 ```
 
-✅ Format: YYYY-MM-DD (ISO standard)
-✅ Cannot be in the future
+? Format: YYYY-MM-DD (ISO standard)
+? Cannot be in the future
 
 **3. Add Personal Messages** (Optional - Find [MESSAGES] section)
 
 ```
 Current 8 messages are there. You can:
-✅ Edit existing ones
-✅ Add new messages (one per MESSAGE= line)
-✅ Keep default ones
+? Edit existing ones
+? Add new messages (one per MESSAGE= line)
+? Keep default ones
 
 Each message can be up to 200 characters.
 ```
@@ -53,7 +53,7 @@ Then **save the file** (Ctrl+S).
 
 ---
 
-## Step 2: Run the Installer (2 minutes) ⚙️
+## Step 2: Run the Installer (2 minutes) ??
 
 **On her computer:**
 
@@ -68,7 +68,7 @@ Then **save the file** (Ctrl+S).
 
 ---
 
-## Step 3: Verify It Works (1 minute) ✅
+## Step 3: Verify It Works (1 minute) ?
 
 **Immediately after install:**
 
@@ -77,100 +77,101 @@ Then **save the file** (Ctrl+S).
    ```powershell
    C:\RomanticCustomization\VERIFY.ps1
    ```
-3. Should see green checkmarks ✓ next to everything
+3. Should see green checkmarks ? next to everything
 
-If anything shows red ✗, see [Troubleshooting](TROUBLESHOOTING.md).
+If anything shows red ?, see [Troubleshooting](TROUBLESHOOTING.md).
 
 ---
 
-## Step 4: Test the Welcome Message 🎉
+## Step 4: Test the Welcome Message ??
 
 **Log out and back in:**
 
-1. Click Start menu → Sign out (or press `Windows Key + L` to lock)
+1. Click Start menu ? Sign out (or press `Windows Key + L` to lock)
 2. Log back in as her
-3. You should see the romantic welcome popup! 💕
+3. You should see the romantic welcome popup! ??
 
-✅ Message appears for 20 seconds (customizable)
-✅ Random message each login
-✅ Shows "days together" counter
+? Message appears for 20 seconds (customizable)
+? Random message each login
+? Shows "days together" counter
 
 ---
 
-## Optional: Add Custom Sound 🎵
+## Optional: Add Custom Sound ??
 
 If you want custom romantic music:
 
 1. Get a WAV file (under 10 seconds)
-   - Tip: Use [Convertio.co](https://convertio.co/mp3-wav/) to convert MP3 → WAV
+   - Tip: Use [Convertio.co](https://convertio.co/mp3-wav/) to convert MP3 ? WAV
    - Or record a personal message with Windows Voice Recorder
 2. Copy the WAV file to `C:\RomanticCustomization\Sounds\romantic.wav`
 
 3. Log out/in again
 
-Sound plays automatically at login! 🎶
+Sound plays automatically at login! ??
 
 ---
 
-## Optional: Add Custom Cursors 🖱️
+## Optional: Add Custom Cursors ???
 
 If you want romantic cursor themes:
 
 1. Download `.cur` or `.ani` cursor files
 2. Copy them to `C:\RomanticCustomization\Cursors\`
-3. Go to Windows Settings → Mouse → Pointers
+3. Go to Windows Settings ? Mouse ? Pointers
 4. Select the custom cursor files
 
 ---
 
-## Troubleshooting Quick Fixes ⚡
+## Troubleshooting Quick Fixes ?
 
 ### "Welcome message doesn't appear"
 
-- ✅ Make sure you **LOGGED OUT and back in** (not just locked)
-- ✅ Check if VERIFY.ps1 shows all green checkmarks
+- ? Make sure you **LOGGED OUT and back in** (not just locked)
+- ? Check if VERIFY.ps1 shows all green checkmarks
 - See [Troubleshooting.md](TROUBLESHOOTING.md) for more help
 
 ### "Sound doesn't play"
 
-- ✅ Check the file is WAV format (not renamed MP3)
-- ✅ Volume is turned up
-- ✅ Try playing `romantic.wav` directly first
+- ? Check the file is WAV format (not renamed MP3)
+- ? Volume is turned up
+- ? Try playing `romantic.wav` directly first
 
 ### "Got admin/permission error"
 
-- ✅ Right-click `INSTALL.bat` → Properties → Check "Unblock" → OK
-- ✅ Retry installation
+- ? Right-click `INSTALL.bat` ? Properties ? Check "Unblock" ? OK
+- ? Retry installation
 
 ### "Something else broke"
 
-→ See [Troubleshooting.md](TROUBLESHOOTING.md) for detailed help
+? See [Troubleshooting.md](TROUBLESHOOTING.md) for detailed help
 
 ---
 
 ## Next Steps
 
-- **Want detailed installation guide?** → [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md)
-- **Want to customize config more?** → [CONFIGURATION_GUIDE.md](CONFIGURATION_GUIDE.md)
-- **Have questions?** → [FAQ.md](../FAQ.md)
-- **Need to uninstall?** → [UNINSTALL_GUIDE.md](UNINSTALL_GUIDE.md)
+- **Want detailed installation guide?** ? [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md)
+- **Want to customize config more?** ? [CONFIGURATION_GUIDE.md](CONFIGURATION_GUIDE.md)
+- **Have questions?** ? [FAQ.md](../FAQ.md)
+- **Need to uninstall?** ? [UNINSTALL_GUIDE.md](UNINSTALL_GUIDE.md)
 
 ---
 
-## What You Just Installed 💾
+## What You Just Installed ??
 
 The installation creates:
 
-- ✅ Scheduled task to run at login
-- ✅ Romantic Windows theme colors (rose gold/pink)
-- ✅ Auto-updating "days together" counter
-- ✅ Optional custom sound playback
-- ✅ Optional custom cursors
+- ? Scheduled task to run at login
+- ? Romantic Windows theme colors (rose gold/pink)
+- ? Auto-updating "days together" counter
+- ? Optional custom sound playback
+- ? Optional custom cursors
 
-**No personal data sent anywhere** — everything runs locally on her computer. 100% offline, 100% safe. 💕
+**No personal data sent anywhere** � everything runs locally on her computer. 100% offline, 100% safe. ??
 
 ---
 
-**Enjoy! You've got this! 💝✨**
+**Enjoy! You've got this! ???**
 
 For more help, check [DOCUMENTATION_INDEX.md](../DOCUMENTATION_INDEX.md) or [FAQ.md](../FAQ.md).
+

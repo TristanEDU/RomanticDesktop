@@ -10,29 +10,29 @@ Complete architectural overview of how Romantic Windows Customization works.
 ## System Overview
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│         ROMANTIC WINDOWS CUSTOMIZATION SYSTEM           │
-├─────────────────────────────────────────────────────────┤
-│                                                         │
-│  User Logon Event                                       │
-│       ↓                                                 │
-│  Windows Task Scheduler (RomanticWelcome)              │
-│       ↓                                                 │
-│  WelcomeMessage.ps1 Execution                          │
-│       ├─ Read config.txt from registry path            │
-│       ├─ Parse [MESSAGES] section                      │
-│       ├─ Select random message                         │
-│       ├─ Calculate days together                       │
-│       ├─ Create UI form                                │
-│       ├─ Play sound (async)                            │
-│       └─ Display popup for N seconds                   │
-│                                                         │
-│  User dismisses popup or timeout expires               │
-│       ↓                                                 │
-│  Welcome message disappears                            │
-│  User continues with their day 💕                      │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
++---------------------------------------------------------+
+�         ROMANTIC WINDOWS CUSTOMIZATION SYSTEM           �
++---------------------------------------------------------�
+�                                                         �
+�  User Logon Event                                       �
+�       ?                                                 �
+�  Windows Task Scheduler (RomanticWelcome)              �
+�       ?                                                 �
+�  WelcomeMessage.ps1 Execution                          �
+�       +- Read config.txt from registry path            �
+�       +- Parse [MESSAGES] section                      �
+�       +- Select random message                         �
+�       +- Calculate days together                       �
+�       +- Create UI form                                �
+�       +- Play sound (async)                            �
+�       +- Display popup for N seconds                   �
+�                                                         �
+�  User dismisses popup or timeout expires               �
+�       ?                                                 �
+�  Welcome message disappears                            �
+�  User continues with their day ??                      �
+�                                                         �
++---------------------------------------------------------+
 ```
 
 ---
@@ -49,32 +49,32 @@ Complete architectural overview of how Romantic Windows Customization works.
 
 **Responsibilities:**
 
-- ✅ Check admin privileges
-- ✅ Validate configuration file
-- ✅ Create installation directories
-- ✅ Copy scripts and resources
-- ✅ Configure PowerShell execution policy
-- ✅ Store registry keys
-- ✅ Create scheduled task
-- ✅ Apply theme colors
+- ? Check admin privileges
+- ? Validate configuration file
+- ? Create installation directories
+- ? Copy scripts and resources
+- ? Configure PowerShell execution policy
+- ? Store registry keys
+- ? Create scheduled task
+- ? Apply theme colors
 
 **Data Flow:**
 
 ```
 User runs INSTALL.bat
-    ↓
+    ?
 Batch requests admin elevation
-    ↓
+    ?
 PowerShell execution begins
-    ↓
+    ?
 Validate installation prerequisites
-    ↓
+    ?
 Run 8 sequential installation steps
-    ↓
+    ?
 Create registry entries
-    ↓
+    ?
 Create scheduled task
-    ↓
+    ?
 Installation complete
 ```
 
@@ -89,13 +89,13 @@ Installation complete
 
 **Responsibilities:**
 
-- ✅ Trigger at user logon
-- ✅ Load configuration from registry/file
-- ✅ Parse config.txt using section-aware logic
-- ✅ Display popup UI
-- ✅ Play optional sound asynchronously
-- ✅ Handle user input
-- ✅ Cleanup resources
+- ? Trigger at user logon
+- ? Load configuration from registry/file
+- ? Parse config.txt using section-aware logic
+- ? Display popup UI
+- ? Play optional sound asynchronously
+- ? Handle user input
+- ? Cleanup resources
 
 **Execution Context:**
 
@@ -110,20 +110,20 @@ Installation complete
 
 ```
 HKCU:\Software\RomanticCustomization\
-├─ InstallPath (string) → C:\RomanticCustomization
-└─ InstallDate (string) → 2026-01-22T14:30:00
++- InstallPath (string) ? C:\RomanticCustomization
++- InstallDate (string) ? 2026-01-22T14:30:00
 ```
 
 **File Storage:**
 
 ```
 C:\RomanticCustomization\
-├─ WelcomeMessage.ps1 (executable)
-├─ config.txt (configuration)
-├─ Sounds\
-│  └─ romantic.wav (optional)
-└─ Cursors\
-   └─ *.cur/*.ani (optional)
++- WelcomeMessage.ps1 (executable)
++- config.txt (configuration)
++- Sounds\
+�  +- romantic.wav (optional)
++- Cursors\
+   +- *.cur/*.ani (optional)
 ```
 
 **Config File Format:**
@@ -154,14 +154,14 @@ MESSAGE=string
 
 **Responsibilities:**
 
-- ✅ Check installation folder
-- ✅ Verify scheduled task exists
-- ✅ Validate config file
-- ✅ Check registry entries
-- ✅ Verify theme colors
-- ✅ Check script integrity
+- ? Check installation folder
+- ? Verify scheduled task exists
+- ? Validate config file
+- ? Check registry entries
+- ? Verify theme colors
+- ? Check script integrity
 
-**Output:** Color-coded report with ✓/✗/⚠ symbols
+**Output:** Color-coded report with ?/?/? symbols
 
 ### 5. Cleanup Layer
 
@@ -171,11 +171,11 @@ MESSAGE=string
 
 **Responsibilities:**
 
-- ✅ Stop scheduled task
-- ✅ Delete installation folder
-- ✅ Remove registry keys
-- ✅ Restore theme colors
-- ✅ Provide -WhatIf preview mode
+- ? Stop scheduled task
+- ? Delete installation folder
+- ? Remove registry keys
+- ? Restore theme colors
+- ? Provide -WhatIf preview mode
 
 ---
 
@@ -208,84 +208,84 @@ foreach ($line in $lines) {
 **State Diagram:**
 
 ```
-┌─────────────────────────────────┐
-│  Start: inMessagesSection=false │
-└────────────┬────────────────────┘
-             │
-      ┌──────┴──────┐
-      │             │
++---------------------------------+
+�  Start: inMessagesSection=false �
++---------------------------------+
+             �
+      +-------------+
+      �             �
   [OTHER]      [MESSAGES]
-      │             │
+      �             �
       v             v
  inMessagesSection  inMessagesSection
     = false           = true
-      │             │
-      │  Parse MESSAGE= only here
-      │             │
-      ├─────────────┤
-      │    [OTHER]  │
+      �             �
+      �  Parse MESSAGE= only here
+      �             �
+      +-------------�
+      �    [OTHER]  �
       v             v
 Transition back if section changes
 ```
 
 **Benefits:**
 
-- ✅ Prevents parsing wrong sections
-- ✅ Handles any section order
-- ✅ Scalable for future sections
-- ✅ Efficient (single pass through file)
+- ? Prevents parsing wrong sections
+- ? Handles any section order
+- ? Scalable for future sections
+- ? Efficient (single pass through file)
 
 ---
 
 ## Scheduled Task Lifecycle
 
 ```
-┌────────────────────────────────────────────────┐
-│  1. CREATION (during INSTALL.ps1 [7/8])        │
-├────────────────────────────────────────────────┤
-│  - Register task with Task Scheduler           │
-│  - Set trigger: At logon                       │
-│  - Set action: Execute WelcomeMessage.ps1      │
-│  - Set user: Current user                      │
-│  - Verification: Read-back test                │
-└─────────────────────┬──────────────────────────┘
-                      │
-                      ↓
-┌────────────────────────────────────────────────┐
-│  2. REGISTRATION (Task Scheduler)              │
-├────────────────────────────────────────────────┤
-│  - Task visible in Task Scheduler              │
-│  - State: Ready                                │
-│  - Can be manually triggered                   │
-└─────────────────────┬──────────────────────────┘
-                      │
-                      ↓
-┌────────────────────────────────────────────────┐
-│  3. EXECUTION (at user logon)                  │
-├────────────────────────────────────────────────┤
-│  - Windows fires logon trigger                 │
-│  - Task Scheduler launches WelcomeMessage.ps1  │
-│  - Script runs in user context                 │
-│  - Popup displays (20 seconds default)         │
-└─────────────────────┬──────────────────────────┘
-                      │
-                      ↓
-┌────────────────────────────────────────────────┐
-│  4. CLEANUP (on popup close)                   │
-├────────────────────────────────────────────────┤
-│  - Timer stops                                 │
-│  - Form disposed                               │
-│  - Sound playback stops (if still playing)     │
-│  - Resources freed                             │
-└─────────────────────┬──────────────────────────┘
-                      │
-                      ↓
-┌────────────────────────────────────────────────┐
-│  5. DELETION (during UNINSTALL.ps1)            │
-├────────────────────────────────────────────────┤
-│  - Task removed from Task Scheduler            │
-│  - No longer runs at logon                     │
-└────────────────────────────────────────────────┘
++------------------------------------------------+
+�  1. CREATION (during INSTALL.ps1 [7/8])        �
++------------------------------------------------�
+�  - Register task with Task Scheduler           �
+�  - Set trigger: At logon                       �
+�  - Set action: Execute WelcomeMessage.ps1      �
+�  - Set user: Current user                      �
+�  - Verification: Read-back test                �
++------------------------------------------------+
+                      �
+                      ?
++------------------------------------------------+
+�  2. REGISTRATION (Task Scheduler)              �
++------------------------------------------------�
+�  - Task visible in Task Scheduler              �
+�  - State: Ready                                �
+�  - Can be manually triggered                   �
++------------------------------------------------+
+                      �
+                      ?
++------------------------------------------------+
+�  3. EXECUTION (at user logon)                  �
++------------------------------------------------�
+�  - Windows fires logon trigger                 �
+�  - Task Scheduler launches WelcomeMessage.ps1  �
+�  - Script runs in user context                 �
+�  - Popup displays (20 seconds default)         �
++------------------------------------------------+
+                      �
+                      ?
++------------------------------------------------+
+�  4. CLEANUP (on popup close)                   �
++------------------------------------------------�
+�  - Timer stops                                 �
+�  - Form disposed                               �
+�  - Sound playback stops (if still playing)     �
+�  - Resources freed                             �
++------------------------------------------------+
+                      �
+                      ?
++------------------------------------------------+
+�  5. DELETION (during UNINSTALL.ps1)            �
++------------------------------------------------�
+�  - Task removed from Task Scheduler            �
+�  - No longer runs at logon                     �
++------------------------------------------------+
 ```
 
 ---
@@ -296,8 +296,8 @@ Transition back if section changes
 
 **Window Properties:**
 
-- Title: "Welcome Home! 💝"
-- Size: 520×320 pixels
+- Title: "Welcome Home! ??"
+- Size: 520�320 pixels
 - Position: Centered screen
 - TopMost: True (always on top)
 - BorderStyle: FixedDialog (non-resizable)
@@ -306,17 +306,17 @@ Transition back if section changes
 **Form Composition:**
 
 ```
-┌─────────────────────────────────────────────┐
-│  💕 Welcome, [NAME]! 💕                    │ ← Title Label
-│                                             │
-│  [Random personalized message]              │ ← Message Label
-│  [Shows 1 of 8+ custom messages]            │
-│                                             │
-│  We've been together for [N] amazing days! 🥰 │ ← Days Label
-│                                             │
-│    [Thanks, sweetheart! ❤️]                 │ ← Close Button
-│                                             │
-└─────────────────────────────────────────────┘
++---------------------------------------------+
+�  ?? Welcome, [NAME]! ??                    � ? Title Label
+�                                             �
+�  [Random personalized message]              � ? Message Label
+�  [Shows 1 of 8+ custom messages]            �
+�                                             �
+�  We've been together for [N] amazing days! ?? � ? Days Label
+�                                             �
+�    [Thanks, sweetheart! ??]                 � ? Close Button
+�                                             �
++---------------------------------------------+
 ```
 
 **Colors:**
@@ -337,31 +337,31 @@ Transition back if section changes
 
 ```
 1. CREATE FORM
-   ↓ New-Object System.Windows.Forms.Form
+   ? New-Object System.Windows.Forms.Form
 
 2. CREATE CONTROLS
-   ↓ Add labels and button
+   ? Add labels and button
 
 3. LOAD MESSAGE
-   ↓ Select random from 8+ messages
-   ↓ Replace {NAME} token
+   ? Select random from 8+ messages
+   ? Replace {NAME} token
 
 4. DISPLAY FORM
-   ↓ $form.ShowDialog()
+   ? $form.ShowDialog()
 
 5. PLAY SOUND (ASYNC)
-   ↓ $player.PlayAsync() - non-blocking
+   ? $player.PlayAsync() - non-blocking
 
 6. START TIMER
-   ↓ Timer fires after WELCOME_TIMEOUT seconds
+   ? Timer fires after WELCOME_TIMEOUT seconds
 
 7. CLOSE FORM
-   ↓ On timeout or user click
+   ? On timeout or user click
 
 8. CLEANUP
-   ↓ Timer.Stop()
-   ↓ Timer.Dispose()
-   ↓ Form.Dispose()
+   ? Timer.Stop()
+   ? Timer.Dispose()
+   ? Form.Dispose()
 ```
 
 ---
@@ -388,15 +388,15 @@ $player.PlayAsync()  # Returns immediately, sound plays in background
 
 ```
 WelcomeMessage.ps1 starts
-    ↓
-    ├─ Show form (UI thread)
-    │
-    └─ PlayAsync() starts sound (background thread)
-            ↓
-            └─ Returns immediately to UI thread
-                ↓
+    ?
+    +- Show form (UI thread)
+    �
+    +- PlayAsync() starts sound (background thread)
+            ?
+            +- Returns immediately to UI thread
+                ?
                 UI is responsive during sound playback
-                ↓
+                ?
     Sound continues in background
     Form stays responsive
     User can close anytime
@@ -404,8 +404,8 @@ WelcomeMessage.ps1 starts
 
 **Comparison:**
 
-- ❌ `Play()` - Blocks UI until sound finishes
-- ✅ `PlayAsync()` - Returns immediately, sound in background
+- ? `Play()` - Blocks UI until sound finishes
+- ? `PlayAsync()` - Returns immediately, sound in background
 
 ---
 
@@ -452,10 +452,10 @@ $configFile = "$scriptDir\config.txt"
 
 **Advantages:**
 
-- ✅ Portable (works from any drive)
-- ✅ Multi-user support (each user has own HKCU key)
-- ✅ No hardcoded paths
-- ✅ Can upgrade installation location
+- ? Portable (works from any drive)
+- ? Multi-user support (each user has own HKCU key)
+- ? No hardcoded paths
+- ? Can upgrade installation location
 
 ---
 
@@ -581,10 +581,10 @@ $content = "Your content here"
 
 **Why UTF-8 with BOM:**
 
-- ✅ Windows Notepad auto-detects BOM
-- ✅ PowerShell preserves BOM on read
-- ✅ Supports full Unicode range
-- ✅ Compatible with international characters: 日本語, العربية, 中文, Русский, 💕
+- ? Windows Notepad auto-detects BOM
+- ? PowerShell preserves BOM on read
+- ? Supports full Unicode range
+- ? Compatible with international characters: ???, ???????, ??, ???????, ??
 
 ---
 
@@ -594,17 +594,17 @@ $content = "Your content here"
 
 ```
 User Logon
-    ↓
+    ?
 Task Scheduler fires trigger
-    ↓
+    ?
 WelcomeMessage.ps1 executes AS CURRENT USER (not elevated)
-    ↓
+    ?
 Accesses HKCU hive (user registry, not HKLM)
-    ↓
+    ?
 Reads local config file
-    ↓
+    ?
 Creates local UI window
-    ↓
+    ?
 No internet, no external calls, no privilege escalation
 ```
 
@@ -688,13 +688,13 @@ SEASON_THEME=spring
 
 ```
 User runs INSTALL.ps1
-    ↓
+    ?
 C:\RomanticCustomization\ created
-    ↓
+    ?
 HKCU:\Software\RomanticCustomization\ created (CURRENT USER)
-    ↓
+    ?
 Task created for current user
-    ↓
+    ?
 Works only for that user
 ```
 
@@ -703,13 +703,13 @@ Works only for that user
 ```
 For each user needing installation:
     Admin runs: INSTALL.ps1 (or user runs with admin rights)
-    ↓
+    ?
     C:\RomanticCustomization\ created (shared)
-    ↓
+    ?
     HKCU:\...\RomanticCustomization\ created (PER USER)
-    ↓
+    ?
     Task created for that user
-    ↓
+    ?
     Each user sees welcome independently
 ```
 
@@ -717,17 +717,18 @@ For each user needing installation:
 
 ## Summary: How It All Works Together
 
-1. **User logs in** → Windows triggers logon event
-2. **Task Scheduler** → RomanticWelcome task fires
-3. **Execute Script** → WelcomeMessage.ps1 runs as user
-4. **Read Config** → Loads from registry path, reads config.txt
-5. **Parse Messages** → Section-aware parser selects random message
-6. **Create UI** → Windows Forms displays popup
-7. **Play Sound** → Async playback starts in background
-8. **Wait/Close** → Popup shows for WELCOME_TIMEOUT seconds or user closes
-9. **Cleanup** → Timer disposed, form closed, resources freed
-10. **Back to Desktop** → User continues with their day 💕
+1. **User logs in** ? Windows triggers logon event
+2. **Task Scheduler** ? RomanticWelcome task fires
+3. **Execute Script** ? WelcomeMessage.ps1 runs as user
+4. **Read Config** ? Loads from registry path, reads config.txt
+5. **Parse Messages** ? Section-aware parser selects random message
+6. **Create UI** ? Windows Forms displays popup
+7. **Play Sound** ? Async playback starts in background
+8. **Wait/Close** ? Popup shows for WELCOME_TIMEOUT seconds or user closes
+9. **Cleanup** ? Timer disposed, form closed, resources freed
+10. **Back to Desktop** ? User continues with their day ??
 
 ---
 
 **Questions?** See [TECHNICAL_REFERENCE.md](TECHNICAL_REFERENCE.md) or [DOCUMENTATION_INDEX.md](../DOCUMENTATION_INDEX.md)
+

@@ -1,4 +1,4 @@
-# ⚙️ Configuration Guide - Customize Your Setup
+# ?? Configuration Guide - Customize Your Setup
 
 **Version:** v1.2.1 | **Difficulty:** Easy | **File:** config.txt
 
@@ -10,10 +10,10 @@ This guide explains how to customize everything in the `config.txt` file.
 
 The `config.txt` file controls:
 
-- ✅ Her name (displayed in welcome message)
-- ✅ Your anniversary date (calculates "days together")
-- ✅ Welcome message timeout (how long popup displays)
-- ✅ Romantic messages (8 customizable messages)
+- ? Her name (displayed in welcome message)
+- ? Your anniversary date (calculates "days together")
+- ? Welcome message timeout (how long popup displays)
+- ? Romantic messages (8 customizable messages)
 
 **Location:** `C:\RomanticCustomization\config.txt` (after installation)
 **Format:** Simple text file (edit with Notepad)
@@ -35,12 +35,12 @@ The `config.txt` file controls:
 
 ### How to Edit
 
-1. Right-click the file → **Open with** → **Notepad**
+1. Right-click the file ? **Open with** ? **Notepad**
 2. Make your changes
 3. **Save** (Ctrl+S)
 4. **Log out and back in** to see changes take effect
 
-✅ **That's it!** Changes apply immediately after you log in next time.
+? **That's it!** Changes apply immediately after you log in next time.
 
 ---
 
@@ -57,8 +57,8 @@ Controls how the welcome message appears and who it greets.
 **Example in popup:**
 
 ```
-💕 Welcome, Sarah! 💕
-Good morning, beautiful! Hope your day is as amazing as you are ❤️
+?? Welcome, Sarah! ??
+Good morning, beautiful! Hope your day is as amazing as you are ??
 ```
 
 **How to change:**
@@ -73,14 +73,14 @@ HER_NAME=Sarah
 
 **Rules:**
 
-- ✅ Minimum: 1 character
-- ✅ Maximum: 100 characters
-- ✅ Supports Unicode! 💕
-  - Japanese: `HER_NAME=田中 さくら`
-  - Arabic: `HER_NAME=الاسم`
-  - Chinese: `HER_NAME=姓名`
-  - Russian: `HER_NAME=Имя`
-  - Emoji: `HER_NAME=Sarah 💕`
+- ? Minimum: 1 character
+- ? Maximum: 100 characters
+- ? Supports Unicode! ??
+  - Japanese: `HER_NAME=?? ???`
+  - Arabic: `HER_NAME=?????`
+  - Chinese: `HER_NAME=??`
+  - Russian: `HER_NAME=???`
+  - Emoji: `HER_NAME=Sarah ??`
 
 **Unicode Tips:**
 
@@ -111,10 +111,10 @@ WELCOME_TIMEOUT=30
 
 **Rules:**
 
-- ✅ Minimum: 5 seconds
-- ✅ Maximum: 300 seconds (5 minutes)
-- ✅ Must be a number (no decimal points)
-- ✅ Default: 20 seconds (recommended)
+- ? Minimum: 5 seconds
+- ? Maximum: 300 seconds (5 minutes)
+- ? Must be a number (no decimal points)
+- ? Default: 20 seconds (recommended)
 
 **Tips:**
 
@@ -135,7 +135,7 @@ Controls the anniversary date for the "days together" counter.
 **Example in popup:**
 
 ```
-We've been together for 847 amazing days! 🥰
+We've been together for 847 amazing days! ??
 ```
 
 **How to change:**
@@ -150,18 +150,18 @@ ANNIVERSARY_DATE=2023-06-15
 
 **Format:**
 
-- ✅ **YYYY-MM-DD** (ISO 8601 standard)
-- ✅ Year (4 digits) - Month (2 digits) - Day (2 digits)
-- ❌ NOT MM/DD/YYYY
-- ❌ NOT 01/06/2024
+- ? **YYYY-MM-DD** (ISO 8601 standard)
+- ? Year (4 digits) - Month (2 digits) - Day (2 digits)
+- ? NOT MM/DD/YYYY
+- ? NOT 01/06/2024
 
 **Examples:**
 
-- ✅ January 6, 2024 = `2024-01-06`
-- ✅ June 15, 2023 = `2023-06-15`
-- ✅ December 25, 2022 = `2022-12-25`
-- ❌ 2024/1/6 (missing leading zeros)
-- ❌ 01-06-2024 (wrong format)
+- ? January 6, 2024 = `2024-01-06`
+- ? June 15, 2023 = `2023-06-15`
+- ? December 25, 2022 = `2022-12-25`
+- ? 2024/1/6 (missing leading zeros)
+- ? 01-06-2024 (wrong format)
 
 **Rules:**
 
@@ -185,14 +185,14 @@ ANNIVERSARY_DATE=2023-06-15
 **Example:**
 
 ```
-MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ❤️
-MESSAGE=Welcome back! You make every day brighter ✨
-MESSAGE=Hey gorgeous! Ready to conquer the day together? 💕
-MESSAGE=Missing you already! Have a wonderful day 🌹
-MESSAGE=You're logged in to the best computer... but I'm logged in to the best heart 💖
-MESSAGE=Remember: you're incredible! ❤️
-MESSAGE=Another day, another chance to be amazing! ✨
-MESSAGE=The world is lucky to have you in it today! 💝
+MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ??
+MESSAGE=Welcome back! You make every day brighter ?
+MESSAGE=Hey gorgeous! Ready to conquer the day together? ??
+MESSAGE=Missing you already! Have a wonderful day ??
+MESSAGE=You're logged in to the best computer... but I'm logged in to the best heart ??
+MESSAGE=Remember: you're incredible! ??
+MESSAGE=Another day, another chance to be amazing! ?
+MESSAGE=The world is lucky to have you in it today! ??
 ```
 
 #### How to Customize Messages
@@ -201,10 +201,10 @@ MESSAGE=The world is lucky to have you in it today! 💝
 
 ```
 Old:
-MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ❤️
+MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ??
 
 New:
-MESSAGE=Good morning, Sarah! You light up my world! ❤️
+MESSAGE=Good morning, Sarah! You light up my world! ??
 ```
 
 **Option B: Add new messages**
@@ -212,12 +212,12 @@ MESSAGE=Good morning, Sarah! You light up my world! ❤️
 Just add more `MESSAGE=` lines in the [MESSAGES] section:
 
 ```
-MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ❤️
-MESSAGE=Welcome back! You make every day brighter ✨
-MESSAGE=Hey gorgeous! Ready to conquer the day together? 💕
-MESSAGE=I love you more each day! 💕
-MESSAGE=You're the best part of my day! 💝
-MESSAGE=Thinking of you always! 💕
+MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ??
+MESSAGE=Welcome back! You make every day brighter ?
+MESSAGE=Hey gorgeous! Ready to conquer the day together? ??
+MESSAGE=I love you more each day! ??
+MESSAGE=You're the best part of my day! ??
+MESSAGE=Thinking of you always! ??
 ```
 
 **Option C: Remove messages you don't like**
@@ -226,12 +226,12 @@ Just delete the line (the system needs at least 1 message, but more is better fo
 
 #### Message Rules
 
-- ✅ Each message on its own line starting with `MESSAGE=`
-- ✅ Maximum 200 characters per message
-- ✅ Supports emoji! 💕✨🌹💖💝
-- ✅ Can use her name placeholder `{NAME}` (will be replaced with HER_NAME)
-- ❌ No empty lines between messages
-- ❌ Don't break a message across multiple lines
+- ? Each message on its own line starting with `MESSAGE=`
+- ? Maximum 200 characters per message
+- ? Supports emoji! ?????????
+- ? Can use her name placeholder `{NAME}` (will be replaced with HER_NAME)
+- ? No empty lines between messages
+- ? Don't break a message across multiple lines
 
 #### Message Examples
 
@@ -244,52 +244,52 @@ MESSAGE=Good morning!
 **With emoji:**
 
 ```
-MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ❤️
+MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ??
 ```
 
 **With her name:**
 
 ```
-MESSAGE=Good morning, {NAME}! You're amazing! 💕
+MESSAGE=Good morning, {NAME}! You're amazing! ??
 ```
 
-(Displays as: "Good morning, Sarah! You're amazing! 💕")
+(Displays as: "Good morning, Sarah! You're amazing! ??")
 
 **Personal & romantic:**
 
 ```
-MESSAGE=Every moment with you is a blessing. Have a wonderful day! 💕
-MESSAGE=You make my heart smile. Go show the world your brilliance! ✨
-MESSAGE=I'm grateful for you every single day! 💖
-MESSAGE=You're stronger than you think. I believe in you! 💪💕
-MESSAGE=Thank you for being you. I love you! 💝
+MESSAGE=Every moment with you is a blessing. Have a wonderful day! ??
+MESSAGE=You make my heart smile. Go show the world your brilliance! ?
+MESSAGE=I'm grateful for you every single day! ??
+MESSAGE=You're stronger than you think. I believe in you! ????
+MESSAGE=Thank you for being you. I love you! ??
 ```
 
 #### Adding Emoji to Messages
 
 **Common romantic emoji:**
 
-- ❤️ Heart
-- 💕 Two hearts
-- 💖 Sparkling heart
-- 💝 Heart with ribbon
-- 🌹 Rose
-- ✨ Sparkles
-- 🥰 Heart eyes
-- 😍 Love eyes
-- 💑 Couple
-- 💏 Kiss
-- 👑 Crown
-- 🎀 Bow
-- 🎁 Gift
-- 🌟 Star
-- 💫 Dizzy (sparkle)
+- ?? Heart
+- ?? Two hearts
+- ?? Sparkling heart
+- ?? Heart with ribbon
+- ?? Rose
+- ? Sparkles
+- ?? Heart eyes
+- ?? Love eyes
+- ?? Couple
+- ?? Kiss
+- ?? Crown
+- ?? Bow
+- ?? Gift
+- ?? Star
+- ?? Dizzy (sparkle)
 
 **How to add emoji:**
 
 - Copy-paste emoji directly into the message
 - Or type: Hold Windows key + semicolon (;) to open emoji picker
-- Or just use the emoji characters: ❤️✨💕🌹
+- Or just use the emoji characters: ???????
 
 ---
 
@@ -326,14 +326,14 @@ WELCOME_TIMEOUT=25
 ANNIVERSARY_DATE=2023-06-15
 
 [MESSAGES]
-MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ❤️
-MESSAGE=Welcome back, Sarah! You make every day brighter ✨
-MESSAGE=Hey gorgeous! Ready to conquer the day together? 💕
-MESSAGE=Missing you already! Have a wonderful day 🌹
-MESSAGE=You're logged in to the best computer... but I'm logged in to the best heart 💖
-MESSAGE=Remember: you're incredible! ❤️
-MESSAGE=Another day, another chance to be amazing! ✨
-MESSAGE=The world is lucky to have you in it today! 💝
+MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ??
+MESSAGE=Welcome back, Sarah! You make every day brighter ?
+MESSAGE=Hey gorgeous! Ready to conquer the day together? ??
+MESSAGE=Missing you already! Have a wonderful day ??
+MESSAGE=You're logged in to the best computer... but I'm logged in to the best heart ??
+MESSAGE=Remember: you're incredible! ??
+MESSAGE=Another day, another chance to be amazing! ?
+MESSAGE=The world is lucky to have you in it today! ??
 
 [FUTURE]
 # Reserved for v2.0+ features
@@ -347,12 +347,12 @@ MESSAGE=The world is lucky to have you in it today! 💝
 
 1. Open config.txt in Notepad
 2. Check:
-   - ✅ `HER_NAME=` has a value (not blank)
-   - ✅ `ANNIVERSARY_DATE=` is in YYYY-MM-DD format
-   - ✅ `ANNIVERSARY_DATE=` is not in the future
-   - ✅ `WELCOME_TIMEOUT=` is a number between 5-300
-   - ✅ At least one `MESSAGE=` line exists in [MESSAGES] section
-   - ✅ Each message is 200 characters or less
+   - ? `HER_NAME=` has a value (not blank)
+   - ? `ANNIVERSARY_DATE=` is in YYYY-MM-DD format
+   - ? `ANNIVERSARY_DATE=` is not in the future
+   - ? `WELCOME_TIMEOUT=` is a number between 5-300
+   - ? At least one `MESSAGE=` line exists in [MESSAGES] section
+   - ? Each message is 200 characters or less
 3. Save and try installing again
 
 ### Welcome message shows "My Love" instead of her name
@@ -381,18 +381,18 @@ MESSAGE=The world is lucky to have you in it today! 💝
 
 **Available variables:**
 
-- `{NAME}` — Replaced with HER_NAME value
+- `{NAME}` � Replaced with HER_NAME value
 
 **Example:**
 
 ```
-MESSAGE=Good morning, {NAME}! I love you! ❤️
+MESSAGE=Good morning, {NAME}! I love you! ??
 ```
 
 Displays as:
 
 ```
-Good morning, Sarah! I love you! ❤️
+Good morning, Sarah! I love you! ??
 ```
 
 ### Character Limit Tips
@@ -400,7 +400,7 @@ Good morning, Sarah! I love you! ❤️
 **Each message can be 200 characters max.** Here's how to check:
 
 ```
-MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ❤️
+MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ??
 ```
 
 Count that = about 85 characters. Plenty of room!
@@ -408,7 +408,7 @@ Count that = about 85 characters. Plenty of room!
 Longer examples (still under 200):
 
 ```
-MESSAGE=Every single day with you is a gift. You make me smile, you inspire me, and you make me want to be a better person. Have an amazing day, beautiful! 💕
+MESSAGE=Every single day with you is a gift. You make me smile, you inspire me, and you make me want to be a better person. Have an amazing day, beautiful! ??
 ```
 
 That's about 165 characters. Still good!
@@ -421,7 +421,7 @@ That's about 165 characters. Still good!
 2. **Close Notepad**
 3. **Log out** from Windows
 4. **Log back in**
-5. **See your updated welcome message!** 💕
+5. **See your updated welcome message!** ??
 
 That's it! No need to reinstall or restart anything.
 
@@ -429,10 +429,11 @@ That's it! No need to reinstall or restart anything.
 
 ## Need More Help?
 
-- **Installation issues?** → [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md)
-- **Welcome message not showing?** → [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
-- **General questions?** → [FAQ.md](../FAQ.md)
+- **Installation issues?** ? [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md)
+- **Welcome message not showing?** ? [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+- **General questions?** ? [FAQ.md](../FAQ.md)
 
 ---
 
-**Happy customizing! 💝✨**
+**Happy customizing! ???**
+

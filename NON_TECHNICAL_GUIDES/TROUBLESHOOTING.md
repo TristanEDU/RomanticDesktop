@@ -1,4 +1,4 @@
-# 🆘 Troubleshooting Guide
+# ?? Troubleshooting Guide
 
 **Version:** v1.2.1 | **Last Updated:** January 22, 2026
 
@@ -6,7 +6,7 @@ Quick solutions to common problems. Most issues are fixable in 5 minutes.
 
 ---
 
-## 🔥 Top 5 Common Issues
+## ?? Top 5 Common Issues
 
 ### 1. Welcome Message Doesn't Appear
 
@@ -14,12 +14,12 @@ Quick solutions to common problems. Most issues are fixable in 5 minutes.
 
 **Quick Fixes (try in order):**
 
-1. ✅ **Did you actually log out?**
+1. ? **Did you actually log out?**
    - Locking the screen (Windows+L) doesn't work
    - You must fully **sign out** and back in
-   - **Sign out:** Start menu → Sign out → Log back in
+   - **Sign out:** Start menu ? Sign out ? Log back in
 
-2. ✅ **Check if scheduled task exists:**
+2. ? **Check if scheduled task exists:**
 
    ```powershell
    Get-ScheduledTask -TaskName RomanticWelcome
@@ -28,27 +28,27 @@ Quick solutions to common problems. Most issues are fixable in 5 minutes.
    - If nothing displays, task wasn't created
    - Try reinstalling
 
-3. ✅ **Run VERIFY.ps1 to check everything:**
+3. ? **Run VERIFY.ps1 to check everything:**
 
    ```powershell
    C:\RomanticCustomization\VERIFY.ps1
    ```
 
-   - Look for any red ✗ marks
+   - Look for any red ? marks
    - See detailed troubleshooting below
 
-4. ✅ **Check if config.txt exists:**
+4. ? **Check if config.txt exists:**
    - Open `C:\RomanticCustomization\config.txt`
    - Make sure it has content (not empty)
 
-5. ✅ **Check Windows Task Scheduler:**
+5. ? **Check Windows Task Scheduler:**
    - Press Windows+R, type `taskschd.msc`
    - Look for "RomanticWelcome" task in Library
-   - Right-click → Run
+   - Right-click ? Run
    - Does the popup appear? If yes, it works!
 
 **If still not working:**
-→ See [VERIFY.ps1 Checks Not Passing](#verifyps1-checks-not-passing) below
+? See [VERIFY.ps1 Checks Not Passing](#verifyps1-checks-not-passing) below
 
 ---
 
@@ -58,11 +58,11 @@ Quick solutions to common problems. Most issues are fixable in 5 minutes.
 
 **Quick Fixes:**
 
-1. ✅ **Check volume**
+1. ? **Check volume**
    - Volume slider is turned up (not muted)
    - Try playing a different sound to confirm system works
 
-2. ✅ **Check WAV file exists**
+2. ? **Check WAV file exists**
 
    ```
    C:\RomanticCustomization\Sounds\romantic.wav
@@ -70,19 +70,19 @@ Quick solutions to common problems. Most issues are fixable in 5 minutes.
 
    - If missing, copy your WAV file there
 
-3. ✅ **Verify it's actually a WAV file**
+3. ? **Verify it's actually a WAV file**
    - Don't just rename an MP3 to .wav (won't work)
    - Use Convertio.co or Windows Media Player to convert properly
-   - Right-click file → Properties → should show "Wave Sound"
+   - Right-click file ? Properties ? should show "Wave Sound"
 
-4. ✅ **Test the file directly**
-   - Right-click romantic.wav → Open with → Windows Media Player
+4. ? **Test the file directly**
+   - Right-click romantic.wav ? Open with ? Windows Media Player
    - Does it play? If yes, file is good
    - If no, file is corrupted or wrong format
 
-5. ✅ **Check speakers work**
-   - Click volume icon → test a system sound
-   - Click Settings → System → Sound → test sound plays
+5. ? **Check speakers work**
+   - Click volume icon ? test a system sound
+   - Click Settings ? System ? Sound ? test sound plays
 
 **Still not working?**
 
@@ -98,12 +98,12 @@ Quick solutions to common problems. Most issues are fixable in 5 minutes.
 
 **Fix (takes 30 seconds):**
 
-1. Right-click `INSTALL.bat` → **Properties**
-2. At the bottom, check the box: **☑️ Unblock**
-3. Click **Apply** → **OK**
+1. Right-click `INSTALL.bat` ? **Properties**
+2. At the bottom, check the box: **?? Unblock**
+3. Click **Apply** ? **OK**
 4. Double-click INSTALL.bat again
 
-✅ Should work now!
+? Should work now!
 
 **Why this happens:**
 
@@ -120,13 +120,13 @@ Quick solutions to common problems. Most issues are fixable in 5 minutes.
 
 **Option A: Run with Admin (Quick)**
 
-1. Right-click `INSTALL.bat` → **Run as Administrator**
+1. Right-click `INSTALL.bat` ? **Run as Administrator**
 2. Click **Yes** when prompted
 3. Should now work
 
 **Option B: Check Your Account Type**
 
-1. Settings → Accounts → Your Info
+1. Settings ? Accounts ? Your Info
 2. Look for "Administrator" next to your account
 3. If it says "Local Account" (not admin):
    - You need to log in with an admin account to install
@@ -147,34 +147,34 @@ Quick solutions to common problems. Most issues are fixable in 5 minutes.
 
 **Fixes (try in order):**
 
-1. ✅ **Check config.txt is valid**
+1. ? **Check config.txt is valid**
 
    ```powershell
    C:\RomanticDesktop\CONFIG_VALIDATOR.ps1
    ```
 
-   - Look for any red ✗ errors
+   - Look for any red ? errors
    - Fix the config errors
    - Try installing again
 
-2. ✅ **Close all explorer windows**
+2. ? **Close all explorer windows**
    - If Windows Explorer is open in C:\RomanticCustomization\
    - Installer can't modify locked files
    - Close Explorer, try again
 
-3. ✅ **Disable antivirus temporarily**
+3. ? **Disable antivirus temporarily**
    - Some antivirus blocks installation
    - Temporarily disable it (check antivirus software's menu)
    - Try installing
    - Re-enable antivirus when done
 
-4. ✅ **Run Disk Check**
+4. ? **Run Disk Check**
    - Open PowerShell as Admin
    - Run: `chkdsk c: /f`
    - Restart computer
    - Try installing again
 
-5. ✅ **Reinstall from scratch**
+5. ? **Reinstall from scratch**
    - Run: `C:\RomanticDesktop\UNINSTALL.ps1`
    - Choose Yes to fully remove
    - Delete the C:\RomanticCustomization folder manually
@@ -182,7 +182,7 @@ Quick solutions to common problems. Most issues are fixable in 5 minutes.
 
 ---
 
-## 🔍 VERIFY.ps1 Checks Not Passing
+## ?? VERIFY.ps1 Checks Not Passing
 
 Run this to diagnose any issues:
 
@@ -192,15 +192,15 @@ C:\RomanticCustomization\VERIFY.ps1
 
 **Interpreting Results:**
 
-### ✓ Green Checkmarks = Good
+### ? Green Checkmarks = Good
 
 Everything is working correctly.
 
-### ✗ Red X Marks = Problem
+### ? Red X Marks = Problem
 
 See solutions below.
 
-### ⚠ Yellow Warnings = Minor Issues
+### ? Yellow Warnings = Minor Issues
 
 These might not block functionality but should be fixed.
 
@@ -240,8 +240,8 @@ These might not block functionality but should be fixed.
 **Solution:**
 
 1. Open Task Scheduler:
-   - Windows+R → `taskschd.msc`
-2. Look in: Task Scheduler Library → find "RomanticWelcome"
+   - Windows+R ? `taskschd.msc`
+2. Look in: Task Scheduler Library ? find "RomanticWelcome"
 
 **If task exists but VERIFY says it doesn't:**
 
@@ -278,7 +278,7 @@ These might not block functionality but should be fixed.
    - No `MESSAGE=` lines in [MESSAGES] section
 
 3. For detailed config help:
-   → [CONFIGURATION_GUIDE.md](CONFIGURATION_GUIDE.md)
+   ? [CONFIGURATION_GUIDE.md](CONFIGURATION_GUIDE.md)
 
 4. After fixing, save and run:
    ```powershell
@@ -302,7 +302,7 @@ These might not block functionality but should be fixed.
    - Should recreate the registry key
 
 4. To manually check registry:
-   - Windows+R → `regedit`
+   - Windows+R ? `regedit`
    - Navigate to: `HKEY_CURRENT_USER\Software\RomanticCustomization`
    - Should see: InstallPath and InstallDate
 
@@ -334,8 +334,8 @@ These might not block functionality but should be fixed.
 
 **Solution:**
 
-1. Windows Defender → Virus & Threat Protection
-2. Manage settings → Add exclusions
+1. Windows Defender ? Virus & Threat Protection
+2. Manage settings ? Add exclusions
 3. Add exclusion for: `C:\RomanticCustomization\`
 4. Try installing again
 
@@ -375,8 +375,8 @@ These might not block functionality but should be fixed.
    ```
 
 2. **Check Windows Event Viewer:**
-   - Windows+R → `eventvwr`
-   - Look in: Windows Logs → Application
+   - Windows+R ? `eventvwr`
+   - Look in: Windows Logs ? Application
    - Look for errors related to "RomanticWelcome"
 
 3. **Uninstall and try fresh:**
@@ -389,10 +389,10 @@ These might not block functionality but should be fixed.
 
 ## Getting More Help
 
-- **Questions about config?** → [CONFIGURATION_GUIDE.md](CONFIGURATION_GUIDE.md)
-- **Installation issues?** → [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md)
-- **Need to remove it?** → [UNINSTALL_GUIDE.md](UNINSTALL_GUIDE.md)
-- **General Q&A?** → [FAQ.md](../FAQ.md)
+- **Questions about config?** ? [CONFIGURATION_GUIDE.md](CONFIGURATION_GUIDE.md)
+- **Installation issues?** ? [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md)
+- **Need to remove it?** ? [UNINSTALL_GUIDE.md](UNINSTALL_GUIDE.md)
+- **General Q&A?** ? [FAQ.md](../FAQ.md)
 
 ---
 
@@ -403,4 +403,5 @@ These might not block functionality but should be fixed.
 3. Restarting your computer
 4. Trying again
 
-**You've got this! 💕**
+**You've got this! ??**
+

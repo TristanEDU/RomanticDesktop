@@ -1,18 +1,18 @@
 # Version History - Romantic Windows Customization
 
-**Complete Timeline:** v1.0 → v1.2.1 | **As of:** January 22, 2026
+**Complete Timeline:** v1.0 ? v1.2.1 | **As of:** January 22, 2026
 
 ---
 
-## 📊 Version Timeline
+## ?? Version Timeline
 
 ```
 v1.0 (August 2024)
-   ↓
+   ?
 v1.1 (January 2026) - Reliability Foundation
-   ↓
+   ?
 v1.2 (January 22, 2026) - Bug Fixes & Validation
-   ↓
+   ?
 v1.2.1 (January 22, 2026) - Documentation Restructure
 ```
 
@@ -25,21 +25,21 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 
 ### Features
 
-- ✅ Basic welcome message popup
-- ✅ Scheduled task creation
-- ✅ Welcome message customization
-- ✅ Theme color application
-- ✅ Optional sound support
-- ✅ Optional cursor support
+- ? Basic welcome message popup
+- ? Scheduled task creation
+- ? Welcome message customization
+- ? Theme color application
+- ? Optional sound support
+- ? Optional cursor support
 
 ### Limitations
 
-- ❌ Hard-coded C:\ drive path (not portable)
-- ❌ Limited configuration validation
-- ❌ No installation verification tools
-- ❌ Basic error handling
-- ❌ No built-in diagnostics
-- ❌ No uninstall script
+- ? Hard-coded C:\ drive path (not portable)
+- ? Limited configuration validation
+- ? No installation verification tools
+- ? Basic error handling
+- ? No built-in diagnostics
+- ? No uninstall script
 
 ### Known Issues
 
@@ -57,34 +57,34 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 
 ### Major Improvements from v1.0
 
-#### 🔧 Portability
+#### ?? Portability
 
 - Registry-based installation paths
 - Works from any location (USB, external drive, etc.)
 - Fallback to C:\ if registry path missing
 
-#### ✅ Validation & Diagnostics
+#### ? Validation & Diagnostics
 
 - CONFIG_VALIDATOR.ps1 (new) - validates config.txt before install
 - VERIFY.ps1 (new) - post-installation health check
 - 3 validation rules added
 - Detailed error messages
 
-#### 🛠️ Installation Improvements
+#### ??? Installation Improvements
 
 - 7-step installation process (auto-numbered)
 - Installation logging
 - Scheduled task verification
 - Configuration validation integration
 
-#### 📋 Documentation
+#### ?? Documentation
 
 - README.txt with comprehensive guide
 - Installation instructions
 - Troubleshooting section
 - Feature explanations
 
-#### 🚀 New Tools
+#### ?? New Tools
 
 - UNINSTALL.ps1 - clean removal script
 - CONFIG_VALIDATOR.ps1 - pre-install verification
@@ -93,13 +93,13 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 ### Features
 
 - All v1.0 features plus:
-- ✅ Portable installation (USB-ready)
-- ✅ Configuration validation
-- ✅ Post-installation verification
-- ✅ Clean uninstall script
-- ✅ Registry-based path storage
-- ✅ Installation date tracking
-- ✅ Better error handling
+- ? Portable installation (USB-ready)
+- ? Configuration validation
+- ? Post-installation verification
+- ? Clean uninstall script
+- ? Registry-based path storage
+- ? Installation date tracking
+- ? Better error handling
 
 ### Config Format Changes
 
@@ -109,7 +109,7 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 
 ### Upgrade Path
 
-- v1.0 → v1.1: Fully compatible
+- v1.0 ? v1.1: Fully compatible
 - Config files work without modification
 - Installation replaces v1.0 files
 
@@ -124,8 +124,8 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 
 #### Critical Bugs Fixed (5)
 
-1. **Emoji characters missing** - Restored all 8 emoji endings (❤️✨💕🌹💖💝)
-2. **Broken regex in CONFIG_VALIDATOR** - Fixed `"\`r?\`n"`→`'[\r\n]+'`
+1. **Emoji characters missing** - Restored all 8 emoji endings (???????????)
+2. **Broken regex in CONFIG_VALIDATOR** - Fixed `"\`r?\`n"`?`'[\r\n]+'`
 3. **Broken regex in WelcomeMessage** - Same regex fix
 4. **Confusing step numbering** - [1-8] instead of [1-2-2.5-3...]
 5. **Missing section-aware parsing** - Added `$inMessagesSection` tracking
@@ -167,21 +167,21 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 
 ### Features Added/Enhanced
 
-- ✅ Comprehensive config validation
-- ✅ Registry verification
-- ✅ Task scheduler verification
-- ✅ Dry-run uninstall mode (-WhatIf)
-- ✅ UTF-8 BOM checking
-- ✅ WAV file format validation
+- ? Comprehensive config validation
+- ? Registry verification
+- ? Task scheduler verification
+- ? Dry-run uninstall mode (-WhatIf)
+- ? UTF-8 BOM checking
+- ? WAV file format validation
 
 ### Breaking Changes
 
-- ❌ None! Fully backward compatible with v1.0 and v1.1
+- ? None! Fully backward compatible with v1.0 and v1.1
 
 ### Upgrade Path
 
-- v1.1 → v1.2: In-place upgrade (2 minutes)
-- v1.0 → v1.2: Backup → uninstall → install (5 minutes)
+- v1.1 ? v1.2: In-place upgrade (2 minutes)
+- v1.0 ? v1.2: Backup ? uninstall ? install (5 minutes)
 - No data loss
 - Config files work as-is
 
@@ -194,14 +194,14 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 
 ### Major Changes (Documentation Only)
 
-#### 📚 Documentation Reorganization
+#### ?? Documentation Reorganization
 
 - **New folder structure:**
   - `NON_TECHNICAL_GUIDES/` - User-friendly guides (5 files)
   - `TECHNICAL_DOCS/` - Developer documentation (4 files)
   - `MIGRATION_AND_VERSIONS/` - Upgrade & version info (5 files)
 
-#### 📖 New Non-Technical User Guides
+#### ?? New Non-Technical User Guides
 
 1. **QUICK_START.md** - 2-page 5-minute setup guide
 2. **INSTALLATION_GUIDE.md** - Step-by-step [1/8] installation with Windows 10/11 callouts
@@ -209,42 +209,42 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 4. **TROUBLESHOOTING.md** - Common issues & solutions
 5. **UNINSTALL_GUIDE.md** - Safe removal with dry-run preview
 
-#### 🎯 Master Documentation Index
+#### ?? Master Documentation Index
 
 - **DOCUMENTATION_INDEX.md** - Master routing guide by use case
-- Quick navigation: "I want to install" → specific guide
+- Quick navigation: "I want to install" ? specific guide
 - Tech vs non-tech documentation separated
 - Clear file structure overview
 
-#### ✅ Improved README.md
+#### ? Improved README.md
 
 - Updated for v1.2.1
 - Points to new documentation structure
 - Quick feature list
 - Version info
 
-#### 📋 Version & Release Documentation
+#### ?? Version & Release Documentation
 
 - **VERSION_HISTORY.md** - Complete timeline (this file)
 - **v1.2.1_RELEASE_NOTES.md** - Maintenance release notes
 - **WINDOWS_VERSIONS.md** - Windows 10 vs 11 compatibility guide
 
-#### 📘 Technical Documentation Created
+#### ?? Technical Documentation Created
 
 - **TECHNICAL_REFERENCE.md** - Registry keys, specs, validation rules
 - **ARCHITECTURE.md** - System design & code structure
 - **v1.2_RELEASE_NOTES.md** - Official v1.2 technical release notes
 - **BUG_FIXES_v1.2.md** - Moved to TECHNICAL_DOCS/
 
-#### 🔄 Reorganized Files
+#### ?? Reorganized Files
 
-- Moved `BUG_FIXES_v1.2.md` → `TECHNICAL_DOCS/`
-- Moved `v1.2_IMPLEMENTATION_STATUS.txt` → `MIGRATION_AND_VERSIONS/`
+- Moved `BUG_FIXES_v1.2.md` ? `TECHNICAL_DOCS/`
+- Moved `v1.2_IMPLEMENTATION_STATUS.txt` ? `MIGRATION_AND_VERSIONS/`
 - Removed `complete_package.md` (outdated v1.0 code samples)
 
 ### Code Changes
 
-- ❌ **None!** Purely documentation restructure
+- ? **None!** Purely documentation restructure
 - All v1.2 code/functionality unchanged
 - No breaking changes
 - 100% backward compatible
@@ -259,14 +259,14 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 
 - Significant documentation improvements warrant version bump
 - Users benefit from better guides and clearer organization
-- No code changes, so point-release (v1.2 → v1.2.1)
+- No code changes, so point-release (v1.2 ? v1.2.1)
 - Future v1.3+ will include code enhancements
 
 ### Upgrade Path
 
-- **v1.2 → v1.2.1:** File-only update (copy new docs)
-- **v1.1 → v1.2.1:** Standard install (includes all docs)
-- **v1.0 → v1.2.1:** Backup → uninstall → install
+- **v1.2 ? v1.2.1:** File-only update (copy new docs)
+- **v1.1 ? v1.2.1:** Standard install (includes all docs)
+- **v1.0 ? v1.2.1:** Backup ? uninstall ? install
 
 ---
 
@@ -274,22 +274,22 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 
 | Feature                   | v1.0 | v1.1         | v1.2          | v1.2.1           |
 | ------------------------- | ---- | ------------ | ------------- | ---------------- |
-| Welcome message           | ✅   | ✅           | ✅            | ✅               |
-| Customizable messages     | ✅   | ✅           | ✅            | ✅               |
-| Theme colors              | ✅   | ✅           | ✅            | ✅               |
-| Optional sound            | ✅   | ✅           | ✅            | ✅               |
-| Optional cursors          | ✅   | ✅           | ✅            | ✅               |
-| Scheduled task            | ✅   | ✅           | ✅            | ✅               |
-| Config validation         | ❌   | ✅           | ✅            | ✅               |
-| Post-install verification | ❌   | ✅           | ✅            | ✅               |
-| Uninstall script          | ❌   | ✅           | ✅            | ✅               |
-| Portable (registry)       | ❌   | ✅           | ✅            | ✅               |
-| Section-aware parsing     | ❌   | ❌           | ✅            | ✅               |
-| Enhanced validation       | ❌   | ✅ (3 rules) | ✅ (11 rules) | ✅ (11 rules)    |
-| WhatIf dry-run            | ❌   | ❌           | ✅            | ✅               |
-| Quick-start guide         | ❌   | ❌           | ❌            | ✅               |
-| User-friendly docs        | ❌   | Basic        | Basic         | ✅ Comprehensive |
-| Technical docs            | ❌   | ❌           | ✅            | ✅               |
+| Welcome message           | ?   | ?           | ?            | ?               |
+| Customizable messages     | ?   | ?           | ?            | ?               |
+| Theme colors              | ?   | ?           | ?            | ?               |
+| Optional sound            | ?   | ?           | ?            | ?               |
+| Optional cursors          | ?   | ?           | ?            | ?               |
+| Scheduled task            | ?   | ?           | ?            | ?               |
+| Config validation         | ?   | ?           | ?            | ?               |
+| Post-install verification | ?   | ?           | ?            | ?               |
+| Uninstall script          | ?   | ?           | ?            | ?               |
+| Portable (registry)       | ?   | ?           | ?            | ?               |
+| Section-aware parsing     | ?   | ?           | ?            | ?               |
+| Enhanced validation       | ?   | ? (3 rules) | ? (11 rules) | ? (11 rules)    |
+| WhatIf dry-run            | ?   | ?           | ?            | ?               |
+| Quick-start guide         | ?   | ?           | ?            | ?               |
+| User-friendly docs        | ?   | Basic        | Basic         | ? Comprehensive |
+| Technical docs            | ?   | ?           | ?            | ?               |
 
 ---
 
@@ -297,10 +297,10 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 
 | Version    | Release      | Support | Status                           |
 | ---------- | ------------ | ------- | -------------------------------- |
-| **v1.0**   | Aug 2024     | Ended   | ❌ No longer supported           |
-| **v1.1**   | Jan 21, 2026 | Limited | ⚠️ Works but upgrade recommended |
-| **v1.2**   | Jan 22, 2026 | Full    | ✅ Current stable                |
-| **v1.2.1** | Jan 22, 2026 | Full    | ✅ **Recommended version**       |
+| **v1.0**   | Aug 2024     | Ended   | ? No longer supported           |
+| **v1.1**   | Jan 21, 2026 | Limited | ?? Works but upgrade recommended |
+| **v1.2**   | Jan 22, 2026 | Full    | ? Current stable                |
+| **v1.2.1** | Jan 22, 2026 | Full    | ? **Recommended version**       |
 
 ---
 
@@ -308,15 +308,15 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 
 ### If You Have v1.0
 
-🔴 **Upgrade to v1.2.1**
+?? **Upgrade to v1.2.1**
 
 - Reason: Missing portability, validation, diagnostics
-- Time: 5 minutes (backup → uninstall → install)
+- Time: 5 minutes (backup ? uninstall ? install)
 - Benefit: Better reliability, USB support, troubleshooting tools
 
 ### If You Have v1.1
 
-🟡 **Upgrade to v1.2.1 (optional but recommended)**
+?? **Upgrade to v1.2.1 (optional but recommended)**
 
 - Reason: 19 bug fixes, better documentation
 - Time: 2 minutes (in-place upgrade)
@@ -324,7 +324,7 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 
 ### If You Have v1.2
 
-🟢 **Update to v1.2.1 (optional)**
+?? **Update to v1.2.1 (optional)**
 
 - Reason: Documentation improvements only
 - Time: 1 minute (copy new doc files)
@@ -376,8 +376,9 @@ v1.2.1 (January 22, 2026) - Documentation Restructure
 - **Most portable:** v1.1+ (USB-ready)
 - **Legacy:** v1.0 (no longer recommended)
 
-**Current recommendation: Use v1.2.1** ✅
+**Current recommendation: Use v1.2.1** ?
 
 ---
 
 **Questions?** See [DOCUMENTATION_INDEX.md](../DOCUMENTATION_INDEX.md) or [FAQ.md](../FAQ.md)
+

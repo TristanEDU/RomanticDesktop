@@ -28,7 +28,7 @@ Complete technical specifications, registry keys, validation rules, and API refe
 
 **Theme Colors:** `HKCU:\Software\Microsoft\Windows\DWM\`
 
-- `AccentColor` (DWORD) — Applied during [8/8] step
+- `AccentColor` (DWORD) � Applied during [8/8] step
 - Modified: Yes (by installer)
 - Reverted: By UNINSTALL.ps1
 
@@ -135,13 +135,13 @@ Not parsed by v1.2.1 (reserved for future versions)
 | 2      | Structure | [DATES] section exists        | Error    | "Missing [DATES] section"                           |
 | 3      | Structure | [MESSAGES] section exists     | Error    | "Missing [MESSAGES] section"                        |
 | 4      | User      | HER_NAME not empty            | Error    | "HER_NAME is empty"                                 |
-| 5      | User      | HER_NAME ≤ 100 chars          | Error    | "HER_NAME exceeds 100 characters"                   |
+| 5      | User      | HER_NAME = 100 chars          | Error    | "HER_NAME exceeds 100 characters"                   |
 | 6      | User      | WELCOME_TIMEOUT is numeric    | Error    | "WELCOME_TIMEOUT must be numeric"                   |
 | 7      | User      | WELCOME_TIMEOUT 5-300 range   | Error    | "WELCOME_TIMEOUT must be 5-300 seconds"             |
 | 8      | Dates     | ANNIVERSARY_DATE valid format | Error    | "ANNIVERSARY_DATE invalid format (need YYYY-MM-DD)" |
 | 9      | Dates     | ANNIVERSARY_DATE not future   | Error    | "ANNIVERSARY_DATE cannot be in the future"          |
 | 10     | Messages  | At least 1 MESSAGE exists     | Error    | "No messages found in [MESSAGES] section"           |
-| 11     | Messages  | Each MESSAGE ≤ 200 chars      | Warning  | "Message #X exceeds 200 characters"                 |
+| 11     | Messages  | Each MESSAGE = 200 chars      | Warning  | "Message #X exceeds 200 characters"                 |
 
 ---
 
@@ -236,10 +236,10 @@ $player.PlayAsync()  # Async sound (non-blocking)
 
 **Breakdown:**
 
-- `[...]` — Character class (matches any one character inside)
-- `\r` — Carriage return (Windows line ending)
-- `\n` — Line feed (Unix line ending)
-- `+` — One or more (handles multiple line breaks)
+- `[...]` � Character class (matches any one character inside)
+- `\r` � Carriage return (Windows line ending)
+- `\n` � Line feed (Unix line ending)
+- `+` � One or more (handles multiple line breaks)
 
 **Usage:**
 
@@ -249,10 +249,10 @@ $lines = $content -split '[\r\n]+'
 
 **Why this pattern:**
 
-- ✅ Cross-platform compatible (Windows CRLF and Unix LF)
-- ✅ Handles multiple consecutive line breaks
-- ✅ Works in all PowerShell versions
-- ✅ Prevents empty lines in array
+- ? Cross-platform compatible (Windows CRLF and Unix LF)
+- ? Handles multiple consecutive line breaks
+- ? Works in all PowerShell versions
+- ? Prevents empty lines in array
 
 ---
 
@@ -323,7 +323,7 @@ $task.Actions[0].Execute -like "*WelcomeMessage.ps1"  # Correct script
 
 **Type:** WAV file (RIFF format)  
 **Codec:** PCM audio  
-**Max Size:** ~10MB (practical: 10 seconds × ~1MB/sec)  
+**Max Size:** ~10MB (practical: 10 seconds � ~1MB/sec)  
 **Format Check:** Validates RIFF/WAVE header bytes
 
 ### WAV Header Validation
@@ -358,10 +358,10 @@ $hasBOM = ($bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF)
 
 **Why UTF-8 with BOM:**
 
-- ✅ Preserves emoji and international characters
-- ✅ Compatible with Windows Notepad
-- ✅ Supports Unicode names and messages
-- ✅ Standard for PowerShell scripts
+- ? Preserves emoji and international characters
+- ? Compatible with Windows Notepad
+- ? Supports Unicode names and messages
+- ? Standard for PowerShell scripts
 
 ---
 
@@ -428,16 +428,16 @@ if (Test-Path $soundPath) {
 
 ### Current (v1.2.1)
 
-- ❌ No official plugin API
-- ❌ No extension hooks
+- ? No official plugin API
+- ? No extension hooks
 - Config file is primary customization method
 
 ### Future (v1.3+)
 
-- 🔮 Potential event hooks
-- 🔮 Custom message plugins
-- 🔮 Configuration API
-- 🔮 Theme customization points
+- ?? Potential event hooks
+- ?? Custom message plugins
+- ?? Configuration API
+- ?? Theme customization points
 
 ---
 
@@ -456,7 +456,7 @@ C:\RomanticCustomization\WelcomeMessage.ps1
 ### Check Event Viewer Logs
 
 ```powershell
-# Windows Logs → Application
+# Windows Logs ? Application
 # Look for RomanticWelcome task events
 Get-EventLog -LogName Application -Source TaskScheduler -Newest 10
 ```
@@ -477,28 +477,28 @@ Get-ItemProperty "HKCU:\Software\Microsoft\Windows\DWM"
 
 ### Execution Policy
 
-- ✅ RemoteSigned limits to signed/local scripts
-- ✅ User-scope only (not system-wide)
-- ✅ Reverts on uninstall
+- ? RemoteSigned limits to signed/local scripts
+- ? User-scope only (not system-wide)
+- ? Reverts on uninstall
 
 ### Registry Access
 
-- ✅ User hive only (HKCU, not HKLM)
-- ✅ No system-critical keys modified
-- ✅ All changes reversible
+- ? User hive only (HKCU, not HKLM)
+- ? No system-critical keys modified
+- ? All changes reversible
 
 ### File Permissions
 
-- ✅ C:\RomanticCustomization requires standard user access
-- ✅ No special administrator permissions after install
-- ✅ Scripts run as logged-in user (not elevated)
+- ? C:\RomanticCustomization requires standard user access
+- ? No special administrator permissions after install
+- ? Scripts run as logged-in user (not elevated)
 
 ### Data Privacy
 
-- ✅ No internet connectivity
-- ✅ No external data collection
-- ✅ Config stored locally only
-- ✅ No cloud sync
+- ? No internet connectivity
+- ? No external data collection
+- ? Config stored locally only
+- ? No cloud sync
 
 ---
 
@@ -528,20 +528,20 @@ Get-ItemProperty "HKCU:\Software\Microsoft\Windows\DWM"
 
 ### PowerShell Versions
 
-- ✅ 5.0
-- ✅ 5.1
-- ✅ 7.x (PowerShell Core)
+- ? 5.0
+- ? 5.1
+- ? 7.x (PowerShell Core)
 
 ### Windows Versions
 
-- ✅ Windows 10 (build 1809+)
-- ✅ Windows 11 (all builds)
+- ? Windows 10 (build 1809+)
+- ? Windows 11 (all builds)
 
 ### System Architectures
 
-- ✅ x64 (primary)
-- ✅ x86 (supported)
-- ❓ ARM (untested)
+- ? x64 (primary)
+- ? x86 (supported)
+- ? ARM (untested)
 
 ---
 
@@ -582,3 +582,4 @@ Test-Path "HKCU:\Software\RomanticCustomization"
 ---
 
 **For non-technical users:** See [DOCUMENTATION_INDEX.md](../DOCUMENTATION_INDEX.md)
+

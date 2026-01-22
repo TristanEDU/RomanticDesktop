@@ -9,20 +9,20 @@
 
 v1.2 is a maintenance release focused on **reliability, robustness, and user experience**. This update fixes 13 critical and high-priority bugs that were discovered during v1.1 testing, and adds 11 medium-priority enhancements for better error handling and validation.
 
-**Status:** ✅ All critical issues resolved | ✅ Comprehensive validation | ✅ Enhanced diagnostics
+**Status:** ? All critical issues resolved | ? Comprehensive validation | ? Enhanced diagnostics
 
 ---
 
 ## Critical Fixes (BLOCKING)
 
-### 🔴 BUG #1: Missing Emoji Characters in Messages
+### ?? BUG #1: Missing Emoji Characters in Messages
 
-**Severity:** CRITICAL | **Impact:** User-facing | **Status:** ✅ FIXED
+**Severity:** CRITICAL | **Impact:** User-facing | **Status:** ? FIXED
 
 **Symptom:**
 
 - All 8 welcome messages in config.txt were missing emoji endings
-- Example: "Good morning, beautiful! Hope your day is as amazing as you are" (no ❤️)
+- Example: "Good morning, beautiful! Hope your day is as amazing as you are" (no ??)
 - Messages appeared bland and incomplete
 
 **Root Cause:**
@@ -33,14 +33,14 @@ v1.2 is a maintenance release focused on **reliability, robustness, and user exp
 **Fix Applied (v1.2):**
 
 - Restored all emoji endings to messages:
-  - "...as amazing as you are ❤️"
-  - "...make every day brighter ✨"
-  - "...conquer the day together? 💕"
-  - "...wonderful day 🌹"
-  - "...logged in to the best heart 💖"
-  - "...you're incredible! ❤️"
-  - "...chance to be amazing! ✨"
-  - "...in it today! 💝"
+  - "...as amazing as you are ??"
+  - "...make every day brighter ?"
+  - "...conquer the day together? ??"
+  - "...wonderful day ??"
+  - "...logged in to the best heart ??"
+  - "...you're incredible! ??"
+  - "...chance to be amazing! ?"
+  - "...in it today! ??"
 - Verified UTF-8 BOM encoding applied
 
 **Testing:**
@@ -48,14 +48,14 @@ v1.2 is a maintenance release focused on **reliability, robustness, and user exp
 ```powershell
 # Verify emoji preservation
 (Get-Content "C:\RomanticCustomization\config.txt" | Select-String "MESSAGE=" | Select-Object -First 1).Line
-# Should show: MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ❤️
+# Should show: MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ??
 ```
 
 ---
 
-### 🔴 BUG #2: Broken Line-Splitting Regex (CONFIG_VALIDATOR.ps1)
+### ?? BUG #2: Broken Line-Splitting Regex (CONFIG_VALIDATOR.ps1)
 
-**Severity:** CRITICAL | **Impact:** Validation fails silently | **Status:** ✅ FIXED
+**Severity:** CRITICAL | **Impact:** Validation fails silently | **Status:** ? FIXED
 
 **Symptom:**
 
@@ -85,9 +85,9 @@ $lines = $content -split '[\r\n]+'
 
 ---
 
-### 🔴 BUG #3: Broken Line-Splitting Regex (WelcomeMessage.ps1)
+### ?? BUG #3: Broken Line-Splitting Regex (WelcomeMessage.ps1)
 
-**Severity:** CRITICAL | **Impact:** Runtime failure | **Status:** ✅ FIXED
+**Severity:** CRITICAL | **Impact:** Runtime failure | **Status:** ? FIXED
 
 **Symptom:**
 
@@ -107,13 +107,13 @@ $lines = $content -split '[\r\n]+'
 
 ---
 
-### 🔴 BUG #4: Confusing Step Numbering in Installation
+### ?? BUG #4: Confusing Step Numbering in Installation
 
-**Severity:** CRITICAL | **Impact:** User confusion | **Status:** ✅ FIXED
+**Severity:** CRITICAL | **Impact:** User confusion | **Status:** ? FIXED
 
 **Symptom:**
 
-- Installation displayed inconsistent step counts: [1/7] → [2/7] → [2.5/7] → [3/7] → [3.5/7]
+- Installation displayed inconsistent step counts: [1/7] ? [2/7] ? [2.5/7] ? [3/7] ? [3.5/7]
 - Users questioned if installation would complete (what happens at step 2.5 of 7?)
 - Unprofessional appearance and confusing UX
 
@@ -128,12 +128,12 @@ $lines = $content -split '[\r\n]+'
 - Step breakdown:
   1. [1/8] Setting up directories
   2. [2/8] Installing files
-  3. [3/8] Validating configuration ← Moved from 2.5
-  4. [4/8] Configuring PowerShell ← Was [3/7]
-  5. [5/8] Storing installation path ← Was [3.5/7]
-  6. [6/8] Enabling startup sound ← Was [4/7]
-  7. [7/8] Setting up welcome message ← Was [5/7]
-  8. [8/8] Applying romantic theme ← Was [6/7]
+  3. [3/8] Validating configuration ? Moved from 2.5
+  4. [4/8] Configuring PowerShell ? Was [3/7]
+  5. [5/8] Storing installation path ? Was [3.5/7]
+  6. [6/8] Enabling startup sound ? Was [4/7]
+  7. [7/8] Setting up welcome message ? Was [5/7]
+  8. [8/8] Applying romantic theme ? Was [6/7]
 
 **Before & After:**
 
@@ -147,9 +147,9 @@ AFTER (v1.2):
 
 ---
 
-### 🔴 BUG #5: Missing Section-Aware Config Parsing
+### ?? BUG #5: Missing Section-Aware Config Parsing
 
-**Severity:** CRITICAL | **Impact:** Security/reliability | **Status:** ✅ FIXED
+**Severity:** CRITICAL | **Impact:** Security/reliability | **Status:** ? FIXED
 
 **Symptom:**
 
@@ -194,9 +194,9 @@ AFTER (v1.2):
 
 ## High-Priority Fixes (BROKEN FUNCTIONALITY)
 
-### 🟠 BUG #6: Missing Section Validation in CONFIG_VALIDATOR
+### ?? BUG #6: Missing Section Validation in CONFIG_VALIDATOR
 
-**Severity:** HIGH | **Impact:** Invalid configs accepted | **Status:** ✅ FIXED
+**Severity:** HIGH | **Impact:** Invalid configs accepted | **Status:** ? FIXED
 
 **Symptom:**
 
@@ -221,9 +221,9 @@ AFTER (v1.2):
 
 ---
 
-### 🟠 BUG #7: WELCOME_TIMEOUT Validation Missing
+### ?? BUG #7: WELCOME_TIMEOUT Validation Missing
 
-**Severity:** HIGH | **Impact:** Invalid values accepted | **Status:** ✅ FIXED
+**Severity:** HIGH | **Impact:** Invalid values accepted | **Status:** ? FIXED
 
 **Symptom:**
 
@@ -241,9 +241,9 @@ AFTER (v1.2):
 
 ---
 
-### 🟠 BUG #8: MESSAGE Length Validation Missing
+### ?? BUG #8: MESSAGE Length Validation Missing
 
-**Severity:** HIGH | **Impact:** UI text cutoff | **Status:** ✅ FIXED
+**Severity:** HIGH | **Impact:** UI text cutoff | **Status:** ? FIXED
 
 **Symptom:**
 
@@ -266,14 +266,14 @@ AFTER (v1.2):
 
 ---
 
-### 🟠 BUG #9: Future-Date Check Missing
+### ?? BUG #9: Future-Date Check Missing
 
-**Severity:** HIGH | **Impact:** Negative "days together" | **Status:** ✅ FIXED
+**Severity:** HIGH | **Impact:** Negative "days together" | **Status:** ? FIXED
 
 **Symptom:**
 
 - ANNIVERSARY_DATE validation didn't check if date was in future
-- User enters tomorrow's date → "We've been together for -5 amazing days!"
+- User enters tomorrow's date ? "We've been together for -5 amazing days!"
 - Documentation promised this check but it wasn't implemented
 
 **Fix Applied (v1.2):**
@@ -287,15 +287,15 @@ AFTER (v1.2):
 
 ---
 
-### 🟠 BUG #10: Validation Errors Hidden from User
+### ?? BUG #10: Validation Errors Hidden from User
 
-**Severity:** HIGH | **Impact:** User can't troubleshoot | **Status:** ✅ FIXED
+**Severity:** HIGH | **Impact:** User can't troubleshoot | **Status:** ? FIXED
 
 **Symptom:**
 
 - CONFIG_VALIDATOR.ps1 output piped to `Out-Null`
 - If validation failed, user saw no error details
-- Just: "⚠ Configuration validation warnings (continuing)"
+- Just: "? Configuration validation warnings (continuing)"
 - No guidance on how to fix issues
 
 **Fix Applied (v1.2):**
@@ -304,9 +304,9 @@ AFTER (v1.2):
   ```powershell
   $validationOutput = & $configValidator "$installPath\config.txt" 2>&1
   if ($LASTEXITCODE -eq 0) {
-      Write-Host "      ✓ Configuration is valid" -ForegroundColor Green
+      Write-Host "      ? Configuration is valid" -ForegroundColor Green
   } else {
-      Write-Host "      ⚠ Configuration validation warnings:" -ForegroundColor Yellow
+      Write-Host "      ? Configuration validation warnings:" -ForegroundColor Yellow
       $validationOutput | ForEach-Object { Write-Host "        $_" -ForegroundColor Yellow }
   }
   ```
@@ -320,9 +320,9 @@ AFTER (v1.2):
 
 ## Medium-Priority Fixes (RELIABILITY & UX)
 
-### 🟡 BUG #11: Registry Path Not Verified
+### ?? BUG #11: Registry Path Not Verified
 
-**Severity:** MEDIUM | **Impact:** Silent failure risk | **Status:** ✅ FIXED
+**Severity:** MEDIUM | **Impact:** Silent failure risk | **Status:** ? FIXED
 
 **Symptom:**
 
@@ -339,15 +339,15 @@ AFTER (v1.2):
   # Verify registry was actually written
   $verifyPath = Get-ItemProperty -Path $regPath -Name "InstallPath" -ErrorAction SilentlyContinue
   if ($verifyPath -and $verifyPath.InstallPath -eq $installPath) {
-      Write-Host "      ✓ Registry path stored for portability (verified)" -ForegroundColor Green
+      Write-Host "      ? Registry path stored for portability (verified)" -ForegroundColor Green
   }
   ```
 
 ---
 
-### 🟡 BUG #12: Task Verification Incomplete
+### ?? BUG #12: Task Verification Incomplete
 
-**Severity:** MEDIUM | **Impact:** Task may not run | **Status:** ✅ FIXED
+**Severity:** MEDIUM | **Impact:** Task may not run | **Status:** ? FIXED
 
 **Symptom:**
 
@@ -365,9 +365,9 @@ AFTER (v1.2):
 
 ---
 
-### 🟡 BUG #13: UTF-8 BOM Not Verified
+### ?? BUG #13: UTF-8 BOM Not Verified
 
-**Severity:** MEDIUM | **Impact:** Emoji issues | **Status:** ✅ FIXED
+**Severity:** MEDIUM | **Impact:** Emoji issues | **Status:** ? FIXED
 
 **Fix Applied (v1.2):**
 
@@ -377,9 +377,9 @@ AFTER (v1.2):
 
 ---
 
-### 🟡 BUG #14: Timer Not Properly Cleaned Up
+### ?? BUG #14: Timer Not Properly Cleaned Up
 
-**Severity:** MEDIUM | **Impact:** Resource leak | **Status:** ✅ FIXED
+**Severity:** MEDIUM | **Impact:** Resource leak | **Status:** ? FIXED
 
 **Symptom:**
 
@@ -397,9 +397,9 @@ $form.Add_FormClosing({
 
 ---
 
-### 🟡 BUG #15: Sound Playback Blocks UI
+### ?? BUG #15: Sound Playback Blocks UI
 
-**Severity:** MEDIUM | **Impact:** Unresponsive UI during sound | **Status:** ✅ FIXED
+**Severity:** MEDIUM | **Impact:** Unresponsive UI during sound | **Status:** ? FIXED
 
 **Symptom:**
 
@@ -421,9 +421,9 @@ $player.PlayAsync()  # Changed from Play()
 
 ---
 
-### 🟡 BUG #16: No Dry-Run Option for Uninstall
+### ?? BUG #16: No Dry-Run Option for Uninstall
 
-**Severity:** MEDIUM | **Impact:** Users hesitant to uninstall | **Status:** ✅ FIXED
+**Severity:** MEDIUM | **Impact:** Users hesitant to uninstall | **Status:** ? FIXED
 
 **Fix Applied (v1.2):**
 
@@ -436,9 +436,9 @@ $player.PlayAsync()  # Changed from Play()
 
 ---
 
-### 🟡 BUG #17: Theme Color Changes Not Validated
+### ?? BUG #17: Theme Color Changes Not Validated
 
-**Severity:** MEDIUM | **Impact:** Unknown if theme applied | **Status:** ✅ FIXED
+**Severity:** MEDIUM | **Impact:** Unknown if theme applied | **Status:** ? FIXED
 
 **Fix Applied (v1.2):**
 
@@ -449,9 +449,9 @@ $player.PlayAsync()  # Changed from Play()
 
 ---
 
-### 🟡 BUG #18: No Installation Timestamp
+### ?? BUG #18: No Installation Timestamp
 
-**Severity:** MEDIUM | **Impact:** Can't track install date | **Status:** ✅ FIXED
+**Severity:** MEDIUM | **Impact:** Can't track install date | **Status:** ? FIXED
 
 **Fix Applied (v1.2):**
 
@@ -464,9 +464,9 @@ $player.PlayAsync()  # Changed from Play()
 
 ---
 
-### 🟡 BUG #19: Sound File Not Validated
+### ?? BUG #19: Sound File Not Validated
 
-**Severity:** MEDIUM | **Impact:** Invalid files could be used | **Status:** ✅ FIXED
+**Severity:** MEDIUM | **Impact:** Invalid files could be used | **Status:** ? FIXED
 
 **Symptom:**
 
@@ -489,9 +489,9 @@ $player.PlayAsync()  # Changed from Play()
 
 | Category                   | v1.1  | v1.2     | Improvement             |
 | -------------------------- | ----- | -------- | ----------------------- |
-| **Critical Bugs**          | 5     | 0        | ✅ All fixed            |
-| **High-Priority Issues**   | 5     | 0        | ✅ All fixed            |
-| **Medium-Priority Issues** | 9     | 0        | ✅ All fixed            |
+| **Critical Bugs**          | 5     | 0        | ? All fixed            |
+| **High-Priority Issues**   | 5     | 0        | ? All fixed            |
+| **Medium-Priority Issues** | 9     | 0        | ? All fixed            |
 | **Validation Rules**       | 3     | 8        | +167% more validation   |
 | **Error Messages**         | Basic | Detailed | Users can self-diagnose |
 | **File Verifications**     | 2     | 6        | 3x more robustness      |
@@ -533,14 +533,14 @@ VERIFY.ps1
 
 ## Testing Checklist
 
-✅ **Critical Fixes:**
+? **Critical Fixes:**
 
 - [ ] Emojis display correctly in welcome message
 - [ ] Config file parses with Windows and Unix line endings
 - [ ] Installation step counter is sequential [1-8]
 - [ ] Custom messages load from config
 
-✅ **Validation:**
+? **Validation:**
 
 - [ ] CONFIG_VALIDATOR reports missing sections
 - [ ] WELCOME_TIMEOUT validation works (5-300 range)
@@ -548,7 +548,7 @@ VERIFY.ps1
 - [ ] Future dates rejected with error message
 - [ ] Validation errors display to user during install
 
-✅ **Reliability:**
+? **Reliability:**
 
 - [ ] Registry path verified on write
 - [ ] Scheduled task state checked (not just existence)
@@ -556,7 +556,7 @@ VERIFY.ps1
 - [ ] Sound plays asynchronously (UI not blocked)
 - [ ] Timer cleaned up on form close
 
-✅ **UX Improvements:**
+? **UX Improvements:**
 
 - [ ] UNINSTALL.ps1 -WhatIf shows what would be deleted
 - [ ] Theme color changes validated and documented
@@ -569,11 +569,11 @@ VERIFY.ps1
 
 These are by design and reserved for v2.0:
 
-- ❌ Voice message playback not supported
-- ❌ Dynamic wallpaper rotation not included
-- ❌ Multiple system profiles not supported
-- ❌ Scheduled message delivery not available
-- ❌ Advanced calendar integration not implemented
+- ? Voice message playback not supported
+- ? Dynamic wallpaper rotation not included
+- ? Multiple system profiles not supported
+- ? Scheduled message delivery not available
+- ? Advanced calendar integration not implemented
 
 ---
 
@@ -588,10 +588,10 @@ These are by design and reserved for v2.0:
 
 ## Security Notes
 
-✅ No changes to security model  
-✅ Same UAC requirements as v1.1  
-✅ Registry modifications unchanged  
-✅ No new external dependencies
+? No changes to security model  
+? Same UAC requirements as v1.1  
+? Registry modifications unchanged  
+? No new external dependencies
 
 ---
 
@@ -609,3 +609,4 @@ If you encounter any issues:
 **v1.2 Release:** January 22, 2026  
 **Compatibility:** Windows 10 (build 1809+) and Windows 11 (all builds)  
 **License:** Personal use only
+

@@ -1,4 +1,4 @@
-# 🗑️ Uninstall Guide - Safe Removal
+# ??? Uninstall Guide - Safe Removal
 
 **Version:** v1.2.1 | **Time Required:** ~3 minutes | **Difficulty:** Easy
 
@@ -8,21 +8,21 @@ Complete guide to cleanly remove Romantic Windows Customization.
 
 ## Before You Uninstall
 
-### ✅ What Gets Removed?
+### ? What Gets Removed?
 
-- ❌ `C:\RomanticCustomization\` folder (entire directory)
-- ❌ Scheduled task: "RomanticWelcome"
-- ❌ Registry key: `HKCU:\Software\RomanticCustomization`
-- ❌ PowerShell execution policy changes (reverted)
-- ❌ Windows theme colors (reset to defaults)
+- ? `C:\RomanticCustomization\` folder (entire directory)
+- ? Scheduled task: "RomanticWelcome"
+- ? Registry key: `HKCU:\Software\RomanticCustomization`
+- ? PowerShell execution policy changes (reverted)
+- ? Windows theme colors (reset to defaults)
 
-### ✅ What Gets Preserved?
+### ? What Gets Preserved?
 
-- ✅ No system files damaged
-- ✅ No permanent registry changes
-- ✅ No boot sector modifications
-- ✅ Can reinstall anytime with no issues
-- ✅ No data loss
+- ? No system files damaged
+- ? No permanent registry changes
+- ? No boot sector modifications
+- ? Can reinstall anytime with no issues
+- ? No data loss
 
 ---
 
@@ -33,7 +33,7 @@ This method shows you exactly what will be deleted **before** anything is remove
 ### Step 1: Open PowerShell
 
 1. Search "PowerShell" in Start menu
-2. Right-click → **Run as Administrator**
+2. Right-click ? **Run as Administrator**
 3. Click **Yes** when prompted
 
 ### Step 2: Run Uninstaller with Preview
@@ -78,7 +78,7 @@ You'll see:
 Uninstall Complete!
 ```
 
-✅ **Done!**
+? **Done!**
 
 ---
 
@@ -91,7 +91,7 @@ If you prefer not to use PowerShell:
 1. Open File Explorer
 2. Navigate to: `C:\RomanticCustomization\`
 3. Delete the entire folder
-   - Right-click → Delete (or press Delete key)
+   - Right-click ? Delete (or press Delete key)
 
 ### Step 2: Remove Scheduled Task
 
@@ -100,7 +100,7 @@ If you prefer not to use PowerShell:
 3. Press Enter (Task Scheduler opens)
 4. Look in: Task Scheduler Library
 5. Find: "RomanticWelcome"
-6. Right-click → Delete
+6. Right-click ? Delete
 7. Click Yes to confirm
 
 ### Step 3: Remove Registry Key
@@ -109,16 +109,16 @@ If you prefer not to use PowerShell:
 2. Type: `regedit`
 3. Press Enter (Registry Editor opens)
 4. Navigate to: `HKEY_CURRENT_USER\Software\RomanticCustomization`
-5. Right-click the "RomanticCustomization" folder → Delete
+5. Right-click the "RomanticCustomization" folder ? Delete
 6. Click Yes to confirm
 
 ### Step 4: Restore Windows Theme
 
-1. Right-click Desktop → Personalize
-2. Colors → Choose default theme
+1. Right-click Desktop ? Personalize
+2. Colors ? Choose default theme
 3. Or manually set Accent color to your preferred color
 
-✅ **All removed!**
+? **All removed!**
 
 ---
 
@@ -142,7 +142,7 @@ Test-Path "C:\RomanticCustomization"
 
 ## After Uninstall
 
-### ✅ Verify Everything Is Removed
+### ? Verify Everything Is Removed
 
 1. Check folder is gone:
    - Open File Explorer
@@ -150,7 +150,7 @@ Test-Path "C:\RomanticCustomization"
    - Should say "Folder not found"
 
 2. Check scheduled task is gone:
-   - Press Windows+R → `taskschd.msc`
+   - Press Windows+R ? `taskschd.msc`
    - Search for "RomanticWelcome"
    - Should not find it
 
@@ -158,7 +158,7 @@ Test-Path "C:\RomanticCustomization"
    - No welcome message should appear
    - No theme colors should apply
 
-### ✅ Theme Colors Restored
+### ? Theme Colors Restored
 
 - Windows theme reset to your default
 - Accent color reset
@@ -210,8 +210,8 @@ Copy-Item "C:\Users\$env:USERNAME\Documents\config_backup.txt" "C:\RomanticCusto
 
 **Solution:**
 
-1. Open Task Scheduler (`Windows+R` → `taskschd.msc`)
-2. Right-click "RomanticWelcome" → Delete
+1. Open Task Scheduler (`Windows+R` ? `taskschd.msc`)
+2. Right-click "RomanticWelcome" ? Delete
 3. Click Yes
 4. If still won't delete, restart and try again
 
@@ -239,8 +239,8 @@ Remove-Item "C:\RomanticCustomization" -Recurse -Force
 
 ### Check Event Viewer for Errors
 
-1. Windows+R → `eventvwr`
-2. Application → Look for errors related to RomanticWelcome
+1. Windows+R ? `eventvwr`
+2. Application ? Look for errors related to RomanticWelcome
 3. Note the error code
 
 ### Try Safe Mode
@@ -272,7 +272,7 @@ Test-Path "C:\RomanticCustomization"  # Should be False
 
 ## Complete Removal Verification Checklist
 
-✅ Run this PowerShell command to verify complete removal:
+? Run this PowerShell command to verify complete removal:
 
 ```powershell
 $checks = @{
@@ -295,10 +295,11 @@ $checks | ForEach-Object {
 
 ## Need Help?
 
-- **Want to reinstall?** → [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md)
-- **Uninstall issues?** → [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
-- **Questions?** → [FAQ.md](../FAQ.md)
+- **Want to reinstall?** ? [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md)
+- **Uninstall issues?** ? [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+- **Questions?** ? [FAQ.md](../FAQ.md)
 
 ---
 
-**Cleanly uninstalled! No traces left. 💕**
+**Cleanly uninstalled! No traces left. ??**
+

@@ -66,11 +66,11 @@
 
 **Support:**
 
-- ✅ Japanese: 「田中 さくら」
-- ✅ Arabic: الاسم
-- ✅ Chinese: 姓名
-- ✅ Russian: Имя
-- ✅ Emoji: 💕
+- ? Japanese: ??? ????
+- ? Arabic: ?????
+- ? Chinese: ??
+- ? Russian: ???
+- ? Emoji: ??
 
 **Requirements:**
 
@@ -82,14 +82,14 @@
 ```powershell
 $content = @"
 [USER]
-HER_NAME=田中 さくら
+HER_NAME=?? ???
 WELCOME_TIMEOUT=20
 
 [DATES]
 ANNIVERSARY_DATE=2024-01-06
 
 [MESSAGES]
-MESSAGE=おはようございます、美しい！
+MESSAGE=?????????????!
 
 [FUTURE]
 "@
@@ -108,9 +108,9 @@ MESSAGE=おはようございます、美しい！
 1. Open `C:\RomanticCustomization\config.txt` in Notepad (or UTF-8 capable editor)
 2. In the `[MESSAGES]` section, add lines:
    ```
-   MESSAGE=Your first message with emoji ❤️
-   MESSAGE=Second message ✨
-   MESSAGE=Third message 💕
+   MESSAGE=Your first message with emoji ??
+   MESSAGE=Second message ?
+   MESSAGE=Third message ??
    ```
 3. One message per line (no empty lines)
 4. Max 200 characters per message
@@ -125,10 +125,10 @@ MESSAGE=おはようございます、美しい！
 
 **Examples:**
 
-- ✅ 2024-01-06 (January 6, 2024)
-- ✅ 2023-12-25 (December 25, 2023)
-- ❌ 01/06/2024 (wrong format)
-- ❌ 2024-1-6 (missing leading zero)
+- ? 2024-01-06 (January 6, 2024)
+- ? 2023-12-25 (December 25, 2023)
+- ? 01/06/2024 (wrong format)
+- ? 2024-1-6 (missing leading zero)
 
 **Validation:**
 
@@ -236,7 +236,7 @@ C:\path\to\INSTALL.ps1
 
 **Option 1: Add to exclusion list**
 
-- Windows Defender: Settings → Virus & threat protection → Manage settings → Add exclusions
+- Windows Defender: Settings ? Virus & threat protection ? Manage settings ? Add exclusions
 - Add: `C:\RomanticCustomization`
 - Add: The installation folder containing scripts
 
@@ -261,10 +261,10 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 
 | Feature                  | Works?     | Notes                                                                     |
 | ------------------------ | ---------- | ------------------------------------------------------------------------- |
-| Share executable files   | ✅ Yes     | All users can use same scripts                                            |
-| Share config.txt         | ⚠️ Partial | Messages shared, but name customization per-user requires separate config |
-| Per-user welcome message | ❌ No      | v2.0 feature                                                              |
-| Per-user scheduled task  | ✅ Yes     | Each user must run INSTALL separately                                     |
+| Share executable files   | ? Yes     | All users can use same scripts                                            |
+| Share config.txt         | ?? Partial | Messages shared, but name customization per-user requires separate config |
+| Per-user welcome message | ? No      | v2.0 feature                                                              |
+| Per-user scheduled task  | ? Yes     | Each user must run INSTALL separately                                     |
 
 **Recommended setup for multi-user:**
 
@@ -348,7 +348,7 @@ Test-Path "C:\RomanticCustomization\Sounds\romantic.wav"
 
 **Step 3: Windows sound is enabled**
 
-- Settings → System → Sound → Volume slider
+- Settings ? System ? Sound ? Volume slider
 - Should not be muted
 - Volume should be >0%
 
@@ -399,15 +399,15 @@ C:\RomanticCustomization\UNINSTALL.ps1
 
 **Preserved:**
 
-- ✅ Windows system files (untouched)
-- ✅ Documents and photos (untouched)
-- ✅ Other applications (untouched)
+- ? Windows system files (untouched)
+- ? Documents and photos (untouched)
+- ? Other applications (untouched)
 
 **Removed only:**
 
-- ❌ Scheduled task
-- ❌ RomanticCustomization folder
-- ❌ Registry entries we created
+- ? Scheduled task
+- ? RomanticCustomization folder
+- ? Registry entries we created
 
 ---
 
@@ -444,10 +444,10 @@ C:\RomanticCustomization\VERIFY.ps1
 
 **Your customizations:**
 
-- ✅ Name preserved
-- ✅ Anniversary date preserved
-- ✅ Custom messages preserved
-- ✅ Timeout settings preserved
+- ? Name preserved
+- ? Anniversary date preserved
+- ? Custom messages preserved
+- ? Timeout settings preserved
 
 ---
 
@@ -484,11 +484,11 @@ C:\RomanticCustomization\VERIFY.ps1
 
 **A:** No. Installation is completely offline.
 
-- ✅ No internet required
-- ✅ No cloud services
-- ✅ No telemetry
-- ✅ No external dependencies
-- ✅ Runs locally on your machine
+- ? No internet required
+- ? No cloud services
+- ? No telemetry
+- ? No external dependencies
+- ? Runs locally on your machine
 
 ---
 
@@ -524,11 +524,11 @@ $installPath = "Z:\RomanticCustomization"  # Network path
 
 **Quick summary:**
 
-- 🔧 13 critical/high-priority bug fixes
-- 🛡️ 11 new validation rules
-- 📊 Better error messages and diagnostics
-- 🧪 Improved testing and verification
-- 🎨 Enhanced reliability
+- ?? 13 critical/high-priority bug fixes
+- ??? 11 new validation rules
+- ?? Better error messages and diagnostics
+- ?? Improved testing and verification
+- ?? Enhanced reliability
 
 ---
 
@@ -565,3 +565,4 @@ $installPath = "Z:\RomanticCustomization"  # Network path
 
 **Last Updated:** January 22, 2026  
 **Version:** v1.2.0
+

@@ -16,17 +16,17 @@ Comprehensive guide to how Romantic Windows Customization works on Windows 10 vs
 
 | Feature               | Windows 10      | Windows 11      | Notes                        |
 | --------------------- | --------------- | --------------- | ---------------------------- |
-| Welcome message popup | ✅ Full support | ✅ Full support | Identical behavior           |
-| Custom messages       | ✅ Yes          | ✅ Yes          | All 8+ messages work         |
-| Days together counter | ✅ Yes          | ✅ Yes          | Same calculation             |
-| Sound playback        | ✅ Yes          | ✅ Yes          | Same audio support           |
-| Custom cursors        | ✅ Yes          | ✅ Yes          | Full cursor theming          |
-| Theme colors          | ✅ Yes          | ✅ Enhanced     | Better color picker in Win11 |
-| Scheduled task        | ✅ Works        | ✅ Works        | Identical task creation      |
-| Registry storage      | ✅ Yes          | ✅ Yes          | Same locations               |
-| Installation          | ✅ Smooth       | ✅ Smooth       | Auto-detects OS              |
-| Uninstallation        | ✅ Clean        | ✅ Clean        | Complete removal             |
-| Verification tools    | ✅ Full         | ✅ Full         | VERIFY.ps1 works on both     |
+| Welcome message popup | ? Full support | ? Full support | Identical behavior           |
+| Custom messages       | ? Yes          | ? Yes          | All 8+ messages work         |
+| Days together counter | ? Yes          | ? Yes          | Same calculation             |
+| Sound playback        | ? Yes          | ? Yes          | Same audio support           |
+| Custom cursors        | ? Yes          | ? Yes          | Full cursor theming          |
+| Theme colors          | ? Yes          | ? Enhanced     | Better color picker in Win11 |
+| Scheduled task        | ? Works        | ? Works        | Identical task creation      |
+| Registry storage      | ? Yes          | ? Yes          | Same locations               |
+| Installation          | ? Smooth       | ? Smooth       | Auto-detects OS              |
+| Uninstallation        | ? Clean        | ? Clean        | Complete removal             |
+| Verification tools    | ? Full         | ? Full         | VERIFY.ps1 works on both     |
 
 ---
 
@@ -149,8 +149,8 @@ HKCU:\Software\RomanticCustomization\
 
 **Stored values:**
 
-- `InstallPath` — Location of installation
-- `InstallDate` — When installed
+- `InstallPath` � Location of installation
+- `InstallDate` � When installed
 
 **No differences between OS versions.**
 
@@ -194,7 +194,7 @@ HKCU:\Software\RomanticCustomization\
 5. Takes ~2 minutes
 6. Completes successfully
 
-**Functional difference:** ❌ None
+**Functional difference:** ? None
 
 ---
 
@@ -233,7 +233,7 @@ When you run INSTALL.bat:
 
 - Custom cursors work with `.cur` files
 - Animated cursors (`.ani`) supported
-- Applied via Settings → Mouse
+- Applied via Settings ? Mouse
 - Same functionality
 
 **Difference:** UI location changed, but feature identical
@@ -256,7 +256,7 @@ When you run INSTALL.bat:
 - Works with external speakers/headphones
 - Identical behavior
 
-**User Impact:** ❌ None - sound works the same way
+**User Impact:** ? None - sound works the same way
 
 ---
 
@@ -301,7 +301,7 @@ When you run INSTALL.bat:
 
 If you get "Access Denied":
 
-1. Right-click INSTALL.bat → **Run as Administrator**
+1. Right-click INSTALL.bat ? **Run as Administrator**
 2. Ensure your account has Admin rights
 
 ### Windows 11: Admin Privileges Issues
@@ -332,7 +332,7 @@ If you get security prompts:
 - CPU usage: <5%
 - Memory: ~30MB
 
-**User Experience:** ✅ Fast on both
+**User Experience:** ? Fast on both
 
 ---
 
@@ -378,15 +378,15 @@ If you get security prompts:
 
 ### Windows 10 Versions to Avoid
 
-- ❌ Windows 10 1709 and earlier (unsupported)
-- ❌ Windows 10 S Mode (requires unlock)
+- ? Windows 10 1709 and earlier (unsupported)
+- ? Windows 10 S Mode (requires unlock)
 
 ### Windows 11 Versions
 
-- ✅ All current builds work
-- ✅ Latest 23H2 recommended
-- ✅ 22H2 also fully supported
-- ✅ Even older 21H2 builds work
+- ? All current builds work
+- ? Latest 23H2 recommended
+- ? 22H2 also fully supported
+- ? Even older 21H2 builds work
 
 ---
 
@@ -441,19 +441,20 @@ If you get security prompts:
 
 | Aspect              | Windows 10  | Windows 11   |
 | ------------------- | ----------- | ------------ |
-| **Fully Supported** | ✅ Yes      | ✅ Yes       |
-| **Installation**    | ✅ Simple   | ✅ Simple    |
-| **Functionality**   | ✅ 100%     | ✅ 100%      |
-| **Theme colors**    | ✅ Works    | ✅ Enhanced  |
-| **Scheduled task**  | ✅ Reliable | ✅ Reliable  |
-| **Compatibility**   | ✅ Full     | ✅ Full      |
-| **Performance**     | ✅ Good     | ✅ Excellent |
-| **Recommended**     | ✅ Yes      | ✅ Yes       |
+| **Fully Supported** | ? Yes      | ? Yes       |
+| **Installation**    | ? Simple   | ? Simple    |
+| **Functionality**   | ? 100%     | ? 100%      |
+| **Theme colors**    | ? Works    | ? Enhanced  |
+| **Scheduled task**  | ? Reliable | ? Reliable  |
+| **Compatibility**   | ? Full     | ? Full      |
+| **Performance**     | ? Good     | ? Excellent |
+| **Recommended**     | ? Yes      | ? Yes       |
 
 ---
 
-**Both Windows 10 and Windows 11 are fully supported.** Choose whichever OS you prefer - everything works the same! 💕
+**Both Windows 10 and Windows 11 are fully supported.** Choose whichever OS you prefer - everything works the same! ??
 
 ---
 
 For more help, see [DOCUMENTATION_INDEX.md](../DOCUMENTATION_INDEX.md)
+

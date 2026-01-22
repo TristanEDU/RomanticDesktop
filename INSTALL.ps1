@@ -1,4 +1,4 @@
-# Romantic Windows Customization Installer
+﻿# Romantic Windows Customization Installer
 # Portable version - works from any location (USB drive, desktop, etc.)
 # Compatible with Windows 10 and Windows 11
 
@@ -56,7 +56,7 @@ if ($missingFiles.Count -gt 0) {
     exit
 }
 
-Write-Host "  ✓ All required files found!" -ForegroundColor Green
+Write-Host "  âœ“ All required files found!" -ForegroundColor Green
 Write-Host ""
 
 # Optional files check
@@ -65,15 +65,15 @@ $hasCursors = (Get-ChildItem "$packageDir" -Filter "*.cur" -ErrorAction Silently
               (Get-ChildItem "$packageDir" -Filter "*.ani" -ErrorAction SilentlyContinue).Count -gt 0
 
 if ($hasSound) {
-    Write-Host "  ✓ Sound file found" -ForegroundColor Green
+    Write-Host "  âœ“ Sound file found" -ForegroundColor Green
 } else {
-    Write-Host "  ℹ No sound file (romantic.wav) - sound will be skipped" -ForegroundColor Gray
+    Write-Host "  â„¹ No sound file (romantic.wav) - sound will be skipped" -ForegroundColor Gray
 }
 
 if ($hasCursors) {
-    Write-Host "  ✓ Cursor files found" -ForegroundColor Green
+    Write-Host "  âœ“ Cursor files found" -ForegroundColor Green
 } else {
-    Write-Host "  ℹ No cursor files (.cur/.ani) - cursors will be skipped" -ForegroundColor Gray
+    Write-Host "  â„¹ No cursor files (.cur/.ani) - cursors will be skipped" -ForegroundColor Gray
 }
 
 Write-Host ""
@@ -99,18 +99,18 @@ if (-not (Test-Path $cursorsPath)) {
     New-Item -Path $cursorsPath -ItemType Directory -Force | Out-Null
 }
 
-Write-Host "      ✓ Directories created" -ForegroundColor Green
+Write-Host "      âœ“ Directories created" -ForegroundColor Green
 
 # Copy files
 Write-Host "[2/8] Installing files..." -ForegroundColor Cyan
 
 # Copy welcome script
 Copy-Item "$packageDir\WelcomeMessage.ps1" -Destination "$installPath\WelcomeMessage.ps1" -Force
-Write-Host "      ✓ Welcome script installed" -ForegroundColor Green
+Write-Host "      âœ“ Welcome script installed" -ForegroundColor Green
 
 # Copy config file
 Copy-Item "$packageDir\config.txt" -Destination "$installPath\config.txt" -Force
-Write-Host "      ✓ Configuration file installed" -ForegroundColor Green
+Write-Host "      âœ“ Configuration file installed" -ForegroundColor Green
 
 # Validate configuration file
 Write-Host "[3/8] Validating configuration..." -ForegroundColor Cyan
@@ -119,16 +119,16 @@ try {
     if (Test-Path $configValidator) {
         $validationOutput = & $configValidator "$installPath\config.txt" 2>&1
         if ($LASTEXITCODE -eq 0) {
-            Write-Host "      ✓ Configuration is valid" -ForegroundColor Green
+            Write-Host "      âœ“ Configuration is valid" -ForegroundColor Green
         } else {
-            Write-Host "      ⚠ Configuration validation warnings:" -ForegroundColor Yellow
+            Write-Host "      âš  Configuration validation warnings:" -ForegroundColor Yellow
             $validationOutput | ForEach-Object { Write-Host "        $_" -ForegroundColor Yellow }
         }
     } else {
-        Write-Host "      ℹ Validator not found (skipping validation)" -ForegroundColor Gray
+        Write-Host "      â„¹ Validator not found (skipping validation)" -ForegroundColor Gray
     }
 } catch {
-    Write-Host "      ⚠ Could not validate config: $_" -ForegroundColor Yellow
+    Write-Host "      âš  Could not validate config: $_" -ForegroundColor Yellow
 }
 
 # Copy sound file if exists
@@ -146,12 +146,12 @@ if ($hasSound) {
         
         if ($isValidWav) {
             Copy-Item "$packageDir\romantic.wav" -Destination "$soundsPath\romantic.wav" -Force
-            Write-Host "      ✓ Sound file installed (WAV format verified)" -ForegroundColor Green
+            Write-Host "      âœ“ Sound file installed (WAV format verified)" -ForegroundColor Green
         } else {
-            Write-Host "      ⚠ Sound file does not appear to be valid WAV (skipping)" -ForegroundColor Yellow
+            Write-Host "      âš  Sound file does not appear to be valid WAV (skipping)" -ForegroundColor Yellow
         }
     } catch {
-        Write-Host "      ⚠ Could not validate sound file: $_" -ForegroundColor Yellow
+        Write-Host "      âš  Could not validate sound file: $_" -ForegroundColor Yellow
     }
 }
 
@@ -159,16 +159,16 @@ if ($hasSound) {
 if ($hasCursors) {
     Copy-Item "$packageDir\*.cur" -Destination "$cursorsPath\" -Force -ErrorAction SilentlyContinue
     Copy-Item "$packageDir\*.ani" -Destination "$cursorsPath\" -Force -ErrorAction SilentlyContinue
-    Write-Host "      ✓ Cursor files installed" -ForegroundColor Green
+    Write-Host "      âœ“ Cursor files installed" -ForegroundColor Green
 }
 
 # Set execution policy for current user
 Write-Host "[4/8] Configuring PowerShell..." -ForegroundColor Cyan
 try {
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force -ErrorAction Stop
-    Write-Host "      ✓ PowerShell configured" -ForegroundColor Green
+    Write-Host "      âœ“ PowerShell configured" -ForegroundColor Green
 } catch {
-    Write-Host "      ⚠ Warning: Could not set execution policy" -ForegroundColor Yellow
+    Write-Host "      âš  Warning: Could not set execution policy" -ForegroundColor Yellow
     Write-Host "        Welcome message may not work until policy is set manually" -ForegroundColor Gray
 }
 
@@ -185,13 +185,13 @@ try {
     # Verify registry was actually written
     $verifyPath = Get-ItemProperty -Path $regPath -Name "InstallPath" -ErrorAction SilentlyContinue
     if ($verifyPath -and $verifyPath.InstallPath -eq $installPath) {
-        Write-Host "      ✓ Registry path stored for portability (verified)" -ForegroundColor Green
+        Write-Host "      âœ“ Registry path stored for portability (verified)" -ForegroundColor Green
     } else {
-        Write-Host "      ⚠ Registry stored but verification failed (may still work)" -ForegroundColor Yellow
+        Write-Host "      âš  Registry stored but verification failed (may still work)" -ForegroundColor Yellow
     }
 } catch {
-    Write-Host "      ✗ Error: Could not store registry path: $_" -ForegroundColor Red
-    Write-Host "      ℹ WelcomeMessage will default to C:\RomanticCustomization" -ForegroundColor Gray
+    Write-Host "      âœ— Error: Could not store registry path: $_" -ForegroundColor Red
+    Write-Host "      â„¹ WelcomeMessage will default to C:\RomanticCustomization" -ForegroundColor Gray
 }
 
 # Enable startup sound
@@ -206,9 +206,9 @@ try {
     # Disable the "disable startup sound" setting (double negative = enabled)
     Set-ItemProperty -Path $regPath -Name "DisableStartupSound" -Value 0 -Type DWord -Force -ErrorAction SilentlyContinue
     
-    Write-Host "      ✓ Startup sound enabled" -ForegroundColor Green
+    Write-Host "      âœ“ Startup sound enabled" -ForegroundColor Green
 } catch {
-    Write-Host "      ⚠ Warning: Could not enable startup sound" -ForegroundColor Yellow
+    Write-Host "      âš  Warning: Could not enable startup sound" -ForegroundColor Yellow
 }
 
 # Create scheduled task for welcome message
@@ -220,7 +220,7 @@ $taskName = "RomanticWelcome"
 $existingTask = Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
 if ($existingTask) {
     Unregister-ScheduledTask -TaskName $taskName -Confirm:$false | Out-Null
-    Write-Host "      ℹ Removed existing welcome task" -ForegroundColor Gray
+    Write-Host "      â„¹ Removed existing welcome task" -ForegroundColor Gray
 }
 
 # Get current user name
@@ -260,18 +260,18 @@ try {
         $hasAction = $verifyTask.Actions -ne $null -and $verifyTask.Actions.Count -gt 0
         
         if ($isEnabled -and $hasTrigger -and $hasAction) {
-            Write-Host "      ✓ Welcome message task created, verified, and ready" -ForegroundColor Green
+            Write-Host "      âœ“ Welcome message task created, verified, and ready" -ForegroundColor Green
         } else {
-            Write-Host "      ⚠ Task created but has issues:" -ForegroundColor Yellow
+            Write-Host "      âš  Task created but has issues:" -ForegroundColor Yellow
             if (-not $isEnabled) { Write-Host "        - Task is not enabled (State: $($verifyTask.State))" -ForegroundColor Yellow }
             if (-not $hasTrigger) { Write-Host "        - LogOn trigger not found" -ForegroundColor Yellow }
             if (-not $hasAction) { Write-Host "        - No action configured" -ForegroundColor Yellow }
         }
     } else {
-        Write-Host "      ⚠ Task created but verification failed (may work on next login)" -ForegroundColor Yellow
+        Write-Host "      âš  Task created but verification failed (may work on next login)" -ForegroundColor Yellow
     }
 } catch {
-    Write-Host "      ✗ Error creating welcome task: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host "      âœ— Error creating welcome task: $($_.Exception.Message)" -ForegroundColor Red
 }
 
 # Apply romantic theme colors
@@ -300,13 +300,13 @@ try {
     # Verify settings were applied
     $verifyAccent = Get-ItemProperty -Path $accentPath -Name "AccentColorMenu" -ErrorAction SilentlyContinue
     if ($verifyAccent -and $verifyAccent.AccentColorMenu -eq $colorValue) {
-        Write-Host "      ✓ Romantic theme colors applied (accent color verified)" -ForegroundColor Green
-        Write-Host "      ℹ Theme includes: rose gold accent color on taskbar and Start menu" -ForegroundColor Gray
+        Write-Host "      âœ“ Romantic theme colors applied (accent color verified)" -ForegroundColor Green
+        Write-Host "      â„¹ Theme includes: rose gold accent color on taskbar and Start menu" -ForegroundColor Gray
     } else {
-        Write-Host "      ⚠ Colors applied but verification failed (may still be applied)" -ForegroundColor Yellow
+        Write-Host "      âš  Colors applied but verification failed (may still be applied)" -ForegroundColor Yellow
     }
 } catch {
-    Write-Host "      ⚠ Warning: Could not apply all theme settings: $_" -ForegroundColor Yellow
+    Write-Host "      âš  Warning: Could not apply all theme settings: $_" -ForegroundColor Yellow
 }
 
 if ($hasCursors) {
@@ -337,32 +337,32 @@ if ($hasCursors) {
     if ($appliedCursors -gt 0) {
         # Refresh cursors
         [System.Windows.Forms.SendKeys]::SendWait("{F5}")
-        Write-Host "      ✓ Applied $appliedCursors cursor(s) automatically" -ForegroundColor Green
-        Write-Host "      ℹ Install remaining cursors manually via Mouse Settings" -ForegroundColor Gray
+        Write-Host "      âœ“ Applied $appliedCursors cursor(s) automatically" -ForegroundColor Green
+        Write-Host "      â„¹ Install remaining cursors manually via Mouse Settings" -ForegroundColor Gray
     } else {
-        Write-Host "      ℹ Install cursors manually via Mouse Settings" -ForegroundColor Gray
+        Write-Host "      â„¹ Install cursors manually via Mouse Settings" -ForegroundColor Gray
         Write-Host "        (Cursors saved in C:\RomanticCustomization\Cursors)" -ForegroundColor Gray
     }
 } else {
-    Write-Host "      ℹ No cursor files to install" -ForegroundColor Gray
+    Write-Host "      â„¹ No cursor files to install" -ForegroundColor Gray
 }
 
 # Final summary
 Write-Host ""
 Write-Host "================================================" -ForegroundColor Magenta
-Write-Host "        Installation Complete! ✓" -ForegroundColor Green
+Write-Host "        Installation Complete! âœ“" -ForegroundColor Green
 Write-Host "================================================" -ForegroundColor Magenta
 Write-Host ""
 
 Write-Host "What was installed:" -ForegroundColor White
-Write-Host "  ✓ Welcome message popup at login" -ForegroundColor Green
+Write-Host "  âœ“ Welcome message popup at login" -ForegroundColor Green
 if ($hasSound) {
-    Write-Host "  ✓ Romantic sound effect" -ForegroundColor Green
+    Write-Host "  âœ“ Romantic sound effect" -ForegroundColor Green
 }
-Write-Host "  ✓ Rose gold/pink accent colors" -ForegroundColor Green
-Write-Host "  ✓ Startup sound enabled" -ForegroundColor Green
+Write-Host "  âœ“ Rose gold/pink accent colors" -ForegroundColor Green
+Write-Host "  âœ“ Startup sound enabled" -ForegroundColor Green
 if ($hasCursors) {
-    Write-Host "  ✓ Custom cursors (may need manual setup)" -ForegroundColor Green
+    Write-Host "  âœ“ Custom cursors (may need manual setup)" -ForegroundColor Green
 }
 
 Write-Host ""
