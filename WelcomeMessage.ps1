@@ -3,12 +3,30 @@ Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
 # Load configuration from config file
-$scriptDir = "C:\RomanticCustomization"
+# v1.1: Read installation path from registry for portability
+$regPath = "HKCU:\Software\RomanticCustomization"
+$scriptDir = $null
+
+try {
+    $regData = Get-ItemProperty -Path $regPath -Name "InstallPath" -ErrorAction SilentlyContinue
+    if ($regData -and $regData.InstallPath) {
+        $scriptDir = $regData.InstallPath
+    }
+} catch {
+    # Registry key not found, fall back to default
+}
+
+# Fallback to default path if registry lookup failed
+if ([string]::IsNullOrEmpty($scriptDir)) {
+    $scriptDir = "C:\RomanticCustomization"
+}
+
 $configFile = "$scriptDir\config.txt"
 
 # Default values (used if config file is missing)
 $herName = "My Love"
 $startDate = Get-Date "2020-01-01"
+$welcomeTimeout = 20  # seconds
 $messages = @(
     "Good morning, beautiful! Hope your day is as amazing as you are ❤️",
     "Welcome back! You make every day brighter ☀️",
@@ -18,20 +36,28 @@ $messages = @(
     "Remember: you're incredible! ✨"
 )
 
-# Read config file if it exists
+# Read config file if it exists (v1.1 format with sections)
 if (Test-Path $configFile) {
     $configContent = Get-Content $configFile
     $customMessages = @()
     
     foreach ($line in $configContent) {
         # Skip comments and empty lines
-        if ($line -match '^\s*#' -or $line -match '^\s*$') {
+        if ($line -match '^\s*#' -or $line -match '^\s*$' -or $line -match '^\[') {
             continue
         }
         
         # Parse HER_NAME
         if ($line -match '^HER_NAME=(.+)$') {
             $herName = $matches[1].Trim()
+        }
+        
+        # Parse WELCOME_TIMEOUT
+        if ($line -match '^WELCOME_TIMEOUT=(\d+)$') {
+            $timeout = [int]$matches[1].Trim()
+            if ($timeout -ge 5 -and $timeout -le 300) {
+                $welcomeTimeout = $timeout
+            }
         }
         
         # Parse ANNIVERSARY_DATE
@@ -140,9 +166,9 @@ $closeButton.Add_MouseLeave({
     $this.BackColor = [System.Drawing.Color]::FromArgb(255, 255, 182, 193)
 })
 
-# Auto-close after 20 seconds
+# Auto-close after configurable timeout (default 20 seconds)
 $timer = New-Object System.Windows.Forms.Timer
-$timer.Interval = 20000
+$timer.Interval = $welcomeTimeout * 1000
 $timer.Add_Tick({ 
     $form.Close()
     $timer.Stop()

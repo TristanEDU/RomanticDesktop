@@ -112,6 +112,24 @@ Write-Host "      ✓ Welcome script installed" -ForegroundColor Green
 Copy-Item "$packageDir\config.txt" -Destination "$installPath\config.txt" -Force
 Write-Host "      ✓ Configuration file installed" -ForegroundColor Green
 
+# Validate configuration file (optional but recommended)
+Write-Host "[2.5/7] Validating configuration..." -ForegroundColor Cyan
+try {
+    $configValidator = "$packageDir\CONFIG_VALIDATOR.ps1"
+    if (Test-Path $configValidator) {
+        & $configValidator "$installPath\config.txt" | Out-Null
+        if ($LASTEXITCODE -eq 0) {
+            Write-Host "      ✓ Configuration is valid" -ForegroundColor Green
+        } else {
+            Write-Host "      ⚠ Configuration validation warnings (continuing)" -ForegroundColor Yellow
+        }
+    } else {
+        Write-Host "      ℹ Validator not found (skipping validation)" -ForegroundColor Gray
+    }
+} catch {
+    Write-Host "      ⚠ Could not validate config: $_" -ForegroundColor Yellow
+}
+
 # Copy sound file if exists
 if ($hasSound) {
     Copy-Item "$packageDir\romantic.wav" -Destination "$soundsPath\romantic.wav" -Force
@@ -133,6 +151,20 @@ try {
 } catch {
     Write-Host "      ⚠ Warning: Could not set execution policy" -ForegroundColor Yellow
     Write-Host "        Welcome message may not work until policy is set manually" -ForegroundColor Gray
+}
+
+# Store installation path in registry (v1.1 - for portability)
+Write-Host ""
+Write-Host "[3.5/7] Storing installation path in registry..." -ForegroundColor Cyan
+try {
+    $regPath = "HKCU:\Software\RomanticCustomization"
+    if (-not (Test-Path $regPath)) {
+        New-Item -Path $regPath -Force | Out-Null
+    }
+    Set-ItemProperty -Path $regPath -Name "InstallPath" -Value $installPath -Type String -Force
+    Write-Host "      ✓ Registry path stored for portability" -ForegroundColor Green
+} catch {
+    Write-Host "      ⚠ Warning: Could not store registry path: $_" -ForegroundColor Yellow
 }
 
 # Enable startup sound
@@ -190,7 +222,15 @@ try {
         -Description "Displays romantic welcome message at login" `
         -Force | Out-Null
     
-    Write-Host "      ✓ Welcome message task created" -ForegroundColor Green
+    # Verify task was created successfully
+    Start-Sleep -Milliseconds 500
+    $verifyTask = Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
+    
+    if ($verifyTask) {
+        Write-Host "      ✓ Welcome message task created and verified" -ForegroundColor Green
+    } else {
+        Write-Host "      ⚠ Task created but verification failed (may work on next login)" -ForegroundColor Yellow
+    }
 } catch {
     Write-Host "      ✗ Error creating welcome task: $($_.Exception.Message)" -ForegroundColor Red
 }
