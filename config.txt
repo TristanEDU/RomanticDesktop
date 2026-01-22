@@ -1,0 +1,22 @@
+# Romantic Customization Configuration
+# Edit these settings before installing!
+# Save this file after making changes
+
+# Her name (this will appear in the welcome message)
+HER_NAME=Gillian
+
+# Your anniversary or start date (format: YYYY-MM-DD)
+# Example: 2020-01-15 for January 15, 2020
+ANNIVERSARY_DATE=2024-01-06
+
+# Additional romantic messages (optional - add your own!)
+# The system will randomly pick one each time she logs in
+# Keep each message on its own line starting with MESSAGE=
+MESSAGE=Good morning, beautiful! Hope your day is as amazing as you are ❤️
+MESSAGE=Welcome back! You make every day brighter ☀️
+MESSAGE=Hey gorgeous! Ready to conquer the day together? 💕
+MESSAGE=Missing you already! Have a wonderful day 🌹
+MESSAGE=You're logged in to the best computer... but I'm logged in to the best heart 💖
+MESSAGE=Remember: you're incredible! ✨
+MESSAGE=Another day, another chance to be amazing! 💫
+MESSAGE=The world is lucky to have you in it today! 🌸
