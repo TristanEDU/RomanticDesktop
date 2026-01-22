@@ -7,19 +7,20 @@
 
 ## Quick Upgrade Summary
 
-| Scenario | Steps | Time | Data Loss |
-|----------|-------|------|-----------|
-| **v1.0 → v1.2** | Backup config, uninstall, install | 5 min | None* |
-| **v1.1 → v1.2** | Run INSTALL.ps1 (auto-upgrade) | 2 min | None |
+| Scenario                 | Steps                               | Time  | Data Loss           |
+| ------------------------ | ----------------------------------- | ----- | ------------------- |
+| **v1.0 → v1.2**          | Backup config, uninstall, install   | 5 min | None\*              |
+| **v1.1 → v1.2**          | Run INSTALL.ps1 (auto-upgrade)      | 2 min | None                |
 | **Rollback v1.2 → v1.1** | Restore from backup, uninstall v1.2 | 3 min | None (if backed up) |
 
-*With recommended backup process
+\*With recommended backup process
 
 ---
 
 ## Scenario 1: Upgrading from v1.0 to v1.2
 
 ### ✅ What You Should Know
+
 - v1.1 and v1.2 introduced new features (registry-based paths)
 - Your current config.txt is compatible
 - Settings will be preserved
@@ -27,6 +28,7 @@
 ### Step-by-Step Upgrade
 
 **Step 1: Back Up Your Configuration**
+
 ```powershell
 # Create backup folder
 New-Item -Path "C:\Backups" -ItemType Directory -Force | Out-Null
@@ -39,6 +41,7 @@ Copy-Item "C:\RomanticCustomization\config.txt" "C:\Backups\config.txt.backup_v1
 ```
 
 **Step 2: Run New INSTALL.ps1**
+
 ```powershell
 # Navigate to v1.2 package folder
 cd "C:\path\to\v1.2\package"
@@ -48,6 +51,7 @@ cd "C:\path\to\v1.2\package"
 ```
 
 **What happens during upgrade:**
+
 1. Existing scheduled task "RomanticWelcome" removed
 2. Old files (WelcomeMessage.ps1, etc.) updated with v1.2 versions
 3. config.txt updated with emoji fixes
@@ -56,6 +60,7 @@ cd "C:\path\to\v1.2\package"
 6. New validation tools installed
 
 **Step 3: Verify the Upgrade**
+
 ```powershell
 # Run verification tool
 C:\RomanticCustomization\VERIFY.ps1
@@ -64,6 +69,7 @@ C:\RomanticCustomization\VERIFY.ps1
 ```
 
 **Step 4: Test the Welcome Message**
+
 ```powershell
 # Log out and back in to test
 # OR run manually:
@@ -77,6 +83,7 @@ C:\RomanticCustomization\WelcomeMessage.ps1
 ## Scenario 2: Upgrading from v1.1 to v1.2
 
 ### ✅ What You Should Know
+
 - v1.2 is a minor update (bug fixes only, no breaking changes)
 - All v1.1 features preserved
 - Configuration remains unchanged
@@ -84,6 +91,7 @@ C:\RomanticCustomization\WelcomeMessage.ps1
 ### Quick Upgrade (2 minutes)
 
 **Option A: Automatic In-Place Upgrade**
+
 ```powershell
 # Simply run the new INSTALL.ps1
 # It will detect existing installation and upgrade it
@@ -93,6 +101,7 @@ C:\RomanticCustomization\WelcomeMessage.ps1
 ```
 
 **Option B: Controlled Upgrade with Backup**
+
 ```powershell
 # Step 1: Backup config (as precaution)
 Copy-Item "C:\RomanticCustomization\config.txt" "C:\RomanticCustomization\config.txt.backup_v1.1" -Force
@@ -105,6 +114,7 @@ C:\RomanticCustomization\VERIFY.ps1
 ```
 
 **What changes in v1.2:**
+
 - ✅ Bug fixes to emoji handling
 - ✅ Enhanced config validation
 - ✅ Better error messages
@@ -112,6 +122,7 @@ C:\RomanticCustomization\VERIFY.ps1
 - ✅ No configuration changes needed
 
 **What stays the same:**
+
 - ✅ Your personalized messages
 - ✅ Anniversary date
 - ✅ Her name
@@ -129,7 +140,8 @@ C:\RomanticCustomization\VERIFY.ps1
 
 **Step 1: Export Current Settings**
 
-*On old computer:*
+_On old computer:_
+
 ```powershell
 # Copy the entire installation
 Copy-Item "C:\RomanticCustomization" "E:\RomanticCustomization_Export" -Recurse
@@ -143,7 +155,8 @@ Copy-Item "C:\RomanticCustomization\Sounds\romantic.wav" "E:\romantic.wav" -Forc
 
 **Step 2: Prepare New Computer**
 
-*On new computer:*
+_On new computer:_
+
 ```powershell
 # Create folder for package
 New-Item -Path "C:\Setup\RomanticDesktop" -ItemType Directory -Force
@@ -157,12 +170,14 @@ Copy-Item "E:\romantic.wav" "C:\Setup\RomanticDesktop\romantic.wav" -Force
 ```
 
 **Step 3: Install on New Computer**
+
 ```powershell
 cd "C:\Setup\RomanticDesktop"
 .\INSTALL.ps1
 ```
 
 **Step 4: Verify**
+
 ```powershell
 C:\RomanticCustomization\VERIFY.ps1
 ```
@@ -174,6 +189,7 @@ C:\RomanticCustomization\VERIFY.ps1
 ## Scenario 4: Rollback from v1.2 to v1.1 (If Needed)
 
 ### When You Might Need This
+
 - Found issues with v1.2 (unlikely, but possible)
 - Need to verify specific bug wasn't introduced by v1.2
 - Want to revert to previous version
@@ -181,6 +197,7 @@ C:\RomanticCustomization\VERIFY.ps1
 ### Rollback Process
 
 **Step 1: Uninstall v1.2**
+
 ```powershell
 # First preview what will be deleted
 C:\RomanticCustomization\UNINSTALL.ps1 -WhatIf
@@ -190,6 +207,7 @@ C:\RomanticCustomization\UNINSTALL.ps1
 ```
 
 **Step 2: Restore from Backup**
+
 ```powershell
 # If you have backed-up v1.1 installation
 Copy-Item "C:\Backups\RomanticCustomization_v1.1_backup" "C:\RomanticCustomization" -Recurse -Force
@@ -202,6 +220,7 @@ Copy-Item "C:\Backups\romantic.wav" "C:\RomanticCustomization\Sounds\romantic.wa
 ```
 
 **Step 3: Reinstall Scheduled Task**
+
 ```powershell
 # If only config was restored, you need to recreate the task:
 # Either run v1.1 INSTALL.ps1
@@ -209,6 +228,7 @@ Copy-Item "C:\Backups\romantic.wav" "C:\RomanticCustomization\Sounds\romantic.wa
 ```
 
 **Step 4: Verify**
+
 ```powershell
 C:\RomanticCustomization\VERIFY.ps1
 ```
@@ -222,18 +242,21 @@ C:\RomanticCustomization\VERIFY.ps1
 ### Moving from C:\ to Different Drive
 
 **Step 1: Prepare Target Location**
+
 ```powershell
 # Example: Moving to E:\
 New-Item -Path "E:\RomanticCustomization" -ItemType Directory -Force
 ```
 
 **Step 2: Copy Current Installation**
+
 ```powershell
 # Copy everything from C:\ to E:\
 Copy-Item "C:\RomanticCustomization\*" "E:\RomanticCustomization\" -Recurse -Force
 ```
 
 **Step 3: Update Registry**
+
 ```powershell
 # Update the registry to point to new location
 Set-ItemProperty -Path "HKCU:\Software\RomanticCustomization" -Name "InstallPath" -Value "E:\RomanticCustomization" -Type String -Force
@@ -243,12 +266,14 @@ Get-ItemProperty "HKCU:\Software\RomanticCustomization"
 ```
 
 **Step 4: Remove Old Location**
+
 ```powershell
 # After confirming new location works
 Remove-Item "C:\RomanticCustomization" -Recurse -Force
 ```
 
 **Step 5: Test**
+
 ```powershell
 # Run welcome message to verify it finds files
 E:\RomanticCustomization\WelcomeMessage.ps1
@@ -265,6 +290,7 @@ E:\RomanticCustomization\WelcomeMessage.ps1
 ### Keeping Installation, Changing Settings
 
 **Step 1: Edit Configuration**
+
 ```powershell
 # Open config file (UTF-8 capable editor)
 notepad "C:\RomanticCustomization\config.txt"
@@ -274,6 +300,7 @@ ise "C:\RomanticCustomization\config.txt"
 ```
 
 **Step 2: Make Changes**
+
 ```ini
 [USER]
 HER_NAME=New Name Here
@@ -288,6 +315,7 @@ MESSAGE=Another new message ✨
 ```
 
 **Step 3: Validate**
+
 ```powershell
 # Validate new config
 C:\RomanticCustomization\CONFIG_VALIDATOR.ps1
@@ -296,6 +324,7 @@ C:\RomanticCustomization\CONFIG_VALIDATOR.ps1
 ```
 
 **Step 4: Test**
+
 ```powershell
 # Run welcome message to see changes
 C:\RomanticCustomization\WelcomeMessage.ps1
@@ -310,12 +339,14 @@ C:\RomanticCustomization\WelcomeMessage.ps1
 ### When You Want to Start Completely Over
 
 **Step 1: Backup Current (Optional but Recommended)**
+
 ```powershell
 # If you want to keep a copy for reference
 Copy-Item "C:\RomanticCustomization\config.txt" "C:\Backups\config.txt.last_version" -Force
 ```
 
 **Step 2: Complete Removal**
+
 ```powershell
 # Preview what will be deleted
 C:\RomanticCustomization\UNINSTALL.ps1 -WhatIf
@@ -328,6 +359,7 @@ Test-Path "C:\RomanticCustomization"  # Should return: False
 ```
 
 **Step 3: Fresh Install**
+
 ```powershript
 # Start with clean v1.2 package
 cd "C:\path\to\v1.2\package"
@@ -340,6 +372,7 @@ notepad "config.txt"
 ```
 
 **Step 4: Verify**
+
 ```powershell
 C:\RomanticCustomization\VERIFY.ps1
 ```
@@ -353,6 +386,7 @@ C:\RomanticCustomization\VERIFY.ps1
 ### Issue: "Installation folder not found"
 
 **Solution:**
+
 ```powershell
 # Create it manually
 New-Item -Path "C:\RomanticCustomization" -ItemType Directory -Force
@@ -361,6 +395,7 @@ New-Item -Path "C:\RomanticCustomization" -ItemType Directory -Force
 ### Issue: "Registry entry not updated"
 
 **Solution:**
+
 ```powershell
 # Manually create/update registry
 $regPath = "HKCU:\Software\RomanticCustomization"
@@ -371,6 +406,7 @@ Set-ItemProperty -Path $regPath -Name "InstallPath" -Value "C:\RomanticCustomiza
 ### Issue: "Scheduled task didn't migrate"
 
 **Solution:**
+
 ```powershell
 # Manually re-create by running INSTALL.ps1
 # OR manually create in Task Scheduler:
@@ -385,6 +421,7 @@ Set-ItemProperty -Path $regPath -Name "InstallPath" -Value "C:\RomanticCustomiza
 ### Issue: "Config.txt encoding wrong"
 
 **Solution:**
+
 ```powershell
 # Re-save with proper UTF-8 BOM
 $content = Get-Content "C:\RomanticCustomization\config.txt" -Raw
@@ -397,6 +434,7 @@ $encoding = [System.Text.UTF8Encoding]::new($true)  # $true = with BOM
 ## Before/After Checklist
 
 ### Before Starting Migration
+
 - [ ] Back up current config.txt
 - [ ] Note your personalized settings
 - [ ] Have v1.2 package files ready
@@ -404,6 +442,7 @@ $encoding = [System.Text.UTF8Encoding]::new($true)  # $true = with BOM
 - [ ] Know your installation path
 
 ### After Completing Migration
+
 - [ ] Run VERIFY.ps1 successfully
 - [ ] Test welcome message manually
 - [ ] Log out and back in to test auto-display
@@ -414,13 +453,13 @@ $encoding = [System.Text.UTF8Encoding]::new($true)  # $true = with BOM
 
 ## Version Compatibility Matrix
 
-| From → To | Supported | Method | Difficulty |
-|-----------|-----------|--------|------------|
-| v1.0 → v1.1 | ✅ Yes | Uninstall + Install | Easy |
-| v1.0 → v1.2 | ✅ Yes | Uninstall + Install | Easy |
-| v1.1 → v1.2 | ✅ Yes | Run new INSTALL.ps1 | Very Easy |
-| v1.2 → v1.1 | ⚠️ Possible | Restore backup + Uninstall | Medium |
-| v1.2 → v1.0 | ⚠️ Possible | Restore backup + Uninstall | Medium |
+| From → To   | Supported   | Method                     | Difficulty |
+| ----------- | ----------- | -------------------------- | ---------- |
+| v1.0 → v1.1 | ✅ Yes      | Uninstall + Install        | Easy       |
+| v1.0 → v1.2 | ✅ Yes      | Uninstall + Install        | Easy       |
+| v1.1 → v1.2 | ✅ Yes      | Run new INSTALL.ps1        | Very Easy  |
+| v1.2 → v1.1 | ⚠️ Possible | Restore backup + Uninstall | Medium     |
+| v1.2 → v1.0 | ⚠️ Possible | Restore backup + Uninstall | Medium     |
 
 ---
 
@@ -435,6 +474,7 @@ $encoding = [System.Text.UTF8Encoding]::new($true)  # $true = with BOM
 OR
 
 **Keep backups in safe locations:**
+
 ```powershell
 # Create version archive
 $versions = @{
@@ -473,7 +513,7 @@ A: Rollback using your backup, or reinstall from scratch.
 
 **Q: How long does upgrade take?**  
 A: v1.1 → v1.2: ~2 minutes  
-   v1.0 → v1.2: ~5 minutes (with backup/uninstall/install)
+ v1.0 → v1.2: ~5 minutes (with backup/uninstall/install)
 
 ---
 
